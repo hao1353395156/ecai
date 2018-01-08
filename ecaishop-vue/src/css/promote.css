@@ -1,0 +1,247 @@
+.r-promote{
+    padding-left:40px;
+}
+input{
+    outline: none;
+}
+.promote-nav{
+    display: flex;
+    padding: 0 20px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    width: 570px;
+    border-bottom: 1px solid #e7e7e7;
+}
+.promote-nav>a{
+    width: 150px;
+    color: #666666;
+    text-align: center;
+    margin-right: 30px;
+}
+.pro-act{
+    border-bottom: 4px solid #0098F2;
+}
+.promote-tip{
+    margin-top: 20px;
+    justify-content: center;
+}
+.promote-tip p{
+    margin: 0;
+    padding: 0;
+}
+.pro-label{
+    width: 115px;
+    font-size: 14px;
+    line-height: 40px;
+}
+.pro-item{
+    display: flex;
+    margin-bottom: 20px;
+}
+.pro-item input {
+    width: 400px;
+    height: 40px;
+    border: 1px solid #999999;
+    border-radius: 8px;
+    padding-left: 10px;
+}
+
+.pro-item img{
+    width: 80px;
+    height: 80px;
+}
+.promote-form{
+    margin-top: 20px;
+}
+.pro-img .pro-label{
+    line-height: 20px;
+}
+.pro-img>div:nth-child(2){
+    border: 1px solid #999999;
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+.pro-address{
+    display: flex;
+}
+.pro-address input{
+    width: 86px;
+    height: 40px;
+    margin-right: 20px;
+    outline: none;
+}
+.pro-address>div{
+    display: flex;
+    align-items: center;
+}
+.pro-address>div>div{
+    color: #dbdbdb;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    right: 35px;
+}
+.pro-address i{
+    width: 10px;
+    height: 8px;
+    cursor: pointer;
+    display: inline-block;
+}
+.add{
+    background: url("../assets/i-up.png") center no-repeat;
+    background-size: 100% 100%;
+}
+.reduce{
+    background: url("../assets/i-down.png") center no-repeat;
+    background-size: 100% 100%;
+}
+.pro-area>div:nth-child(2){
+    outline: none;
+    width: 300px;
+    height: 100px;
+    border: 1px solid #999999;
+    border-radius: 8px;
+    padding: 8px;
+}
+.pro-area .pro-label{
+    line-height: 20px;
+}
+.pro-rule{
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.pro-rule a{
+    color: #0098F2;
+}
+.pro-sub{
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #0098F2;
+    border: 1px solid #0098F2;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 20px;
+}
+.promote-tip a{
+    color: #0098F2;
+}
+.apply p{
+    margin: 0;
+    padding: 0;
+}
+.apply div{
+    margin-bottom: 20px;
+}
+.apply{
+    padding: 20px 20px 40px;
+    width: 570px;
+    border: 1px solid #e7e7e7;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #999999;
+    margin-bottom: 20px;
+}
+.code{
+    width: 160px !important;
+    margin-right: 20px;
+}
+.pro-code >div:nth-child(2){
+    display: flex;
+}
+.login-btn{
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 12px;
+    color: #ffffff;
+    background: #3789EC;
+    border-radius: 8px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+.login-code{
+    width: 116px;
+    height: 36px;
+    background: url("../assets/code.png") no-repeat center;
+    background-size: 100%;
+    margin-right: 10px;
+}
+.change-code{
+    line-height: 40px;
+    font-size: 12px;
+    color: #999999;
+}
+.change-code a{
+    color: #0098F2;
+    cursor: pointer;
+}
+.apply-form{
+    border-bottom:1px solid #e7e7e7;
+    padding-bottom: 20px;
+    margin-top: 20px;
+    width: 570px;
+}
+.pro-long{
+    line-height: 20px;
+}
+.pro-long p{
+    margin: 0;
+    padding: 0;
+}
+.apply-answer,.apply-success{
+    margin-top: 120px;
+    width: 570px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.apply-success a{
+    font-size: 16px;
+    color: #0098F2;
+    border: none;
+    text-decoration: underline;
+}
+
+.apply-answer p{
+    font-size: 16px;
+    color: #666666;
+    width: 310px;
+    text-align: center;
+}
+.apply-answer a{
+    margin-right: 0;
+}
+.apply-success p{
+    font-size: 16px;
+    color: #666666;
+    width: 410px;
+    text-align: center;
+}
+.pre-phonenum{
+    color: #999999;
+    line-height: 40px;
+    font-size: 16px;
+}
+.change-phone{
+    width: 300px !important;
+}
+.change-success{
+    width: 570px;
+}
+.change-success p{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    color: #999999;
+}
+.change-success a{
+    margin-right: 0;
+    margin-top: 20px;
+}
