@@ -25,9 +25,14 @@
 		}
 	});
 
-    Vue.filter('formatee', function (value) {
+    Vue.filter('formatee1', function (value) {
         if (value) {
             return (value/100).toFixed(2);
+        }
+    });
+     Vue.filter('formatee2', function (value) {
+        if (value) {
+            return (value/100);
         }
     });
 
@@ -59,6 +64,11 @@
     Vue.filter('formatImg1960x120', function (value) {
         if (value) {
             return config.ALI_OSS_GATEWAY + "/" + value + "?x-oss-process=image/resize,w_1960,h_120";
+        }
+    });
+    Vue.filter('formatImg140x140', function (value) {
+        if (value) {
+            return config.ALI_OSS_GATEWAY + "/" + value + "?x-oss-process=image/resize,w_140,h_140";
         }
     });
   

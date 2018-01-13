@@ -20,6 +20,18 @@ a{
     background: #475568;
 
 }
+.alert-sub11{
+    width: 160px!important;
+    height: 30px;
+    line-height: 40px;
+    text-align: center;
+    color: #0098f2;
+    border: 1px solid #0098F2;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-left: 150px;
+    margin-top: 50px;
+}
 .yd-head{
     height: 50px;
     background: #475568;

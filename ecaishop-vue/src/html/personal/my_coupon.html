@@ -5,27 +5,28 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/serve.css">
-    <link rel="stylesheet" href="../css/coupon.css">
-    <link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.min.css">
-    <script src="../js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/serve.css">
+    <link rel="stylesheet" href="../../css/coupon.css">
+    <link rel="stylesheet" href="../../css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="../../js/jquery-1.11.3.min.js"></script>
     <title></title>
 </head>
 <body>
+ <div id="my_coupon">
     <div class="yd-main">
         <div id="yd-head">
             <div class="yd-head">
                 <div class="yd-head-l">
                     <div>
-                        <img src="../assets/首页.png" alt="">
+                        <img src="../../assets/首页.png" alt="">
                         <a href="首页.html">首页</a>
                     </div>
                     <div>
                         <span>切换城市</span>
                     </div>
                     <div class="yd-head-l-add">
-                        <img src="../assets/坐标.png" alt="">
+                        <img src="../../assets/坐标.png" alt="">
                         <span><a href="选择地址.html">上海</a></span>
                     </div>
                 </div>
@@ -56,15 +57,15 @@
         </div>
         <div class="yd-site">
             <a href="商城首页.html">E采商城</a>
-            <span> <img src="../assets/Shape%20Copy.png" alt=""> </span>
+            <span> <img src="../../assets/ShapeCopy.png" alt=""> </span>
             <a href="我的e采.html">我的E采</a>
         </div>
         <div class="yd-help-content">
             <div class="yd-help-l">
                 <div class="user-info">
-                    <div><img src="../assets/头像%20中.png" alt=""></div>
+                    <div><img src="../../assets/头像%20中.png" alt=""></div>
                     <div>
-                        <div class="vip-lv"><a href="e采会员.html"><img src="../assets/铜牌会员.png" alt="">铜牌会员</a></div>
+                        <div class="vip-lv"><a href="e采会员.html"><img src="../../assets/铜牌会员.png" alt="">铜牌会员</a></div>
                         <div class="nickname">Lemon</div>
                     </div>
                 </div>
@@ -95,52 +96,54 @@
                 <div class="r-top">我的优惠券</div>
                 <div class="r-nav">
                     <div>
-                        <a  class="r-nav-item ser-act">未使用（<span class="coupon-count">3</span>）</a>
-                        <a  >已使用(<span class="coupon-count">1</span>)</a>
-                        <a >已过期</a>
+                        <a :class=" qieshow==1 ? 'r-nav-item ser-act' : '' " style="cursor:pointer" @click="qieshow=1">未使用（<span class="coupon-count">{{sumary_sl.feeCount}}</span>）</a>
+                        <a :class=" qieshow==2 ? 'r-nav-item ser-act' : '' "style="cursor:pointer"  @click="qieshow=2">已使用(<span class="coupon-count">{{sumary_sl.usedCount}}</span>)</a>
+                        <a :class=" qieshow==3 ? 'r-nav-item ser-act' : '' "style="cursor:pointer" @click="qieshow=3">已过期(<span class="coupon-count">{{sumary_sl.expiredCount}}</span>)</a>
                     </div>
 
                 </div>
                 <div class="r-con">
                     <div class="coupon-con">
-                        <div class="u-item">
+                        <div class="u-item" v-for="coupon_weilist in coupon_wei" v-show="qieshow==1">
                             <div>
                                 <!--<img src="../assets/删除.png" class="delete" alt="">-->
-                                <div class="count">￥ <span class="super">5</span> </div>
-                                <div class="call">满2188元可用</div>
-                                <div class="date">2017.04.16 - 2017.05.20</div>
+                                <div class="count">￥ <span class="super">{{coupon_weilist.fee | formatee2}}</span> </div>
+                                <div class="call">{{coupon_weilist.shopName}}</div>
+                                <div class="date">{{coupon_weilist.effectTime}} - {{coupon_weilist.dueTime}}</div>
                             </div>
                             <div>
-                                <div> 仅可购买e采自营部份家电商品</div>
-                                <div>券编号：1234567862</div>
+                                <div> {{coupon_weilist.name}}</div>
+                                <div style="display:none">券编号：1234567862</div>
                                 <div class="use-it">立即使用</div>
                             </div>
                         </div>
-                        <div class="u-item">
+                        <div class="u-item" v-for="coupon_yilist in coupon_yi"  v-show="qieshow==2">
                             <div>
-                                <div class="count">￥ <span class="super">5</span> </div>
-                                <div class="call">满2188元可用</div>
-                                <div class="date">2017.04.16 - 2017.05.20</div>
+                                <!--<img src="../assets/删除.png" class="delete" alt="">-->
+                                <div class="count">￥ <span class="super">{{coupon_yilist.fee | formatee2}}</span> </div>
+                                <div class="call">{{coupon_yilist.shopName}}</div>
+                                <div class="date">{{coupon_yilist.effectTime}} - {{coupon_yilist.dueTime}}</div>
                             </div>
                             <div>
-                                <div> 仅可购买e采自营部份家电商品</div>
-                                <div>券编号：1234567862</div>
+                                <div> {{coupon_yilist.name}}</div>
+                                <div style="display:none">券编号：1234567862</div>
                                 <div class="use-it">立即使用</div>
                             </div>
                         </div>
-                        <div class="u-item">
+                        <div class="u-item" v-for="coupon_guolist in coupon_guo"  v-show="qieshow==3">
                             <div>
-                                <div class="count">￥ <span class="super">5</span> </div>
-                                <div class="call">满2188元可用</div>
-                                <div class="date">2017.04.16 - 2017.05.20</div>
+                                <!--<img src="../assets/删除.png" class="delete" alt="">-->
+                                <div class="count">￥ <span class="super">{{coupon_guolist.fee | formatee2}}</span> </div>
+                                <div class="call">{{coupon_guolist.shopName}}</div>
+                                <div class="date">{{coupon_guolist.effectTime}} - {{coupon_guolist.dueTime}}</div>
                             </div>
                             <div>
-                                <div> 仅可购买e采自营部份家电商品</div>
-                                <div>券编号：1234567862</div>
+                                <div> {{coupon_guolist.name}}</div>
+                                <div style="display:none">券编号：1234567862</div>
                                 <div class="use-it">立即使用</div>
                             </div>
                         </div>
-                        <div class="u-item">
+                        <!-- <div class="u-item">
                             <div>
                                 <div class="count">￥ <span class="super">5</span> </div>
                                 <div class="call">满2188元可用</div>
@@ -175,7 +178,7 @@
                                 <div>券编号：1234567862</div>
                                 <div class="use-it over-use">已过期</div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
 
@@ -192,28 +195,35 @@
         <div class="mask"></div>
         <div class="yd-alert">
             <div>
-                <img src="../assets/恭喜您.png" alt="">
+                <img src="../../assets/恭喜您.png" alt="">
             </div>
             <div>提交申请成功，请耐心等待商家处理哦~</div>
         </div>
     </div>
+</div>
 </body>
+<script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="../../js/leftTime.js"></script>
+<script src="../../js/utils.js"></script>
+<script src="../../js/config.js"></script>
+<script src="../../js/personal/my_coupon.js"></script>
 <script>
-    $('.r-nav a').click(function () {
-        $('.r-nav a').removeClass('ser-act');
-        $(this).addClass('ser-act')
-         var  i = $(this).index()
-        if(i == 0){
-            $('.u-item').show()
-            $('.had').hide()
-            $('.have').hide()
-        }else  if(i==1){
-            $('.u-item').hide()
-            $('.have').show()
-        }else {
-            $('.u-item').hide()
-            $('.had').show()
-        }
-    })
+    // $('.r-nav a').click(function () {
+    //     $('.r-nav a').removeClass('ser-act');
+    //     $(this).addClass('ser-act')
+    //      var  i = $(this).index()
+    //     if(i == 0){
+    //         $('.u-item').show()
+    //         $('.had').hide()
+    //         $('.have').hide()
+    //     }else  if(i==1){
+    //         $('.u-item').hide()
+    //         $('.have').show()
+    //     }else {
+    //         $('.u-item').hide()
+    //         $('.had').show()
+    //     }
+    // })
 </script>
 </html>

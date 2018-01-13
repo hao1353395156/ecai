@@ -61,6 +61,12 @@
 }
 .alert-top{
     width: 580px;
+    position:relative;
+}
+.alert-top span{
+    position:absolute;
+    right:0;
+    top:18px;
 }
 .r-con-alert{
     margin-left: 40px;
@@ -199,4 +205,62 @@
 .alert-close{
     cursor: pointer ;
 }
-
+.machineInfo {
+  width: 660px;
+  height: 680px;
+  padding: 50px;
+  padding-top: 20px;
+  background-color: #fff;
+  position: absolute;
+  top: 204px;
+  left: 50%;
+  transform:translateX(-50%);
+  z-index: 100;
+  border: 1px solid #979797;
+}
+.machineInfo h4 {
+  margin-left: -20px;
+  font-weight: 600;
+}
+.machineInfo ul {
+  width: 700px;
+  height: 350px;
+  background-color: yellow;
+}
+.machineInfo ul li {
+  float: left;
+  width: 16.5%;
+  height: 60px;
+  list-style: none;
+  line-height: 60px;
+}
+.machineInfo ul p {
+  float: left;
+  width: 600px;
+  height: 100px;
+  border: 1px solid #666;
+}
+.machineInfo button {
+  display: block;
+  margin: 0 auto;
+  background-color: orange;
+  border: 1px solid #666;
+  width: 70px;
+  height: 30px;
+  color: #fff;
+}
+.add_news select{
+   width:100px;
+   border: solid 1px #999999;
+   background-color: #fff;
+   background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll right center transparent;
+   appearance:none;
+   -moz-appearance:none;
+   -webkit-appearance:none;
+   padding-left: 10px;
+    padding-right: 16px;
+}
+.add_news select::-ms-expand { display: none; }
+.add_news select>option{
+    padding: 10px 12px 11px;
+}

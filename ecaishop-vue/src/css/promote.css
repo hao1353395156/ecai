@@ -245,3 +245,37 @@ input{
     margin-right: 0;
     margin-top: 20px;
 }
+.file {
+    position: relative;
+    display: inline-block;
+    background: #D0EEFF;
+    /*border: 1px solid #99D3F5;*/
+    border-radius: 4px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: #1E88C7;
+    text-decoration: none;
+    text-indent: 0;
+    height:80px;
+    width:80px;
+    background:url(../assets/camera.png) 0% 0% /100%;
+}
+.file input {
+    position: absolute;
+    height:80px;
+    font-size: 200px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+     background:url(../assets/camera.png) 0% 0% /100%;
+}
+.quyu div:nth-child(1) select{
+     margin-left: 0px;
+}
+.quyu select{
+     line-height: 80px;
+     height:40px;
+     width:80px;
+     margin-left: 20px;
+     background-color: #fff;
+}

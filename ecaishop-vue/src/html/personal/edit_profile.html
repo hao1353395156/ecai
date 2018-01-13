@@ -9,10 +9,11 @@
     <link rel="stylesheet" href="../../css/serve.css">
     <link rel="stylesheet" href="../../css/userinfo.css">
     <link rel="stylesheet" href="../../css/font-awesome-4.7.0/css/font-awesome.min.css">
- <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <title></title>
 </head>
 <body>
+<div id="edit_profile">
     <div class="yd-main">
         <div   id="yd-head">
         <div class="yd-head">
@@ -95,25 +96,25 @@
                 <div class="r-top">编辑个人资料</div>
                 <div class="r-container">
                     <div class="r-con-l">
-                        <div class="bg-avatar">
-                            <!--<img src="../assets/头像%20圆.png" alt="">-->
+                        <div class="bg-avatar" :style="'background:url(http://alioss.360ecmall.com/'+ profile_chushi.avatar+'?x-oss-process=image/resize,w_540,h_540) 0% 0% / 100%'">
+                           <!-- <img :src="profile_chushi.avatar | formatImg140x140" alt=""> -->
                         </div>
-                        <div class="change-avatar"><a onclick="avatar()">修改头像</a>
+                        <div class="change-avatar"><a onclick="avatar()" @click="touxiang" style="cursor:pointer">修改头像</a>
 
-                            <input type="file" accept="image/*" id="avatar" style="display: none" >
+                            <input type="file" :accept="profile_chushi.avatar | formatImg140x140" id="avatar" style="display: none" >
                         </div>
                     </div>
                     <div class="r-con-r">
                         <div class="r-r-title">基本资料</div>
                         <div class="r-r-item">
                             <div class="r-label">用户名：</div>
-                            <div>dacer</div>
+                            <div>{{profile_chushi.userName}}</div>
                         </div>
                         <div class="r-r-item">
                             <div class="r-label">昵称：</div>
                             <div>
-                                <input type="text" placeholder="输入昵称">
-                                <div class="change-nick-result">
+                                <input type="text" placeholder="输入昵称" v-model="profile_chushi.nickName">
+                                <div class="change-nick-result" style="display:none">
                                     <span class="nick-success"><img src="../../assets/dui.png" alt=""></span>
                                     <span class="nickname-false"><img src="../../assets/错误%20已被占用.png" alt="">该用户名已被占用</span>
                                 </div>
@@ -122,15 +123,15 @@
                         <div class="r-r-item">
                             <div class="r-label">性别：</div>
                             <div class="r-sex">
-                                <div><span class="r-radio check-radio"></span> <span>保密</span></div>
-                                <div><span class="r-radio"></span> <span>男</span></div>
-                                <div><span class="r-radio"></span> <span>女</span></div>
+                                <div><span :class="profile_chushi.gender==0 ? 'check-radio r-radio':'r-radio'"></span> <span>保密</span></div>
+                                <div><span :class="profile_chushi.gender==1 ? 'check-radio r-radio':'r-radio'"></span> <span>男</span></div>
+                                <div><span :class="profile_chushi.gender==2 ? 'check-radio r-radio':'r-radio'"></span> <span>女</span></div>
                             </div>
                         </div>
                         <div class="r-r-item">
                             <div class="r-label">生日：</div>
-                            <div class="birthday">
-                               <div >
+                            <div class="birthday" style="width:200px">
+                               <!-- <div >
                                    <input type="text" value="1877">
                                    <div>
                                        <i class=" add" aria-hidden="true"></i>
@@ -153,10 +154,13 @@
                                         <i class=" reduce"></i>
                                     </div>
                                     <span>日</span>
-                                </div>
+                                </div> -->
+                                <form>
+                                    <input type="date" :value="profile_chushi.birthday" name="user_date" id="user_date"  style="width:200px"/>
+                                </form>
                             </div>
                         </div>
-
+                         <input type="" class="alert-sub11"  style="cursor:pointer" @click="submit_zl" value="确认保存"></input>
                         <div class="r-r-title">账户安全</div>
                         <div class="r-r-item">
                             <div class="r-label">登录密码：</div>
@@ -190,10 +194,12 @@
             <!--<div>提交申请成功，请耐心等待商家处理哦~</div>-->
         <!--</div>-->
     </div>
+</div>
 </body>
 <script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
 <script src="https://cdn.jsdelivr.net/vee-validate/2.0.0-rc.3/vee-validate.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="../../js/leftTime.js"></script>
 <script src="../../js/utils.js"></script>
 <script src="../../js/config.js"></script>
 <script src="../../js/personal/edit_profile.js"></script>

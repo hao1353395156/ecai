@@ -5,27 +5,28 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/serve.css">
-    <link rel="stylesheet" href="../css/message.css">
-    <link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.min.css">
-    <script src="../js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/serve.css">
+    <link rel="stylesheet" href="../../css/message.css">
+    <link rel="stylesheet" href="../../css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="../../js/jquery-1.11.3.min.js"></script>
     <title></title>
 </head>
 <body>
+    <div id="my_news">
     <div class="yd-main">
         <div id="yd-head">
             <div class="yd-head">
                 <div class="yd-head-l">
                     <div>
-                        <img src="../assets/首页.png" alt="">
+                        <img src="../../assets/首页.png" alt="">
                         <a href="首页.html">首页</a>
                     </div>
                     <div>
                         <span>切换城市</span>
                     </div>
                     <div class="yd-head-l-add">
-                        <img src="../assets/坐标.png" alt="">
+                        <img src="../../assets/坐标.png" alt="">
                         <span><a href="选择地址.html">上海</a></span>
                     </div>
                 </div>
@@ -57,15 +58,15 @@
 
         <div class="yd-site">
             <a href="商城首页.html">E采商城</a>
-            <span> <img src="../assets/Shape%20Copy.png" alt=""> </span>
+            <span> <img src="../../assets/ShapeCopy.png" alt=""> </span>
             <a href="我的e采.html">我的E采</a>
         </div>
         <div class="yd-help-content">
             <div class="yd-help-l">
                 <div class="user-info">
-                    <div><img src="../assets/头像%20中.png" alt=""></div>
+                    <div><img src="../../assets/头像%20中.png" alt=""></div>
                     <div>
-                        <div class="vip-lv"><a href="选择地址.html"><img src="../assets/铜牌会员.png" alt="">铜牌会员</a></div>
+                        <div class="vip-lv"><a href="选择地址.html"><img src="../../assets/铜牌会员.png" alt="">铜牌会员</a></div>
                         <div class="nickname">Lemon</div>
                     </div>
                 </div>
@@ -101,90 +102,100 @@
                     </div>
 
                 </div>
-                <div class="r-con">
-                    <div class="mes-item">
-                        <div class="mes-top">
-                            <span class="mes-dot"></span>
-                            <span>物流消息：您购买的商品有新的动态</span>
-                        </div>
-                        <div class="mes-det">
-                            <div class="goods-avatar">
-                                <img src="../assets/e采商城图片/首页/2.jpg" alt="">
-                            </div>
-                            <div class="mes-data">
-                                <div>订单号：201736541722738</div>
-                                <div class="mes-state">商家已发货</div>
-                            </div>
-                            <a href="订单详情.html" class="mes-more">
-                                去看看
-                            </a>
-                        </div>
-                    </div>
-                    <div class="mes-item">
-                        <div class="mes-top">
-                            <span class="mes-dot"></span>
-                            <span>物流消息：您购买的商品有新的动态</span>
-                        </div>
-                        <div class="mes-det">
-                            <div class="goods-avatar">
-                                <img src="../assets/imagec.png" alt="">
-                            </div>
-                            <div class="mes-data">
-                                <div>订单号：201736541722738</div>
-                                <div class="mes-state">商家已发货</div>
-                            </div>
-                            <a href="订单详情.html" class="mes-more">
-                                去看看
-                            </a>
-                        </div>
-                    </div>
-                    <div class="mes-item">
-                        <div class="mes-top">
-                            <span class="mes-dot"></span>
-                            <span>物流消息：您购买的商品有新的动态</span>
-                        </div>
-                        <div class="mes-det">
-                            <div class="goods-avatar">
-                                <img src="../assets/imagec.png" alt="">
-                            </div>
-                            <div class="mes-data">
-                                <div>订单号：201736541722738</div>
-                                <div class="mes-state">商家已发货</div>
-                            </div>
-                            <a href="订单详情.html" class="mes-more">
-                                去看看
-                            </a>
-                        </div>
-                    </div>
-                    <div class="mes-item">
-                        <div class="mes-top">
-                            <span class="mes-dot"></span>
-                            <span>物流消息：您购买的商品有新的动态</span>
-                        </div>
-                        <div class="mes-det">
-                            <div class="goods-avatar">
-                                <img src="../assets/imagec.png" alt="">
-                            </div>
-                            <div class="mes-data">
-                                <div>订单号：201736541722738</div>
-                                <div class="mes-state">商家已发货</div>
-                            </div>
-                            <a href="订单详情.html" class="mes-more">
-                                去看看
-                            </a>
-                        </div>
-                    </div>
+
+                <div class="r-con-none" v-if="wuliiu_news==0">
+                        <div>暂时没有提示消息哦~</div>
                 </div>
 
-                <div class="a-goods-page">
+                <div class="r-con" v-else>
+
+                    <div class="mes-item" v-for="wuliiu_newslist in wuliiu_news">
+                        <div class="mes-top">
+                            <span class="mes-dot"></span>
+                            <span>{{wuliiu_newslist.typeName}}：{{wuliiu_newslist.content}}</span>
+                        </div>
+                        <div class="mes-det">
+                            <div class="goods-avatar" style="display:none">
+                                <img src="../../assets/e采商城图片/首页/2.jpg" alt="">
+                            </div>
+                            <div class="mes-data">
+                                <div>订单号：{{wuliiu_newslist.orderId}}</div>
+                                <div class="mes-state">{{wuliiu_newslist.title}}</div>
+                            </div>
+                            <a href="订单详情.html" class="mes-more">
+                                去看看
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mes-item">
+                        <div class="mes-top">
+                            <span class="mes-dot"></span>
+                            <span>物流消息：您购买的商品有新的动态</span>
+                        </div>
+                        <div class="mes-det">
+                            <div class="goods-avatar">
+                                <img src="../../assets/imagec.png" alt="">
+                            </div>
+                            <div class="mes-data">
+                                <div>订单号：201736541722738</div>
+                                <div class="mes-state">商家已发货</div>
+                            </div>
+                            <a href="订单详情.html" class="mes-more">
+                                去看看
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mes-item">
+                        <div class="mes-top">
+                            <span class="mes-dot"></span>
+                            <span>物流消息：您购买的商品有新的动态</span>
+                        </div>
+                        <div class="mes-det">
+                            <div class="goods-avatar">
+                                <img src="../../assets/imagec.png" alt="">
+                            </div>
+                            <div class="mes-data">
+                                <div>订单号：201736541722738</div>
+                                <div class="mes-state">商家已发货</div>
+                            </div>
+                            <a href="订单详情.html" class="mes-more">
+                                去看看
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="mes-item">
+                        <div class="mes-top">
+                            <span class="mes-dot"></span>
+                            <span>物流消息：您购买的商品有新的动态</span>
+                        </div>
+                        <div class="mes-det">
+                            <div class="goods-avatar">
+                                <img src="../../assets/imagec.png" alt="">
+                            </div>
+                            <div class="mes-data">
+                                <div>订单号：201736541722738</div>
+                                <div class="mes-state">商家已发货</div>
+                            </div>
+                            <a href="订单详情.html" class="mes-more">
+                                去看看
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="a-goods-page"  v-if="!wuliiu_news==0">
                     <div class="prev page">
-                        <img src="../assets/Shape%20页码左.png" alt="">
+                        <img src="../../assets/Shape%20页码左.png" alt="">
                     </div>
                     <div class="page">1</div>
                     <div class="page current">2</div>
                     <div class="page">3</div>
                     <div class="next page">
-                        <img src="../assets/Shape%20页码右.png" alt="">
+                        <img src="../../assets/Shape%20页码右.png" alt="">
                     </div>
 
                 </div>
@@ -197,11 +208,16 @@
         <div class="mask"></div>
         <div class="yd-alert">
             <div>
-                <img src="../assets/恭喜您.png" alt="">
+                <img src="../../assets/恭喜您.png" alt="">
             </div>
             <div>提交申请成功，请耐心等待商家处理哦~</div>
         </div>
     </div>
+</div>
 </body>
-
+<script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="../../js/utils.js"></script>
+<script src="../../js/config.js"></script>
+<script src="../../js/personal/my_news.js"></script>
 </html>
