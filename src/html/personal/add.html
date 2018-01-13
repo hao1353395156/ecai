@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/serve.css">
+    <link rel="stylesheet" href="../../css/cancel.css">
+    <link rel="stylesheet" href="../../css/address.css">
+    <link rel="stylesheet" href="../../css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <title></title>
+</head>
+<style>
+    .r-con{
+        padding-bottom: 0;
+    }
+</style>
+<body>
+    <div id="address">
+    <div class="yd-main">
+        <div id="yd-head">
+            <div class="yd-head">
+                <div class="yd-head-l">
+                    <div>
+                        <img src="../../assets/首页.png" alt="">
+                        <a href="首页.html">首页</a>
+                    </div>
+                    <div>
+                        <span>切换城市</span>
+                    </div>
+                    <div class="yd-head-l-add">
+                        <img src="../../assets/坐标.png" alt="">
+                        <span><a href="选择地址.html">上海</a></span>
+                    </div>
+                </div>
+                <div class="yd-head-r">
+                    <div>
+                        <span>欢迎您lemon</span>
+                    </div>
+                    <div>
+                        <span>退出</span>
+                    </div>
+                    <div>
+                        <span style="font-size: 12px">|</span>
+                    </div>
+                    <a href="我的订单.html">
+                        <span>我的订单</span>
+                    </a>
+                    <a href="我的e采.html">
+                        <span>我的e采</span>
+                    </a>
+                    <a href="##">
+                        <span>客户服务</span>
+                    </a>
+                    <a href="##">
+                        <span>手机e采</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="yd-site">
+            <a href="商城首页.html">E采商城</a>
+            <span> <img src="../../assets/ShapeCopy.png" alt=""> </span>
+            <a href="我的e采.html">我的E采</a>
+            <span> <img src="../../assets/ShapeCopy.png" alt=""> </span>
+            <a href="我的订单.html">订单中心</a>
+            <span> <img src="../../assets/ShapeCopy.png" alt=""> </span>
+            <a href="订单详情.html">订单7837483264273</a>
+        </div>
+        <div class="yd-help-content">
+            <div class="yd-help-l">
+                <div class="user-info">
+                    <div><img src="../../assets/头像%20中.png" alt=""></div>
+                    <div>
+                        <div class="vip-lv"><a href="e采会员.html"><img src="../../assets/铜牌会员.png" alt="">铜牌会员</a></div>
+                        <div class="nickname">Lemon</div>
+                    </div>
+                </div>
+                <div class="serve-con">
+                    <div class="serve-group">
+                        <div class="serve-title">交易管理</div>
+                        <a href="我的订单.html" >我的订单</a>
+                        <a href="我的拼单.html">我的拼单</a>
+                        <a href="我的优惠券.html" >我的优惠券</a>
+                        <a href="我的购物车.html">我的购物车</a>
+                        <a href="我的关注.html">我的关注</a>
+                    </div>
+                    <div class="serve-group">
+                        <div class="serve-title">服务中心</div>
+                        <a href="" >我的返修单/换货</a>
+                        <a href="我的消息.html" >我的消息 <span>（2）</span></a>
+                    </div>
+                    <div class="serve-group">
+                        <div class="serve-title">个人信息管理</div>
+                        <a href="编辑个人资料.html">编辑个人资料</a>
+                        <a href="地址管理%20(企业用户)%20-%20审核中.html"  class="ser-act">地址管理</a>
+                        <a href="地址管理%20(企业用户).html">升级为企业用户</a>
+                        <a href="申请店铺用户.html">申请开通店铺</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="yd-help-r">
+                <div class="r-top">
+                    <div>地址管理 <span class="add-tip" style="display:none">您已创建2个收货地址，最多可创建10个</span></div>
+                    <div> <span class="add-operation"  style="cursor:pointer" @click="addressnews">新增收货地址</span> <span class="add-operation" style="display:none">批量删除收货地址</span></div>
+                </div>
+                <div class="r-con">
+                    <div class="address-top">
+                        <div>
+                            <div><input class="alert-check checked" type="checkbox" id="checkbox"></div>
+                            <span>收货人</span>
+                        </div>
+                        <div>电话/手机</div>
+                        <div class="address-det">
+                            详细地址
+                        </div>
+                        <div class="add-op" style="padding-left: 10px;">
+                            操作
+                        </div>
+                    </div>
+                    <div class="address-top item" v-for="addresslist in address">
+                        <div>
+                            <div><input class="alert-check checked" type="checkbox" id="checkbox"></div>
+                            <span>{{addresslist.contacter}}</span>
+                        </div>
+                        <div>{{addresslist.mobile}}</div>
+                        <div class="address-det">
+                            {{addresslist.provinceName}} {{addresslist.cityName}} {{addresslist.areaName}} {{addresslist.street}}
+                        </div>
+                        <div class="add-op">
+                            <span class="add-operation" :id="addresslist.id" @click="xiugai" style="cursor:pointer">修改</span>
+                            <span class="add-operation" :id="addresslist.id" @click="del_add" style="cursor:pointer">删除</span>
+                            <span class="set-add setted" v-if='addresslist.isDefault==true' >默认地址</span>
+                            <span class="set-add" v-else :id="addresslist.id" @click="moren" style="cursor:pointer">默认地址</span>
+                        </div>
+                    </div>
+                    <!--  新增收货地址 -->
+                    <div class="r-con-alert machineInfo newsadd" style="display: none">
+                        <div class="alert-top">
+                            <div>新增收货地址 <span @click="none_xiao" style="cursor:pointer"><img src="../../assets/ic_closed.png" style="width:30px;height:30px"></span></div>
+                        </div>
+                        <div class="alert-con">
+                            <div class="alert-item">
+                                <div class="label must">收货人:</div>
+                                <div><input type="text" v-model="news_address.contacter"></div>
+                            </div>
+                            <div class="alert-item">
+                                <div class="label must">手机号:</div>
+                                <div><input type="text" id="phone" v-model="news_address.mobile"></div>
+                            </div>
+                            <!-- 省市区联动 -->
+                            <div class="alert-item">
+                                <div class="label must">选择区域:</div>
+                                <div class="address">
+                                    <div class="add_news">
+                                        <select class="cmbProvince" name="cmbProvince">
+                                          <option value="" selected="selected">请选择省</option>
+                                          <option :value='countrylist.id' v-for="countrylist in country">{{countrylist.name}}</option>
+                                        </select> 
+                                    </div>
+                                    <div class="add_news">
+                                        <select class="cmbCity" name="cmbCity" >
+                                          <option value="" selected="selected">请选择市</option>
+                                          <option :value='provincelist.id' v-for="provincelist in province">{{provincelist.name}}</option>
+                                        </select> 
+                                    </div>
+                                    <div  class="add_news">
+                                         <select class="cmbArea" name="cmbArea"  v-model="news_address.areaId" >
+                                          <option value="" selected="selected">请选择区</option>
+                                          <option :value='citylist.id' v-for="citylist in city">{{citylist.name}}</option>
+                                        </select> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="alert-item">
+                                <div class="label must">详细地址:</div>
+                                <textarea type="checkbox" class="alert-textarea" contenteditable="true" v-model="news_address.street"></textarea>
+                            </div>
+                            <div class="alert-item">
+                                <div class="label">邮编:</div>
+                                <div><input type="text" placeholder="如果您不清楚邮政编号，请填写000000"></div>
+                            </div>
+                            <div class="alert-item" style="display:none">
+                                <div class="label"></div>
+                                <div><input class="alert-check check-it checked" type="checkbox" id="checkbox" style="width:10px;height:20px;"><span>设为默认地址</span></div>
+                            </div>
+                            <div class="alert-item">
+                                <div class="label"></div>
+                                <div>
+                                    <span class="alert-sub"  style="cursor:pointer" id="Submit_register">保存</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!--  修改收货地址 -->
+                    <div class="r-con-alert machineInfo oldadd" style="display: none">
+                        <div class="alert-top">
+                            <div>修改收货地址 <span @click="none_xiao" style="cursor:pointer"><img src="../../assets/ic_closed.png" style="width:30px;height:30px"></span></div>
+                        </div>
+                        <div class="alert-con">
+                            <div class="alert-item">
+                                <div class="label must">收货人:</div>
+                                <div><input type="text" v-model="address_xiang.contacter"></div>
+                            </div>
+                            <div class="alert-item">
+                                <div class="label must">手机号:</div>
+                                <div><input type="text"  v-model="address_xiang.mobile" id="phone"></div>
+                            </div>
+                            <!-- 省市区联动 -->
+                            <div class="alert-item">
+                                <div class="label must">选择区域:</div>
+                                <div class="address">
+                                    <div class="add_news">
+                                        <select class="cmbProvince" name="cmbProvince"  v-model="address_xiang.provinceId">
+                                          <option value="" selected="selected">请选择省</option>
+                                          <option :value='countrylist.id' v-for="countrylist in country">{{countrylist.name}}</option>
+                                        </select> 
+                                    </div>
+                                    <div class="add_news">
+                                        <select class="cmbCity" name="cmbCity">
+                                          <option value="" selected="selected">{{address_xiang.cityName}}</option>
+                                          <option :value='provincelist.id' v-for="provincelist in province">{{provincelist.name}}</option>
+                                        </select> 
+                                    </div>
+                                    <div  class="add_news">
+                                         <select class="cmbArea" name="cmbArea">
+                                          <option value="222" selected="selected">{{address_xiang.areaName}}</option>
+                                          <option :value='citylist.id' v-for="citylist in city">{{citylist.name}}</option>
+                                        </select> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="alert-item">
+                                <div class="label must">详细地址:</div>
+                                <textarea type="checkbox" class="alert-textarea" contenteditable="true" v-model="address_xiang.street"></textarea>
+                            </div>
+                            <div class="alert-item">
+                                <div class="label">邮编:</div>
+                                <div><input type="text" placeholder="如果您不清楚邮政编号，请填写000000"></div>
+                            </div>
+                            <div class="alert-item" style="display:none">
+                                <div class="label"></div>
+                                <div><input class="alert-check check-it checked" type="checkbox" id="checkbox" style="width:10px;height:20px;"><span>设为默认地址</span></div>
+                            </div>
+                            <div class="alert-item">
+                                <div class="label"></div>
+                                <div>
+                                    <span class="alert-sub"  style="cursor:pointer" id="Submit_register">确认修改</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div id="yd-footer">
+            Ecaishangcheng &#169; 2003-2018 ，e采商城有限公司版权所有 沪ICP备16207556号-6| 沪B6-20140131| 沪B6-20140358
+        </div>
+        <div class="mask"></div>
+        <div class="yd-alert">
+            <div>
+                <img src="../../assets/恭喜您.png" alt="">
+            </div>
+            <div>提交申请成功，请耐心等待商家处理哦~</div>
+        </div>
+    </div>
+    </div>
+</body>
+<script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="../../js/utils.js"></script>
+<script src="../../js/config.js"></script>
+<script src="../../js/personal/add.js"></script>
+<script type="text/javascript">
+(function($){
+var selects=$('select');//获取select
+for(var i=0;i<selects.length;i++){
+    createSelect(selects[i],i);
+}
+function createSelect(select_container,index){
+    //创建select容器，class为select_box，插入到select标签前
+    var tag_select=$('<div></div>');//div相当于select标签
+    tag_select.attr('class','select_box');
+    tag_select.insertBefore(select_container);
+    //显示框class为select_showbox,插入到创建的tag_select中
+    var select_showbox=$('<div></div>');//显示框
+    select_showbox.css('cursor','pointer').attr('class','select_showbox').appendTo(tag_select);
+    //创建option容器，class为select_option，插入到创建的tag_select中
+    var ul_option=$('<ul></ul>');//创建option列表
+    ul_option.attr('class','select_option');
+    ul_option.appendTo(tag_select);
+    createOptions(index,ul_option);//创建option
+    //点击显示框
+    tag_select.toggle(function(){
+        ul_option.show();
+    },function(){
+        ul_option.hide();
+    });
+    var li_option=ul_option.find('li');
+    li_option.on('click',function(){
+        $(this).addClass('selected').siblings().removeClass('selected');
+        var value=$(this).text();
+        select_showbox.text(value);
+        ul_option.hide();
+    });
+    li_option.hover(function(){
+        $(this).addClass('hover').siblings().removeClass('hover');
+    },function(){
+        li_option.removeClass('hover');
+    });
+}
+function createOptions(index,ul_list){
+    //获取被选中的元素并将其值赋值到显示框中
+    var options=selects.eq(index).find('option'),
+        selected_option=options.filter(':selected'),
+        selected_index=selected_option.index(),
+        showbox=ul_list.prev();
+        showbox.text(selected_option.text());
+    //为每个option建立个li并赋值
+    for(var n=0;n<options.length;n++){
+        var tag_option=$('<li></li>'),//li相当于option
+            txt_option=options.eq(n).text();
+        tag_option.text(txt_option).css('cursor','pointer').appendTo(ul_list);
+        //为被选中的元素添加class为selected
+        if(n==selected_index){
+            tag_option.attr('class','selected');
+        }
+    }
+}
+})(jQuery)
+</script>
+</html>

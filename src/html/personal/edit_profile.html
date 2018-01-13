@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/serve.css">
+    <link rel="stylesheet" href="../../css/userinfo.css">
+    <link rel="stylesheet" href="../../css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <title></title>
+</head>
+<body>
+<div id="edit_profile">
+    <div class="yd-main">
+        <div   id="yd-head">
+        <div class="yd-head">
+            <div class="yd-head-l">
+                <div>
+                   <img src="../../assets/首页.png" alt="">
+                    <a href="首页.html">首页</a>
+                </div>
+                <div>
+                    <span>切换城市</span>
+                </div>
+                <div class="yd-head-l-add">
+                    <img src="../../assets/坐标.png" alt="">
+                    <span><a href="选择地址.html">上海</a></span>
+                </div>
+            </div>
+            <div class="yd-head-r">
+                <div>
+                    <span>欢迎您lemon</span>
+                </div>
+                <div>
+                    <span>退出</span>
+                </div>
+                <div>
+                    <span style="font-size: 12px">|</span>
+                </div>
+                <a href="我的订单.html">
+                    <span>我的订单</span>
+                </a>
+                <a href="我的e采.html">
+                    <span>我的e采</span>
+                </a>
+                <a href="##">
+                    <span>客户服务</span>
+                </a>
+                <a href="##">
+                    <span>手机e采</span>
+                </a>
+            </div>
+        </div>
+        </div>
+        <div class="yd-site">
+            <a href="商城首页.html">E采商城</a>
+            <span> <img src="../../assets/ShapeCopy.png" alt=""> </span>
+            <a href="我的e采.html">我的E采</a>
+        </div>
+        <div class="yd-help-content">
+            <div class="yd-help-l">
+                <div class="user-info">
+                    <div><img src="../../assets/头像%20中.png" alt=""></div>
+                    <div>
+                        <div class="vip-lv"><a href="e采会员.html"><img src="../../assets/铜牌会员.png" alt="">铜牌会员</a></div>
+                        <div class="nickname">Lemon</div>
+                    </div>
+                </div>
+                <div class="serve-con">
+                    <div class="serve-group">
+                        <div class="serve-title">交易管理</div>
+                        <a href="我的订单.html" >我的订单</a>
+                        <a href="我的拼单.html">我的拼单</a>
+                        <a href="我的优惠券.html">我的优惠券</a>
+                        <a href="我的购物车.html">我的购物车</a>
+                        <a href="我的关注.html">我的关注</a>
+                    </div>
+                    <div class="serve-group">
+                        <div class="serve-title">服务中心</div>
+                        <a href="我的返修退、换货.html">我的返修单/换货</a>
+                        <a href="我的消息.html">我的消息 <span>（2）</span></a>
+                    </div>
+                    <div class="serve-group">
+                        <div class="serve-title">个人信息管理</div>
+                        <a href="" class="ser-act">编辑个人资料</a>
+                        <a href="add.html">地址管理</a>
+                        <a href="申请企业用户.html">升级为企业用户</a>
+                        <a href="申请店铺用户.html">申请开通店铺</a>
+                    </div>
+                </div>
+            </div>
+            <div class="yd-help-r">
+                <div class="r-top">编辑个人资料</div>
+                <div class="r-container">
+                    <div class="r-con-l">
+                        <div class="bg-avatar" :style="'background:url(http://alioss.360ecmall.com/'+ profile_chushi.avatar+'?x-oss-process=image/resize,w_540,h_540) 0% 0% / 100%'">
+                           <!-- <img :src="profile_chushi.avatar | formatImg140x140" alt=""> -->
+                        </div>
+                        <div class="change-avatar"><a onclick="avatar()" @click="touxiang" style="cursor:pointer">修改头像</a>
+
+                            <input type="file" :accept="profile_chushi.avatar | formatImg140x140" id="avatar" style="display: none" >
+                        </div>
+                    </div>
+                    <div class="r-con-r">
+                        <div class="r-r-title">基本资料</div>
+                        <div class="r-r-item">
+                            <div class="r-label">用户名：</div>
+                            <div>{{profile_chushi.userName}}</div>
+                        </div>
+                        <div class="r-r-item">
+                            <div class="r-label">昵称：</div>
+                            <div>
+                                <input type="text" placeholder="输入昵称" v-model="profile_chushi.nickName">
+                                <div class="change-nick-result" style="display:none">
+                                    <span class="nick-success"><img src="../../assets/dui.png" alt=""></span>
+                                    <span class="nickname-false"><img src="../../assets/错误%20已被占用.png" alt="">该用户名已被占用</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="r-r-item">
+                            <div class="r-label">性别：</div>
+                            <div class="r-sex">
+                                <div><span :class="profile_chushi.gender==0 ? 'check-radio r-radio':'r-radio'"></span> <span>保密</span></div>
+                                <div><span :class="profile_chushi.gender==1 ? 'check-radio r-radio':'r-radio'"></span> <span>男</span></div>
+                                <div><span :class="profile_chushi.gender==2 ? 'check-radio r-radio':'r-radio'"></span> <span>女</span></div>
+                            </div>
+                        </div>
+                        <div class="r-r-item">
+                            <div class="r-label">生日：</div>
+                            <div class="birthday" style="width:200px">
+                               <!-- <div >
+                                   <input type="text" value="1877">
+                                   <div>
+                                       <i class=" add" aria-hidden="true"></i>
+                                       <i class=" reduce"></i>
+                                   </div>
+                                   <span>年</span>
+                               </div>
+                                <div>
+                                    <input type="text" value="2">
+                                    <div>
+                                        <i class="add"></i>
+                                        <i class="reduce"></i>
+                                    </div>
+                                    <span>月</span>
+                                </div>
+                                <div>
+                                    <input type="text" value="2">
+                                    <div>
+                                        <i class="add" aria-hidden="true"></i>
+                                        <i class=" reduce"></i>
+                                    </div>
+                                    <span>日</span>
+                                </div> -->
+                                <form>
+                                    <input type="date" :value="profile_chushi.birthday" name="user_date" id="user_date"  style="width:200px"/>
+                                </form>
+                            </div>
+                        </div>
+                         <input type="" class="alert-sub11"  style="cursor:pointer" @click="submit_zl" value="确认保存"></input>
+                        <div class="r-r-title">账户安全</div>
+                        <div class="r-r-item">
+                            <div class="r-label">登录密码：</div>
+                            <div>
+                                <a href="修改密码.html">修改密码</a>
+                                <p>安全性高的密码可以使账号更安全。建议您定期更换密码，且设置一个包含数字和字母，并长度超过6位以上的密码。</p>
+                            </div>
+                        </div>
+                        <div class="r-r-item">
+                            <div class="r-label">手机绑定：</div>
+                            <div>
+                                <a href="修改手机.html">修改手机</a>
+                                <p>当前绑定手机号：188*******777</p>
+                            </div>
+                        </div>
+                        <canvas id="myCanvas" style="display: none"></canvas>
+                        <img src="" alt="" id="ago" style="width: 500px;display: none">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="yd-footer">
+            Ecaishangcheng &#169; 2003-2018 ，e采商城有限公司版权所有 沪ICP备16207556号-6| 沪B6-20140131| 沪B6-20140358
+        </div>
+        <!--<div class="mask"></div>-->
+        <!--<div class="yd-alert">-->
+            <!--<div>-->
+                <!--<img src="../assets/恭喜您.png" alt="">-->
+            <!--</div>-->
+            <!--<div>提交申请成功，请耐心等待商家处理哦~</div>-->
+        <!--</div>-->
+    </div>
+</div>
+</body>
+<script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/vee-validate/2.0.0-rc.3/vee-validate.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="../../js/leftTime.js"></script>
+<script src="../../js/utils.js"></script>
+<script src="../../js/config.js"></script>
+<script src="../../js/personal/edit_profile.js"></script>
+<script>
+    $('.r-radio').click(function(){
+      $('.r-radio').removeClass('check-radio')
+        $(this).addClass('check-radio')
+    })
+    $('.add').click(function () {
+//         var val =  $(this).parent().siblings().eq(0).val()
+//        $(this).parent().siblings().eq(0).val($(this).parent().siblings().eq(0).val()-0+1)
+
+        var type = $('.add').index($(this))
+        console.log(type)
+
+    })
+    $('.reduce').click(function () {
+//        $(this).parent().siblings().eq(0).val($(this).parent().siblings().eq(0).val()-1)
+    })
+    var avatar = function () {
+        javascript:document.getElementById('avatar').click();
+    }
+    $('#avatar').change(function (e) {
+        var file = document.querySelector('input[type=file]').files[0];
+        var Cnv = document.getElementById('myCanvas');
+        var Cntx = Cnv.getContext('2d');//获取2d编辑容器
+        var imgss =   new Image();
+        var agoimg=document.getElementById("ago");
+        console.log(file)
+        if(file){
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            console.log(reader)
+            reader.onload = function(event){
+                var url =   event.target.result
+                imgss.src = url;
+                agoimg.src=url;
+                agoimg.onload = function () {
+                    //等比缩放
+                    var m = imgss.width / imgss.height;
+                    Cnv.height =100;//该值影响缩放后图片的大小
+                    Cnv.width= 100*m ;
+                    //img放入画布中
+                    //设置起始坐标，结束坐标
+                    Cntx.drawImage(agoimg, 0, 0,100*m,100);
+                    var Pic = document.getElementById("myCanvas").toDataURL("image/png");
+                    var src = Pic
+                    console.log($('.bg-avatar'))
+                    $('.bg-avatar').css('background','url('+src+')')
+                    $('.bg-avatar').css('background-size','100%')
+
+                }
+            }
+        }
+    })
+</script>
+</html>

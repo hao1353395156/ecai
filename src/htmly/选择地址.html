@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/choose-add.css">
+    <script src="../js/jquery-1.11.3.min.js"></script>
+    <title>选择地址</title>
+</head>
+<style>
+    .pro-list span{
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div class="yd-main">
+        <div id="yd-head">
+            <div class="yd-head">
+                <div class="yd-head-l">
+                    <div>
+                        <img src="../assets/首页.png" alt="">
+                        <a href="##">首页</a>
+                    </div>
+                    <div>
+                        <span>切换城市</span>
+                    </div>
+                    <div class="yd-head-l-add">
+                        <img src="../assets/坐标.png" alt="">
+                        <span>上海</span>
+                    </div>
+                </div>
+                <div class="yd-head-r">
+                    <div>
+                        <span>欢迎您lemon</span>
+                    </div>
+                    <div>
+                        <span>退出</span>
+                    </div>
+                    <div>
+                        <span style="font-size: 12px">|</span>
+                    </div>
+                    <a href="##">
+                        <span>我的订单</span>
+                    </a>
+                    <a href="##">
+                        <span>我的e采</span>
+                    </a>
+                    <a href="##">
+                        <span>客户服务</span>
+                    </a>
+                    <a href="##">
+                        <span>手机e采</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="yd-container">
+            <div class="yd-con-title">我已收到货，确认向商家付款</div>
+            <div class="add-list">
+                <div class="add-title">华东</div>
+                <div class="add-pro">
+                    <div class="pro">山东</div>
+                    <div class="pro-list">
+                        <span>青岛</span>
+                        <span>济南</span>
+                        <span>烟台</span>
+                        <span>潍坊</span>
+                        <span>临沂</span>
+                        <span>济宁</span>
+                        <span>泰安</span>
+                        <span>聊城</span>
+                        <span>威海</span>
+                        <span>枣庄</span>
+                        <span>德州</span>
+                        <span>日照</span>
+                        <span>东营</span>
+                        <span>菏泽</span>
+                        <span>滨州</span>
+                        <span>莱芜</span>
+                        <span>章丘</span>
+                        <span>垦利</span>
+                        <span>诸城</span>
+                        <span>寿光</span>
+                        <span>龙口</span>
+                    </div>
+                </div>
+                <div class="add-pro">
+                    <div class="pro">江苏</div>
+                    <div class="pro-list">
+                        <span>苏州</span>
+                        <span>南京</span>
+                        <span>无锡</span>
+                        <span>常州</span>
+                        <span>徐州</span>
+                        <span>南通</span>
+                        <span>扬州</span>
+                        <span>盐城</span>
+                        <span>淮安</span>
+                        <span>连云港</span>
+                        <span>泰州</span>
+                        <span>宿迁</span>
+                        <span>镇江</span>
+                        <span>沭阳</span>
+                        <span>大丰</span>
+                        <span>如皋</span>
+                        <span>启东</span>
+                        <span>溧阳</span>
+                        <span>海门</span>
+                        <span>东海</span>
+                        <span>扬中</span>
+                        <span>兴化</span>
+                        <span>新沂</span>
+                        <span>泰兴</span>
+                        <span>如东</span>
+                        <span>邳州</span>
+                        <span>沛县</span>
+                        <span>靖江</span>
+                        <span>建湖</span>
+                        <span>海安</span>
+                        <span>东台</span>
+                        <span>丹阳</span>
+                    </div>
+                </div>
+                <div class="add-pro">
+                    <div class="pro">浙江</div>
+                    <div class="pro-list">
+                        <span>杭州</span>
+                        <span>宁波</span>
+                        <span>温州</span>
+                        <span>金华</span>
+                        <span>嘉兴</span>
+                        <span>台州</span>
+                        <span>绍兴</span>
+                        <span>湖州</span>
+                        <span>丽水</span>
+                        <span>衢州</span>
+                        <span>舟山</span>
+                        <span>乐清</span>
+                        <span>瑞安</span>
+                        <span>义乌</span>
+                        <span>余姚</span>
+                        <span>诸暨</span>
+                        <span>象山</span>
+                        <span>温岭</span>
+                        <span>桐乡</span>
+                        <span>慈溪</span>
+                        <span>长兴</span>
+                        <span>嘉善</span>
+                        <span>海宁</span>
+                        <span>德清</span>
+                        <span>东阳</span>
+                    </div>
+                </div>
+                <div class="add-pro">
+                    <div class="pro">安徽</div>
+                    <div class="pro-list">
+                        <span>合肥</span>
+                        <span>芜湖</span>
+                        <span>蚌埠</span>
+                        <span>阜阳</span>
+                        <span>淮南</span>
+                        <span>安庆</span>
+                        <span>宿州</span>
+                        <span>六安</span>
+                        <span>淮北</span>
+                        <span>滁州</span>
+                        <span>马鞍山</span>
+                        <span>铜陵</span>
+                        <span>宣城</span>
+                        <span>亳州</span>
+                        <span>黄山</span>
+                        <span>池州</span>
+                        <span>巢湖</span>
+                        <span>和县</span>
+                        <span>霍邱</span>
+                        <span>桐城</span>
+                        <span>宁国</span>
+                        <span>天长</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="add-list">
+                <div class="add-title">华东</div>
+                <div class="add-pro">
+                    <div class="pro">山东</div>
+                    <div class="pro-list">
+                        <span>青岛</span>
+                        <span>济南</span>
+                        <span>烟台</span>
+                        <span>潍坊</span>
+                        <span>临沂</span>
+                        <span>济宁</span>
+                        <span>泰安</span>
+                        <span>聊城</span>
+                        <span>威海</span>
+                        <span>枣庄</span>
+                        <span>德州</span>
+                        <span>日照</span>
+                        <span>东营</span>
+                        <span>菏泽</span>
+                        <span>滨州</span>
+                        <span>莱芜</span>
+                        <span>章丘</span>
+                        <span>垦利</span>
+                        <span>诸城</span>
+                        <span>寿光</span>
+                        <span>龙口</span>
+                    </div>
+                </div>
+                <div class="add-pro">
+                    <div class="pro">江苏</div>
+                    <div class="pro-list">
+                        <span>苏州</span>
+                        <span>南京</span>
+                        <span>无锡</span>
+                        <span>常州</span>
+                        <span>徐州</span>
+                        <span>南通</span>
+                        <span>扬州</span>
+                        <span>盐城</span>
+                        <span>淮安</span>
+                        <span>连云港</span>
+                        <span>泰州</span>
+                        <span>宿迁</span>
+                        <span>镇江</span>
+                        <span>沭阳</span>
+                        <span>大丰</span>
+                        <span>如皋</span>
+                        <span>启东</span>
+                        <span>溧阳</span>
+                        <span>海门</span>
+                        <span>东海</span>
+                        <span>扬中</span>
+                        <span>兴化</span>
+                        <span>新沂</span>
+                        <span>泰兴</span>
+                        <span>如东</span>
+                        <span>邳州</span>
+                        <span>沛县</span>
+                        <span>靖江</span>
+                        <span>建湖</span>
+                        <span>海安</span>
+                        <span>东台</span>
+                        <span>丹阳</span>
+                    </div>
+                </div>
+                <div class="add-pro">
+                    <div class="pro">浙江</div>
+                    <div class="pro-list">
+                        <span>杭州</span>
+                        <span>宁波</span>
+                        <span>温州</span>
+                        <span>金华</span>
+                        <span>嘉兴</span>
+                        <span>台州</span>
+                        <span>绍兴</span>
+                        <span>湖州</span>
+                        <span>丽水</span>
+                        <span>衢州</span>
+                        <span>舟山</span>
+                        <span>乐清</span>
+                        <span>瑞安</span>
+                        <span>义乌</span>
+                        <span>余姚</span>
+                        <span>诸暨</span>
+                        <span>象山</span>
+                        <span>温岭</span>
+                        <span>桐乡</span>
+                        <span>慈溪</span>
+                        <span>长兴</span>
+                        <span>嘉善</span>
+                        <span>海宁</span>
+                        <span>德清</span>
+                        <span>东阳</span>
+                    </div>
+                </div>
+                <div class="add-pro">
+                    <div class="pro">安徽</div>
+                    <div class="pro-list">
+                        <span>合肥</span>
+                        <span>芜湖</span>
+                        <span>蚌埠</span>
+                        <span>阜阳</span>
+                        <span>淮南</span>
+                        <span>安庆</span>
+                        <span>宿州</span>
+                        <span>六安</span>
+                        <span>淮北</span>
+                        <span>滁州</span>
+                        <span>马鞍山</span>
+                        <span>铜陵</span>
+                        <span>宣城</span>
+                        <span>亳州</span>
+                        <span>黄山</span>
+                        <span>池州</span>
+                        <span>巢湖</span>
+                        <span>和县</span>
+                        <span>霍邱</span>
+                        <span>桐城</span>
+                        <span>宁国</span>
+                        <span>天长</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="add-list">
+                <div class="add-title">华东</div>
+                <div class="add-pro">
+                    <div class="pro">山东</div>
+                    <div class="pro-list">
+                        <span>青岛</span>
+                        <span>济南</span>
+                        <span>烟台</span>
+                        <span>潍坊</span>
+                        <span>临沂</span>
+                        <span>济宁</span>
+                        <span>泰安</span>
+                        <span>聊城</span>
+                        <span>威海</span>
+                        <span>枣庄</span>
+                        <span>德州</span>
+                        <span>日照</span>
+                        <span>东营</span>
+                        <span>菏泽</span>
+                        <span>滨州</span>
+                        <span>莱芜</span>
+                        <span>章丘</span>
+                        <span>垦利</span>
+                        <span>诸城</span>
+                        <span>寿光</span>
+                        <span>龙口</span>
+                    </div>
+                </div>
+                <div class="add-pro">
+                    <div class="pro">江苏</div>
+                    <div class="pro-list">
+                        <span>苏州</span>
+                        <span>南京</span>
+                        <span>无锡</span>
+                        <span>常州</span>
+                        <span>徐州</span>
+                        <span>南通</span>
+                        <span>扬州</span>
+                        <span>盐城</span>
+                        <span>淮安</span>
+                        <span>连云港</span>
+                        <span>泰州</span>
+                        <span>宿迁</span>
+                        <span>镇江</span>
+                        <span>沭阳</span>
+                        <span>大丰</span>
+                        <span>如皋</span>
+                        <span>启东</span>
+                        <span>溧阳</span>
+                        <span>海门</span>
+                        <span>东海</span>
+                        <span>扬中</span>
+                        <span>兴化</span>
+                        <span>新沂</span>
+                        <span>泰兴</span>
+                        <span>如东</span>
+                        <span>邳州</span>
+                        <span>沛县</span>
+                        <span>靖江</span>
+                        <span>建湖</span>
+                        <span>海安</span>
+                        <span>东台</span>
+                        <span>丹阳</span>
+                    </div>
+                </div>
+                <div class="add-pro">
+                    <div class="pro">浙江</div>
+                    <div class="pro-list">
+                        <span>杭州</span>
+                        <span>宁波</span>
+                        <span>温州</span>
+                        <span>金华</span>
+                        <span>嘉兴</span>
+                        <span>台州</span>
+                        <span>绍兴</span>
+                        <span>湖州</span>
+                        <span>丽水</span>
+                        <span>衢州</span>
+                        <span>舟山</span>
+                        <span>乐清</span>
+                        <span>瑞安</span>
+                        <span>义乌</span>
+                        <span>余姚</span>
+                        <span>诸暨</span>
+                        <span>象山</span>
+                        <span>温岭</span>
+                        <span>桐乡</span>
+                        <span>慈溪</span>
+                        <span>长兴</span>
+                        <span>嘉善</span>
+                        <span>海宁</span>
+                        <span>德清</span>
+                        <span>东阳</span>
+                    </div>
+                </div>
+                <div class="add-pro">
+                    <div class="pro">安徽</div>
+                    <div class="pro-list">
+                        <span>合肥</span>
+                        <span>芜湖</span>
+                        <span>蚌埠</span>
+                        <span>阜阳</span>
+                        <span>淮南</span>
+                        <span>安庆</span>
+                        <span>宿州</span>
+                        <span>六安</span>
+                        <span>淮北</span>
+                        <span>滁州</span>
+                        <span>马鞍山</span>
+                        <span>铜陵</span>
+                        <span>宣城</span>
+                        <span>亳州</span>
+                        <span>黄山</span>
+                        <span>池州</span>
+                        <span>巢湖</span>
+                        <span>和县</span>
+                        <span>霍邱</span>
+                        <span>桐城</span>
+                        <span>宁国</span>
+                        <span>天长</span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="add-list">
+                <div class="add-title">华东</div>
+                <div class="add-pro">
+                    <div class="pro">山东</div>
+                    <div class="pro-list">
+                        <span>青岛</span>
+                        <span>济南</span>
+                        <span>烟台</span>
+                        <span>潍坊</span>
+                        <span>临沂</span>
+                        <span>济宁</span>
+                        <span>泰安</span>
+                        <span>聊城</span>
+                        <span>威海</span>
+                        <span>枣庄</span>
+                        <span>德州</span>
+                        <span>日照</span>
+                        <span>东营</span>
+                        <span>菏泽</span>
+                        <span>滨州</span>
+                        <span>莱芜</span>
+                        <span>章丘</span>
+                        <span>垦利</span>
+                        <span>诸城</span>
+                        <span>寿光</span>
+                        <span>龙口</span>
+                    </div>
+                </div>
+                <div class="add-pro">
+                    <div class="pro">江苏</div>
+                    <div class="pro-list">
+                        <span>苏州</span>
+                        <span>南京</span>
+                        <span>无锡</span>
+                        <span>常州</span>
+                        <span>徐州</span>
+                        <span>南通</span>
+                        <span>扬州</span>
+                        <span>盐城</span>
+                        <span>淮安</span>
+                        <span>连云港</span>
+                        <span>泰州</span>
+                        <span>宿迁</span>
+                        <span>镇江</span>
+                        <span>沭阳</span>
+                        <span>大丰</span>
+                        <span>如皋</span>
+                        <span>启东</span>
+                        <span>溧阳</span>
+                        <span>海门</span>
+                        <span>东海</span>
+                        <span>扬中</span>
+                        <span>兴化</span>
+                        <span>新沂</span>
+                        <span>泰兴</span>
+                        <span>如东</span>
+                        <span>邳州</span>
+                        <span>沛县</span>
+                        <span>靖江</span>
+                        <span>建湖</span>
+                        <span>海安</span>
+                        <span>东台</span>
+                        <span>丹阳</span>
+                    </div>
+                </div>
+                <div class="add-pro">
+                    <div class="pro">浙江</div>
+                    <div class="pro-list">
+                        <span>杭州</span>
+                        <span>宁波</span>
+                        <span>温州</span>
+                        <span>金华</span>
+                        <span>嘉兴</span>
+                        <span>台州</span>
+                        <span>绍兴</span>
+                        <span>湖州</span>
+                        <span>丽水</span>
+                        <span>衢州</span>
+                        <span>舟山</span>
+                        <span>乐清</span>
+                        <span>瑞安</span>
+                        <span>义乌</span>
+                        <span>余姚</span>
+                        <span>诸暨</span>
+                        <span>象山</span>
+                        <span>温岭</span>
+                        <span>桐乡</span>
+                        <span>慈溪</span>
+                        <span>长兴</span>
+                        <span>嘉善</span>
+                        <span>海宁</span>
+                        <span>德清</span>
+                        <span>东阳</span>
+                    </div>
+                </div>
+                <div class="add-pro">
+                    <div class="pro">安徽</div>
+                    <div class="pro-list">
+                        <span>合肥</span>
+                        <span>芜湖</span>
+                        <span>蚌埠</span>
+                        <span>阜阳</span>
+                        <span>淮南</span>
+                        <span>安庆</span>
+                        <span>宿州</span>
+                        <span>六安</span>
+                        <span>淮北</span>
+                        <span>滁州</span>
+                        <span>马鞍山</span>
+                        <span>铜陵</span>
+                        <span>宣城</span>
+                        <span>亳州</span>
+                        <span>黄山</span>
+                        <span>池州</span>
+                        <span>巢湖</span>
+                        <span>和县</span>
+                        <span>霍邱</span>
+                        <span>桐城</span>
+                        <span>宁国</span>
+                        <span>天长</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div id="yd-footer">
+            Ecaishangcheng &#169; 2003-2018 ，e采商城有限公司版权所有 沪ICP备16207556号-6| 沪B6-20140131| 沪B6-20140358
+        </div>
+
+    </div>
+</body>
+<script>
+    $('span').click(function () {
+        location.href = '首页.html'
+    })
+</script>
+</html>

@@ -1,0 +1,48 @@
+.r-con{
+    padding-left: 40px;
+}
+.mes-dot{
+    width: 8px;
+    height: 8px;
+    background: #0098F2;
+    display: inline-block;
+    border-radius: 50%;
+}
+.mes-top{
+    line-height: 19px;
+    margin-bottom: 22px;
+}
+.mes-det{
+    display: flex;
+    margin-bottom: 32px;
+    position: relative;
+}
+.goods-avatar{
+    width: 70px;
+    height: 77px;
+    margin-right: 20px;
+    /*border: 1px solid #e7e7e7;*/
+    overflow: hidden;
+}
+.goods-avatar img{
+    width: 100%;
+
+}
+.mes-data>div{
+    margin-bottom: 10px;
+}
+.mes-state{
+    color: #999999;
+}
+.mes-more{
+    font-size: 16px;
+    width: 150px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    color: #0098F2;
+    border: 1px solid #0098F2;
+    border-radius: 60px;
+    position: absolute;
+    right: 30px;
+}
