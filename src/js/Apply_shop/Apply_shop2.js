@@ -8,6 +8,7 @@
 	         country:'',//省
              province:'',//市
              city:'',//区
+             description:'',//分站
 	        },
 	        methods : {
 	         },
@@ -43,6 +44,14 @@
                         apply.province = e.data;
                     }
 	           });
+	  //分站         
+	  var url1 = config.API_GATEWAY + "/cms/provinces/"+provinceId+"/sites";
+            	Api.get(url1, function(e) {
+            		if(e.code==0){
+                      apply.description = e.data;
+                  // $.cookie("provinceid",e.data.id,{domain: config.COOKIE_DOMAIN, expires: 30, path: "/"});
+            		}
+	            });	
      }
 
       $('.cmbCity').on('change',function(){
@@ -60,5 +69,6 @@
                     }
 	           });
       }
+
 	window.Api = Api;
 })();

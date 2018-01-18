@@ -115,7 +115,7 @@ function swg(){
                      if(e.code==0){
                          index.level3 = e.data;
                      }
-    });
+        });
           });
      $(document).on("mouseout",".sel-nav-item1",function(){
        $(this).find(".th-nav").hide();

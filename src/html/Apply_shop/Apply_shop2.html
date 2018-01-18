@@ -147,8 +147,7 @@
                                           <option :value='citylist.id' v-for="citylist in city">{{citylist.name}}</option>
                                     </select> 
                                 </div>
-                        </div>
-
+                            </div>
                         </div>
                         <div class="pro-item pro-area ">
                             <div class="pro-label">公司地址：</div>
@@ -197,7 +196,7 @@
                     </div>
 
                     <div class="apply-form ">
-                        <div class="pro-item">
+                       <!--  <div class="pro-item">
                             <div class="pro-label">开户银行信息</div>
                         </div>
                         <div class="pro-item">
@@ -214,19 +213,18 @@
                                 <p>支行名称:</p>
                             </div>
                             <div><input type="text"></div>
-                        </div>
+                        </div> -->
                         <div class="pro-item ">
                             <div class="pro-label pro-long">
-                                <p>开户银行</p>
-                                <p>支行所在地:</p>
+                                <!-- <p>分站</p> -->
+                                <p style="line-height: 38px">分站所在地:</p>
                             </div>
-                            <div class="pro-address">
+                            <!-- <div class="pro-address">
                                 <div >
-                                    <input type="text" placeholder="请选择">
-                                    <div>
-                                        <i class=" add" aria-hidden="true"></i>
-                                        <i class=" reduce"></i>
-                                    </div>
+                                    <select class="cmbProvince" name="cmbProvince">
+                                          <option value="" selected="selected">请选择省</option>
+                                          <option :value='countrylist.id' v-for="countrylist in country">{{countrylist.name}}</option>
+                                    </select> 
                                 </div>
                                 <div>
                                     <input type="text" placeholder="请选择">
@@ -234,6 +232,20 @@
                                         <i class="add"></i>
                                         <i class="reduce"></i>
                                     </div>
+                                </div>
+                            </div> -->
+                            <div class="pro-address quyu">
+                                <div>
+                                   <select class="cmbProvince" name="cmbProvince">
+                                          <option value="" selected="selected">选择地区</option>
+                                          <option :value='countrylist.id' v-for="countrylist in country">{{countrylist.name}}</option>
+                                    </select> 
+                                </div>
+                                <div>
+                                     <select class="cmbCity" name="cmbCity" >
+                                          <option value="" selected="selected">选择站点</option>
+                                          <option :value='provincelist.id' v-for="provincelist in description">{{provincelist.name}}</option>
+                                    </select> 
                                 </div>
                             </div>
                         </div>

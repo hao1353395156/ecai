@@ -71,6 +71,16 @@
             return config.ALI_OSS_GATEWAY + "/" + value + "?x-oss-process=image/resize,w_140,h_140";
         }
     });
+     Vue.filter('formatImg165x167', function (value) {
+        if (value) {
+            return config.ALI_OSS_GATEWAY + "/" + value + "?x-oss-process=image/resize,w_165,h_167";
+        }
+    });
+      Vue.filter('formatImg138x138', function (value) {
+        if (value) {
+            return config.ALI_OSS_GATEWAY + "/" + value + "?x-oss-process=image/resize,w_138,h_138";
+        }
+    });
   
     
     // Vue.filter('formatFee', function (value) {

@@ -22,10 +22,15 @@
 	var url = config.API_GATEWAY + "/us/users";
 	            	Api.put(url,{},function(e) {
 	            		profile.profile_chushi = e.data
-	            		console.log(profile.profile_chushi.avatar);
+	            		// console.log(profile.profile_chushi.avatar);
 	            		var search = e.target;//获取元素
                         
 		            });	
 
+ //    jQuery(function () { 
+	// 	$("._box").click(function () { 
+	// 	return $("#avatar").click(); 
+	// 	}); 
+	// }); 
 	window.Api = Api;
 })();

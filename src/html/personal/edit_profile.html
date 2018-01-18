@@ -101,7 +101,7 @@
                         </div>
                         <div class="change-avatar"><a onclick="avatar()" @click="touxiang" style="cursor:pointer">修改头像</a>
 
-                            <input type="file" :accept="profile_chushi.avatar | formatImg140x140" id="avatar" style="display: none" >
+                            <input type="file" accept="" id="avatar" style="display: none" >
                         </div>
                     </div>
                     <div class="r-con-r">
@@ -226,15 +226,15 @@
         var file = document.querySelector('input[type=file]').files[0];
         var Cnv = document.getElementById('myCanvas');
         var Cntx = Cnv.getContext('2d');//获取2d编辑容器
-        var imgss =   new Image();
+        var imgss = new Image();
         var agoimg=document.getElementById("ago");
-        console.log(file)
+        // console.log(file)
         if(file){
             var reader = new FileReader();
             reader.readAsDataURL(file);
             console.log(reader)
             reader.onload = function(event){
-                var url =   event.target.result
+                var url = event.target.result;
                 imgss.src = url;
                 agoimg.src=url;
                 agoimg.onload = function () {
@@ -247,7 +247,7 @@
                     Cntx.drawImage(agoimg, 0, 0,100*m,100);
                     var Pic = document.getElementById("myCanvas").toDataURL("image/png");
                     var src = Pic
-                    console.log($('.bg-avatar'))
+                    // console.log($('.bg-avatar'))
                     $('.bg-avatar').css('background','url('+src+')')
                     $('.bg-avatar').css('background-size','100%')
 

@@ -484,6 +484,16 @@
     align-items: center;
     justify-content: center;
 }
+.att-item-det>div:nth-child(2){
+   height:30px;
+   line-height: 25px;
+   width:120px;
+   padding-bottom: 10px;
+   display:block;
+   white-space:nowrap;
+   overflow:hidden; 
+   text-overflow:ellipsis;
+}
 .att-item-det>div>img{
     width: 100%;
 }
