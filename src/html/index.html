@@ -148,7 +148,7 @@
                 </div>
 
             </a>
-            <a :href="'pro_jingxuan.html?aid='+blocks_list.id" v-for="blocks_list in blocks">{{blocks_list.title}}</a>
+            <a :href="'pro_jingxuan.html?aid='" ></a>
             <a href="首页-拼单.html">拼单</a>
             <a href="我的购物车.html"  class="shop-car" style="z-index: 1000;width: 180px;flex-shrink: 0; height: 46px;border: 1px solid #E0E6ED;border-radius: 47px;right: 70px;">
                 <img src="../assets/购物车icon.png" alt="">
@@ -240,123 +240,92 @@
 
     <div style="width: 100%;background: #f3f3f3">
     <div class="other-part">
-        <div class="other-item">
-            <div class="item-title title1"  v-for="(blocks_list,index) in blocks" v-if="index==0">
-                <span>{{blocks[0].title}}</span>
-                <a  :href="'pro_jingxuan.html?aid='+blocks_list.id">更多 <i class="fa fa-angle-right"></i></a>
-            </div>
-            <div class="item-con">
-                <div class="item-item1" v-for="block_pro1list in blocks_data[3]">
-                    <a :href="'pro_jingxuan_list.html?cid='+block_pro1list.catalogId+'&shopId='+block_pro1list.shopId">
-                    <div><img  v-bind:src="block_pro1list.img | formatImg165x167"  alt=""></div>
-                    <div>{{block_pro1list.name}}</div>
-                    <div class="goods-price">{{block_pro1list.price | formatFee}}</div>
-                    </a>
+        <div v-for="(b,index) in blockList">
+            <div class="other-item" v-if="index % 3==0">
+                <div class="item-title title1"  >
+                    <span>{{b.blocksTitle}}</span>
+                    <a  :href="'pro_jingxuan.html?aid='+b.blocksId">更多 <i class="fa fa-angle-right"></i></a>
                 </div>
-               
+                <div class="item-con">
+                    <div class="item-item1" v-for="item in b.blocksData">
+                        <a :href="'pro_jingxuan_list.html?cid='+item.catalogId+'&shopId='+item.shopId">
+                            <div><img  v-bind:src="config.ALI_OSS_GATEWAY+'/'+item.img+'?x-oss-process=image/resize,w_200' | formatImg165x167"  alt=""></div>
+                            <div>{{item.name}}</div>
+                            <div class="goods-price">{{item.price | formatFee}}</div>
+                        </a>
+                    </div>
+                   
+                </div>
             </div>
+
+            <!--两个开始-->
+            <div class="other-item  double" v-if="index % 3==1" style="float:left;">
+                <div class="other-l" >
+                    <div class="item-title title2">
+                        <span>{{b.blocksTitle}}</span>
+                        <a :href="'pro_jingxuan.html?aid='+b.blocksId">更多 <i class="fa fa-angle-right"></i></a>
+                    </div>
+                    <div class="l-con">
+                        <div class="l-item width long" v-for="(item,i) in b.blocksData" v-if="i==0">
+                            <a :href="'pro_jingxuan_list.html?cid='+item.catalogId+'&shopId='+item.shopId">
+                                <div><img v-bind:src="config.ALI_OSS_GATEWAY+'/'+item.img+'?x-oss-process=image/resize,w_200' | formatImg200x265"  alt=""></div>
+                                <div>{{item.name}}</div>
+                                <div class="goods-price">{{item.price | formatFee}}</div>
+                            </a>
+                        </div>
+                        <div class="l-item width" v-for="(item,i) in b.blocksData" v-if="i==1">
+                            <a :href="'pro_jingxuan_list.html?cid='+item.catalogId+'&shopId='+item.shopId">
+                                <div><img v-bind:src="config.ALI_OSS_GATEWAY+'/'+item.img+'?x-oss-process=image/resize,w_200' | formatImg200x265" alt=""></div>
+                                <div>{{item.name}}</div>
+                                <div class="goods-price">{{item.price | formatFee}}</div>
+                            </a>
+                        </div>
+                        <div class="l-item" v-for="(item,i) in b.blocksData" v-if="i>1">
+                            <a :href="'pro_jingxuan_list.html?cid='+item.catalogId+'&shopId='+item.shopId">
+                                <div><img v-bind:src="config.ALI_OSS_GATEWAY+'/'+item.img+'?x-oss-process=image/resize,w_200' | formatImg200x265" alt=""></div>
+                                <div>{{item.name}}</div>
+                                <div class="goods-price">{{item.price | formatFee}}</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="other-item  double" v-if="index % 3==2" style="float:right;">
+                <div class="other-r" >
+                    <div class="item-title title3">
+                        <span>{{b.blocksTitle}}</span>
+                        <a :href="'pro_jingxuan.html?aid='+b.blocksId">更多 <i class="fa fa-angle-right"></i></a>
+                    </div>
+                    <div class="l-con">
+                        <div class="l-item width long" v-for="(item,i) in b.blocksData" v-if="i==0">
+                            <a :href="'pro_jingxuan_list.html?cid='+item.catalogId+'&shopId='+item.shopId">
+                                <div><img v-bind:src="config.ALI_OSS_GATEWAY+'/'+item.img+'?x-oss-process=image/resize,w_200' | formatImg200x265" alt=""></div>
+                                <div>{{item.name}}</div>
+                                <div class="goods-price">{{item.price | formatFee}}</div>
+                            </a>
+                        </div>
+                        <div class="l-item width" v-for="(item,i) in b.blocksData" v-if="i==1">
+                            <a :href="'pro_jingxuan_list.html?cid='+item.catalogId+'&shopId='+item.shopId">
+                                <div><img sv-bind:src="config.ALI_OSS_GATEWAY+'/'+item.img+'?x-oss-process=image/resize,w_200' | formatImg200x265" alt=""></div>
+                                <div>{{item.name}}</div>
+                                <div class="goods-price">{{item.price | formatFee}}</div>
+                            </a>
+                        </div>
+                        <div class="l-item" v-for="(item,i) in b.blocksData" v-if="i>1">
+                            <a :href="'pro_jingxuan_list.html?cid='+item.catalogId+'&shopId='+item.shopId">
+                                <div><img v-bind:src="config.ALI_OSS_GATEWAY+'/'+item.img+'?x-oss-process=image/resize,w_200' | formatImg200x265" alt=""></div>
+                                <div>{{item.name}}</div>
+                                <div class="goods-price">{{item.price | formatFee}}</div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--两个结束-->
         </div>
 
-        <div class="other-item  double">
-            <div class="other-l">
-                <div class="item-title title2">
-                    <span>新品首发</span>
-                    <a href="">更多 <i class="fa fa-angle-right"></i></a>
-                </div>
-                <div class="l-con">
-                    <div class="l-item width long">
-                        <div><img src="../assets/e采商城图片/首页/17.jpg" alt=""></div>
-                        <div>霍尼韦尔（Honeywell）反渗透直饮净水器过滤纯水机</div>
-                        <div class="goods-price">￥500.00</div>
-                    </div>
-                    <div class="l-item width">
-                        <div><img src="../assets/e采商城图片/首页/18.jpg" alt=""></div>
-                        <div>宁普家用厨房一体机单 冷便携式移动空调</div>
-                        <div class="goods-price">￥198.00</div>
-                    </div>
-                    <div class="l-item">
-                        <div><img src="../assets/e采商城图片/首页/19.jpg" alt=""></div>
-                        <div>Beats蓝牙无线音响震撼音质白色型号qzc50089</div>
-                        <div class="goods-price">￥1598.00</div>
-                    </div>
-                    <div class="l-item">
-                        <div><img src="../assets/e采商城图片/首页/20.jpg" alt=""></div>
-                        <div>能率13升智能精控恒温日本原装节能燃气热水器</div>
-                        <div class="goods-price">￥198.00</div>
-                    </div>
-                    <div class="l-item">
-                        <div><img src="../assets/e采商城图片/首页/21.jpg" alt=""></div>
-                        <div>TCL456升冷藏电脑温控十字对开门冰箱</div>
-                        <div class="goods-price">￥198.00</div>
-                    </div>
-                    <div class="l-item">
-                        <div><img src="../assets/e采商城图片/首页/22.jpg" alt=""></div>
-                        <div>飞利浦(PHILIPS)空气净化器香槟色</div>
-                        <div class="goods-price">￥198.00</div>
-                    </div>
-                    <div class="l-item">
-                        <div><img src="../assets/e采商城图片/首页/23.jpg" alt=""></div>
-                        <div>苏泊尔（SUPOR）榨汁机家用果汁机</div>
-                        <div class="goods-price">￥198.00</div>
-                    </div>
-                    <div class="l-item">
-                        <div><img src="../assets/e采商城图片/首页/24.jpg" alt=""></div>
-                        <div>长虹50英寸双64位超高清智能LED平板液晶电</div>
-                        <div class="goods-price">￥198.00</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="other-r">
-                <div class="item-title title3">
-                    <span>海尔专区</span>
-                    <a href="">更多 <i class="fa fa-angle-right"></i></a>
-                </div>
-                <div class="l-con">
-                    <div class="l-item width long">
-                        <div><img src="../assets/e采商城图片/首页/25.jpg" alt=""></div>
-                        <div>海尔（Haier)8公斤变频滚筒洗衣机</div>
-                        <div class="goods-price">￥500.00</div>
-                    </div>
-                    <div class="l-item width">
-                        <div><img src="../assets/e采商城图片/首页/26.jpg" alt=""></div>
-                        <div>海尔模卡55英寸安卓智能窄边框LED液晶电视</div>
-                        <div class="goods-price">￥198.00</div>
-                    </div>
-                    <div class="l-item">
-                        <div><img src="../assets/e采商城图片/首页/27.jpg" alt=""></div>
-                        <div>海尔12升水气恒温智能变升温控燃气热水器</div>
-                        <div class="goods-price">￥198.00</div>
-                    </div>
-                    <div class="l-item">
-                        <div><img src="../assets/e采商城图片/首页/28.jpg" alt=""></div>
-                        <div>海尔18大吸力欧式吸油烟机</div>
-                        <div class="goods-price">￥198.00</div>
-                    </div>
-                    <div class="l-item">
-                        <div><img src="../assets/e采商城图片/首页/29.jpg" alt=""></div>
-                        <div>海尔60升数显双管变速加热电热水器</div>
-                        <div class="goods-price">￥198.00</div>
-                    </div>
-                    <div class="l-item">
-                        <div><img src="../assets/e采商城图片/首页/30.jpg" alt=""></div>
-                        <div>海尔(haier)80L专利光波巴氏立式消毒柜</div>
-                        <div class="goods-price">￥198.00</div>
-                    </div>
-                    <div class="l-item">
-                        <div><img src="../assets/e采商城图片/首页/31.jpg" alt=""></div>
-                        <div>海尔(Haier)450升风冷无霜对开门冰箱</div>
-                        <div class="goods-price">￥198.00</div>
-                    </div>
-                    <div class="l-item">
-                        <div><img src="../assets/e采商城图片/首页/32.jpg" alt=""></div>
-                        <div>海尔3匹变频自清洁PM2.5圆柱空调柜机</div>
-                        <div class="goods-price">￥198.00</div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
 
 
 

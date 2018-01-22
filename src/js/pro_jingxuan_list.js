@@ -17,7 +17,7 @@
 	          comments:'',//评价信息
 	          summary1:'',
 	          address:'',//收货地址
-	          sl:'10'//购物车数量
+	          sl:0,//购物车数量
 	        },
 	        methods:{
                 basejian:function(e){
@@ -27,11 +27,7 @@
                   	pro_jingxuan_list.sl=0;
                   }
                 },
-                 basejia:function (){
-                 	for(var n=0;n<pro_jingxuan_list.skus.length;n++){
-                      console.log(pro_jingxuan_list.skus[n].stock)	
-                 	}
-                },
+                
                  //加入购物车
                 quotes:function (){
 
@@ -54,6 +50,7 @@
                             pro_jingxuan_list.pro_xq = e.data;
                             pro_jingxuan_list.skus = e.data.skus;
                             pro_jingxuan_list.imgs = e.data.imgs;
+                            //setTimeout(function(){load_ad();},1000);
                             
                             // pro_skus();                         
 	            		}else{
@@ -70,6 +67,8 @@
 			                });
 
 		           });
+
+	           
  //商铺标签
    var url = config.API_GATEWAY + "/mt/shops/labels";
 	            	Api.get(url,function(e) {

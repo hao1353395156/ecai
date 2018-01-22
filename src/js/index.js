@@ -1,10 +1,12 @@
 (function() {
 	var utk=$.cookie("utk"),
 	    id=$.cookie("id"); 
-      provinceid=$.cookie("provinceid"),
+      provinceid=$.cookie("provinceid") || 86,
       swiper_loop=0; 
+      if(!$.cookie("provinceid"))
+        $.cookie("provinceid",86,{domain: config.COOKIE_DOMAIN, expires: 30, path: "/"});
      // console.log(utk);
-     var index = new Vue({
+     var index = new Vue({  
       el:"#index",
       data:{
           id:$.cookie("id") || 0,//用户id
@@ -14,6 +16,7 @@
           blocks:'',//板块名
           focus:'',//滚动广告图
           brands:'',//品牌列表
+          blockList:[], 
           level2:'',//2级目录
           level3:'',//3级分类
           block_pro:'',//板块商品
@@ -64,6 +67,10 @@ function swg(){
     loop:true,
   });
 }
+
+
+
+
     //个人信息
     if(id){
 		var url = config.API_GATEWAY + "/us/users/"+id;
@@ -90,6 +97,38 @@ function swg(){
                               index.brands =  e.data.brands;
                               loading_brands();
                               setTimeout(function(){swg()},1000);
+                              
+                              
+                              var blockTitle = e.data.blocks;
+                              for (var i=0;i<blockTitle.length;i++){    
+                                var url = config.API_GATEWAY + "/cms/blocks/"+blockTitle[i].id+"/items?pn=1&ps=200";
+                                //console.log(url);
+                                //同步获取数据  //封装中无同步
+                                $.ajax({
+                                  type : "GET",
+                                  url : url,
+                                  dataType : 'json',
+                                  async: false,
+                                  beforeSend : function(XMLHttpRequest) {
+                                    XMLHttpRequest.setRequestHeader("utk", $.cookie("utk"));
+                                    XMLHttpRequest.setRequestHeader("appId", config.APP_ID);
+                                    XMLHttpRequest.setRequestHeader("atk", config.ACCESS_TOKEN);
+                                  },
+                                  success : function(msg) {
+                                    if(msg.code==0){
+                                        index.blockList.push({  //板块及数据
+                                          "blocksTitle":blockTitle[i].title,
+                                          "blocksId":blockTitle[i].id,
+                                          "blocksData" :msg.data.items,
+                                        });
+                                        console.log("blockList:>>>>>>>>>"+blockTitle[i].id+"<<<"+blockTitle[i].title+">>>");
+                                        //console.log(index.blockList); 
+                                    }
+                                  } 
+                                }); 
+                              }
+
+
                               
                                // console.log(JSON.stringify(index.blocks_list));
 		                  }
@@ -137,7 +176,11 @@ function swg(){
       //             }else{
       //               alert("请求失败！");
       //             }
-      //           });                   	  
+      //           });    
+
+
+
+
      
   window.Api = Api;
 })();
