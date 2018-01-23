@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/serve.css">
+    <link rel="stylesheet" href="../../css/promote.css">
+    <link rel="stylesheet" href="../../css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="../../js/jquery-1.11.3.min.js"></script>
+    <title></title>
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+<div id="apply_shop2">
+    <div class="yd-main">
+        <div id="yd-head">
+            <div class="yd-head">
+                <div class="yd-head-l">
+                    <div>
+                        <img src="../../assets/首页.png" alt="">
+                        <a href="首页.html">首页</a>
+                    </div>
+                    <div>
+                        <span>切换城市</span>
+                    </div>
+                    <div class="yd-head-l-add">
+                        <img src="../../assets/坐标.png" alt="">
+                        <span><a href="选择地址.html">上海</a></span>
+                    </div>
+                </div>
+                <div class="yd-head-r">
+                    <div>
+                        <span>欢迎您lemon</span>
+                    </div>
+                    <div>
+                        <span>退出</span>
+                    </div>
+                    <div>
+                        <span style="font-size: 12px">|</span>
+                    </div>
+                    <a href="我的订单.html">
+                        <span>我的订单</span>
+                    </a>
+                    <a href="我的e采.html">
+                        <span>我的e采</span>
+                    </a>
+                    <a href="##">
+                        <span>客户服务</span>
+                    </a>
+                    <a href="##">
+                        <span>手机e采</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="yd-site">
+            <a href="商城首页.html">E采商城</a>
+            <span> <img src="../../assets/ShapeCopy.png" alt=""> </span>
+            <a href="我的e采.html">我的E采</a>
+        </div>
+        <div class="yd-help-content">
+            <div class="yd-help-l">
+                <div class="user-info">
+                    <div><img src="../../assets/头像%20中.png" alt=""></div>
+                    <div>
+                        <div class="vip-lv"><a href="e采会员.html"><img src="../../assets/铜牌会员.png" alt="">铜牌会员</a></div>
+                        <div class="nickname">Lemon</div>
+                    </div>
+                </div>
+                <div class="serve-con">
+                    <div class="serve-group">
+                        <div class="serve-title">交易管理</div>
+                        <a href="我的订单.html" >我的订单</a>
+                        <a href="我的拼单.html">我的拼单</a>
+                        <a href="我的优惠券.html">我的优惠券</a>
+                        <a href="我的购物车.html">我的购物车</a>
+                        <a href="我的关注.html">我的关注</a>
+                    </div>
+                    <div class="serve-group">
+                        <div class="serve-title">服务中心</div>
+                        <a href="我的返修退、换货.html">我的返修单/换货</a>
+                        <a href="我的消息.html">我的消息 <span>（2）</span></a>
+                    </div>
+                    <div class="serve-group">
+                        <div class="serve-title">个人信息管理</div>
+                        <a href="编辑个人资料.html" >编辑个人资料</a>
+                        <a href="地址管理.html">地址管理</a>
+                        <a href="地址管理%20(企业用户).html">升级为企业用户</a>
+                        <a href="" class="ser-act">申请开通店铺</a>
+                    </div>
+                </div>
+            </div>
+            <div class="yd-help-r">
+                <div class="r-top">申请店铺</div>
+                <div class="r-promote">
+                    <div class="promote-nav">
+                        <a href="">1.开店须知</a>
+                        <a href=""  class="pro-act">2.填写信息</a>
+                        <a href="">3.等待审核</a>
+                    </div>
+                    <div class="promote-tip">
+                        <p>服务须知：审核时间为1-2个工作日，遇法定节假日顺延。</p>
+                        <p>如有疑问，请拨打服务电话：400-686-6888或 <a href="">留言咨询</a></p>
+                    </div>
+
+                    <div class="apply-form">
+                        <div class="pro-item">
+                            <div class="pro-label">公司信息</div>
+                        </div>
+                        <div class="pro-item">
+                            <div class="pro-label">公司名称：</div>
+                            <div><input type="text" placeholder="请填写工商注册全称"></div>
+                        </div>
+                        <div class="pro-item">
+                            <div class="pro-label">营业执照号：</div>
+                            <div><input type="text" placeholder="请填写公司营业执照号"></div>
+                        </div>
+                        <div class="pro-item" >
+                            <div class="pro-label">营业执照号副本：</div>
+                            <div><!-- <img src="../assets/imagec.png" alt=""> -->
+                            <a href="javascript:;" class="file">
+                             <input type="file" id="file" id="c_pic">   
+                            </a>
+                             </div>
+                        </div>
+                        <div class="pro-item ">
+                            <div class="pro-label">公司所在地：</div>
+                            <div class="pro-address quyu">
+                                <div>
+                                   <select class="cmbProvince" name="cmbProvince">
+                                          <option value="" selected="selected">请选择省</option>
+                                          <option :value='countrylist.id' v-for="countrylist in country">{{countrylist.name}}</option>
+                                    </select> 
+                                </div>
+                                <div>
+                                     <select class="cmbCity" name="cmbCity" >
+                                          <option value="" selected="selected">请选择市</option>
+                                          <option :value='provincelist.id' v-for="provincelist in province">{{provincelist.name}}</option>
+                                    </select> 
+                                </div>
+                                <div>
+                                    <select class="cmbArea" name="cmbArea">
+                                          <option value="" selected="selected">请选择区</option>
+                                          <option :value='citylist.id' v-for="citylist in city">{{citylist.name}}</option>
+                                    </select> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pro-item pro-area ">
+                            <div class="pro-label">公司地址：</div>
+                            <div  contenteditable="true"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="apply-form">
+                        <div class="pro-item">
+                            <div class="pro-label">个人信息</div>
+                        </div>
+                        <div class="pro-item">
+                            <div class="pro-label">姓名：</div>
+                            <div><input type="text" placeholder="请输入法定代表人姓名"></div>
+                        </div>
+                        <div class="pro-item" >
+                            <div class="pro-label">身份证正面：</div>
+                            <div>
+                                <a href="javascript:;" class="file">
+                                 <input type="file" id="file">   
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pro-item" >
+                            <div class="pro-label">身份证反面：</div>
+                            <div>
+                                <a href="javascript:;" class="file">
+                                 <input type="file" id="file">   
+                                </a>
+                            </div>
+                        </div>
+                        <div class="pro-item ">
+                            <div class="pro-label">手机号：</div>
+                            <div>
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="pro-item pro-code">
+                            <div class="pro-label">手机验证码：</div>
+                            <div>
+                                <input type="text" class="code">
+                                <div class="login-btn">获取验证码</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="apply-form ">
+                       <!--  <div class="pro-item">
+                            <div class="pro-label">开户银行信息</div>
+                        </div>
+                        <div class="pro-item">
+                            <div class="pro-label">银行开户名：</div>
+                            <div><input type="text"></div>
+                        </div>
+                        <div class="pro-item">
+                            <div class="pro-label">公司银行账号：</div>
+                            <div><input type="text" placeholder="请填写公司营业执照号"></div>
+                        </div>
+                        <div class="pro-item" >
+                            <div class="pro-label pro-long">
+                                <p>开户银行</p>
+                                <p>支行名称:</p>
+                            </div>
+                            <div><input type="text"></div>
+                        </div> -->
+                        <div class="pro-item ">
+                            <div class="pro-label pro-long">
+                                <!-- <p>分站</p> -->
+                                <p style="line-height: 38px">分站所在地:</p>
+                            </div>
+                            <!-- <div class="pro-address">
+                                <div >
+                                    <select class="cmbProvince" name="cmbProvince">
+                                          <option value="" selected="selected">请选择省</option>
+                                          <option :value='countrylist.id' v-for="countrylist in country">{{countrylist.name}}</option>
+                                    </select> 
+                                </div>
+                                <div>
+                                    <input type="text" placeholder="请选择">
+                                    <div>
+                                        <i class="add"></i>
+                                        <i class="reduce"></i>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="pro-address quyu">
+                                <div>
+                                   <select class="cmbProvince" name="cmbProvince">
+                                          <option value="" selected="selected">选择地区</option>
+                                          <option :value='countrylist.id' v-for="countrylist in country">{{countrylist.name}}</option>
+                                    </select> 
+                                </div>
+                                <div>
+                                     <select class="cmbCity" name="cmbCity" >
+                                          <option value="" selected="selected">选择站点</option>
+                                          <option :value='provincelist.id' v-for="provincelist in description">{{provincelist.name}}</option>
+                                    </select> 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pro-item">
+                            <div class="pro-label"></div>
+                            <a href="申请店铺用户%20-step3.html" class="pro-sub">
+                                下一步
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        <div id="yd-footer">
+            Ecaishangcheng &#169; 2003-2018 ，e采商城有限公司版权所有 沪ICP备16207556号-6| 沪B6-20140131| 沪B6-20140358
+        </div>
+    </div>
+</div>    
+</body>
+<script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="../../js/leftTime.js"></script>
+<script src="../../js/utils.js"></script>
+<script src="../../js/config.js"></script>
+<script src="../../js/Apply_shop/Apply_shop2.js"></script>
+<script>
+    // $('.add').click(function () {
+    //      var val =  $(this).parent().siblings().eq(0).val()
+    //     var type = $('.add').index($(this))
+
+    // })
+    // $('.reduce').click(function () {
+    //     console.log(22)
+    // })
+</script>
+</html>

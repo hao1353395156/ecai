@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="baidu-site-verification" content="ifAuPXWNFY" />
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/store.css">
+    <link rel="stylesheet" href="../css/store-home.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/dutch.css">
+    <link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../js/swiper/Swiper-3.4.2/dist/css/swiper.min.css">
+    <title></title>
+</head>
+<style>
+    .yd-store-nav{
+        justify-content: flex-start;
+        border-bottom: 2px solid #3789EC;
+        padding: 0;
+        min-width: 1200px;
+    }
+    .shop-car{
+        position: relative;
+        top: 80px;
+        right: 70px;
+    }
+    .yd-ad{
+        width: 100%;
+        height: 120px;
+    }
+    .yd-ad img{
+        width: 100%;
+        height: 100%;
+    }
+    .common-item{
+        width: 240px;
+    }
+    .common-group{
+        padding: 0;
+    }
+    .zn{
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    .zn .item-item1{
+        width: 280px;
+        height: 360px;
+        margin-bottom: 20px;
+    }
+    .item-item
+    {width: 280px;
+        height: 360px;
+        margin-bottom: 20px;
+    }
+
+    .zn .big{
+        width: 590px;
+        height: 740px;
+    }
+    .big>div:nth-child(1){
+        width: 80%;
+        height: 80%;
+    }
+    .big>div>img{
+        width: 100%;
+        height: 100%;
+    }
+    .big>div:nth-child(2){
+        width: 60%  ;
+    }
+    .swiper-button-prev{
+        margin-left:10px !important;
+    }
+</style>
+<body>
+<div id="shopindexlist">  
+<div class="yd-main">
+    <div class="yd-ad" style="display:none">
+        <img src="../assets/e采商城图片/首页拼单/广告页.jpg" alt="">
+    </div>
+    <div id="yd-head">
+     <div class="yd-head" id="top">
+        <div class="yd-head-l">
+            <div>
+                <img src="../assets/index.png" alt="">
+                <a href="##">首页</a>
+            </div>
+            <div>
+                <a href="choose_add.html"><span>切换城市</span></a>
+            </div>
+            <div class="yd-head-l-add">
+                <img src="../assets/coordinate.png" alt="">
+                <a href="choose_add.html">全国 </a>
+            </div>
+        </div>
+        <div class="yd-head-r">
+            <div v-if="id">
+                <div>
+                    <span> <a href="personal/edit_profile.html">欢迎 {{user}}</a></span>
+                    <span style="margin-left: 12px"> <a href="user/login.html" id="out_user">退出</a></span>
+                </div>
+            </div>
+            <div v-else>
+                <div>
+                    <span><a href="user/login.html">登录</a></span>
+                </div>
+                <div>
+                    <span style="margin-left: 12px">  <a href="user/user_log_on.html">注册</a></span>
+                </div>
+            </div>
+            <div>
+                <span style="font-size: 12px">|</span>
+            </div>
+            <a href="personal/my_orders.html">
+                <span>我的订单</span>
+            </a>
+            <a href="personal/my_ecai.html.html">
+                <span>我的e采</span>
+            </a>
+            <a href="" style="display:none">
+                <span>客户服务</span>
+            </a>
+            <a href="#">
+                <span>手机e采</span>
+            </a>
+        </div>
+    </div>
+    </div>
+    <div class="yd-search">
+            <img src="../assets/login2.png" alt="">
+            <div class="yd-search-input">
+                <input type="text">
+                <a href="search.html"><img src="../assets/搜索.png" alt="" style="margin-top: 8px;"></a>
+            </div>
+            <a class="shop-car" href="personal/my_shopping_cart.html">
+                <img src="../assets/shopicon.png" alt="">
+                <div>0</div>
+                <div style="min-width: 80px">购物车</div>
+            </a>
+        </div>
+
+    <div id="store-home">
+
+        <div class="yd-store-nav">
+            <a href="" class="st-act">全部商品分类
+                <img src="../assets/select-blue.png" alt="">
+            </a>
+            <a :href="'shop_index.html?shopId='+shopId">首页</a>
+            <a :href="'shop_index_list.html?shopId='+shopId+'&sp='+blocks_list.id" v-for="blocks_list in block"  :class="blocks_list.id==sp ? 'ty-act':''">{{blocks_list.name}}</a>
+        </div>
+    
+    </div>
+
+    <div style="width: 100%;background: #f3f3f3;">
+    <div class="other-part">
+        <div class="other-item">
+            <div class="item-title title1">
+                <span>精品首发</span>
+            </div>
+            <div class="item-con zn">
+                <div class="item-item" v-for="(block_list,index) in blockspro">
+                     <a :href="'pro_jingxuan_list.html?cid='+block_list.id+'&shopId='+block_list.shopId">
+                    <div><img v-bind:src="block_list.pcMainImg | formatImg160x200" alt=""></div>
+                    <div>{{block_list.name}}</div>
+                    <div class="goods-price">{{block_list.price | formatFee}}</div>
+                     </a>
+                </div>
+               
+            </div>
+        </div>
+
+
+        <!-- <div class="other-item" style="height:10px">
+ -->
+          <!--   <div class="item-con zn">
+                    <a href='商品详情页.html' class="item-item1">
+                        <div><img src="../assets/e采商城图片/首页/5.jpg" alt=""></div>
+                        <div>海尔（Haier）258升除菌风冷无霜三门冰箱</div>
+                        <div class="goods-price">￥500.00</div>
+                    </a>
+
+                    <div class="item-item1">
+                        <div><img src="../assets/e采商城图片/首页/12.jpg" alt=""></div>
+                        <div>天际（TONZE）%20隔水炖不锈钢电炖锅电炖盅</div>
+                        <div class="goods-price">￥500.00</div>
+                    </div>
+                <div class="item-item1">
+                    <div><img src="../assets/智能新品/智能生活/4.jpg" alt=""></div>
+                    <div>意大利德龙(Delonghi)ESAM2200.S全自动咖啡机</div>
+                    <div class="goods-price">￥500.00</div>
+                </div>
+                <div class="item-item1">
+                    <div><img src="../assets/智能新品/智能生活/5.jpg" alt=""></div>
+                    <div>意大利德龙(Delonghi)ESAM2200.S全自动咖啡机</div>
+                    <div class="goods-price">￥500.00</div>
+                </div>
+                <div class="item-item1">
+                    <div><img src="../assets/智能新品/智能生活/6.jpg" alt=""></div>
+                    <div>意大利德龙(Delonghi)ESAM2200.S全自动咖啡机</div>
+                    <div class="goods-price">￥500.00</div>
+                </div>
+                <div class="item-item1">
+                    <div><img src="../assets/智能新品/智能生活/10.jpg" alt=""></div>
+                    <div>意大利德龙(Delonghi)ESAM2200.S全自动咖啡机</div>
+                    <div class="goods-price">￥500.00</div>
+                </div>
+                    <div class="item-item1">
+                        <div><img src="../assets/e采商城图片/首页/6.jpg" alt=""></div>
+                        <div>飞利浦（PHILIPS）电动剃须刀YQ6188_16刮胡刀</div>
+                        <div class="goods-price">￥500.00</div>
+                    </div>
+                    <div class="item-item1">
+                        <div><img src="../assets/e采商城图片/首页/11.jpg" alt=""></div>
+                        <div>艾美特(Airmate)FSW52R%20遥控落地扇_电风扇</div>
+                        <div class="goods-price">￥500.00</div>
+                    </div>
+
+                <div class="item-item1">
+                    <div><img src="../assets/e采商城图片/首页/13.jpg" alt=""></div>
+                    <div>长虹(CHANGHONG)3匹变频智能语音圆柱式空调</div>
+                    <div class="goods-price">￥500.00</div>
+                </div>
+                <div class="item-item1">
+                    <div><img src="../assets/e采商城图片/首页/14.jpg" alt=""></div>
+                    <div>科沃斯（Ecovacs）地宝魔镜S扫地机器人家用吸尘器</div>
+                    <div class="goods-price">￥500.00</div>
+                </div>
+                <div class="item-item1">
+                    <div><img src="../assets/e采商城图片/首页/15.jpg" alt=""></div>
+                    <div>海尔（Haier）1.5匹冷暖变频智能操控自清洁空调挂机</div>
+                    <div class="goods-price">￥500.00</div>
+                </div>
+                <div class="item-item1">
+                    <div><img src="../assets/e采商城图片/首页/16.jpg" alt=""></div>
+                    <div>美的（Midea）1.5L单杆蒸汽挂烫机家用手持电熨斗</div>
+                    <div class="goods-price">￥500.00</div>
+                </div>
+            </div> -->
+      <!--   </div>  -->
+    </div>
+    </div>
+    <div id="yd-login-footer">
+        Ecaishangcheng &#169; 2003-2018 ，e采商城有限公司版权所有 沪ICP备16207556号-6| 沪B6-20140131| 沪B6-20140358
+    </div>
+
+</div>
+</div> 
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="../js/swiper/Swiper-3.4.2/dist/js/swiper.jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/vee-validate/2.0.0-rc.3/vee-validate.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/config.js"></script>
+<script src="../js/top.js"></script>
+<script src="../js/shop_index_list.js"></script>
+<script>
+    //     var swiper = new Swiper('.swiper-container', {
+    //     pagination: '.swiper-pagination',
+    //     nextButton: '.swiper-button-next',
+    //     prevButton: '.swiper-button-prev',
+    //     paginationClickable: true,
+    //     spaceBetween: 30,
+    //     centeredSlides: true,
+    //     autoplay: 2500,
+    //     autoplayDisableOnInteraction: false
+    // });
+    // $(document).on("mouseover",".sel-nav-item",function(){
+    //     $(this).children().eq(2).addClass('show-second-nav')
+    // });
+    // $(document).on("mouseout",".sel-nav-item",function(){
+    //      $(this).children().eq(2).removeClass('show-second-nav')
+    // });
+</script> 
+</body>
+</html>
