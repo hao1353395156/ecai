@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/login.css">
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <title>登录</title>
+</head>
+<body>
+    <div id="login">
+    <div class="yd-main">
+        <div style="width: 100%;background: #FFFFFF">
+        <a href="首页.html" class="yd-search">
+            <img src="../../assets/login2.png" alt="">
+        </a>
+        </div>
+        <div style="width: 100%;background: #f2f2f2;">
+            <div class="yd-login-container">
+                <div class="yd-login-form">
+                    <div>登录</div>
+                    <div class="login-warn1 small" style="display:none"><span>！</span><span>账号</span></div>
+                    <div>
+                        <input type="text" placeholder="输入登录账号" id="phone" v-model="login.phone">
+                    </div>
+                    <div class="login-warn small" style="display:none"><span>！</span><span>请输入正确的密码</span></div>
+                    <div>
+                        <input type="password" placeholder="输入密码" id="password" v-model="login.password">
+                    </div>
+                    <div class="operation">
+                        <span class="login-check check"></span><span>自动登录</span><span class="yd-right"> <a href="get_password.html">忘记密码？</a></span>
+                    </div>
+                    <a href="JavaScript:;">
+                        <div class="yd-btn" id="login_home">
+                            立即登录
+                        </div>
+                    </a>
+                    <div class="login-f-b">
+                        <span><img src="../../assets/qq.png" alt="">qq</span>
+                        <span><img src="../../assets/weixin.png" alt="">微信</span>
+                        <a href="user_log_on.html">
+                            <span style="float: right;color: #1C76F7">
+                                     立即注册
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="yd-b-nav">
+            <div class="b-nav-list">
+                <div>购物指南</div>
+                <div>|</div>
+                <a href="">登录注册</a>
+                <a href="">购买流程</a>
+                <a href="">常见问题</a>
+                <a href="">交易条款</a>
+            </div>
+            <div class="b-nav-list">
+                <div>支付方式</div>
+                <div>|</div>
+                <a href="">网银支付</a>
+                <a href="">快捷支付</a>
+                <a href="">在线支付</a>
+                <a href="">分期付款</a>
+            </div>
+            <div class="b-nav-list">
+                <div>配送方式</div>
+                <div>|</div>
+                <a href="">e采配送</a>
+                <a href="">免运费政策</a>
+                <a href="">签收验货</a>
+                <a href="">物流查询</a>
+            </div>
+            <div class="b-nav-list">
+                <div>售后服务</div>
+                <div>|</div>
+                <a href="">安装/维修</a>
+                <a href="">退款说明</a>
+                <a href="">退换货说明</a>
+                <a href="">咨询投诉</a>
+                <a href="">送货入户</a>
+            </div>
+            <div class="b-nav-list">
+                <div>商家服务</div>
+                <div>|</div>
+                <a href="">商家入驻</a>
+                <a href="">商家帮助</a>
+            </div>
+        </div>
+        <div id="yd-login-footer">
+            Ecaishangcheng &#169; 2003-2018 ，e采商城有限公司版权所有 沪ICP备16207556号-6| 沪B6-20140131| 沪B6-20140358
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    // $('.login-check').click(function () {
+    //     console.log(1)
+    //     $(this).toggleClass('check')
+    // })
+</script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/vee-validate/2.0.0-rc.3/vee-validate.min.js"></script>
+<script src="../../js/config.js"></script>
+<script src="../../js/user/login.js"></script>
+</html>
