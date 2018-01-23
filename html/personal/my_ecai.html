@@ -21,60 +21,77 @@
 <body>
     <div class="yd-main">
         <div id="yd-head">
-            <div class="yd-head">
-                <div class="yd-head-l">
-                    <div>
-                        <img src="../assets/首页.png" alt="">
-                        <a href="首页.html">首页</a>
-                    </div>
-                    <div>
-                        <span>切换城市</span>
-                    </div>
-                    <div class="yd-head-l-add">
-                        <img src="../assets/坐标.png" alt="">
-                        <a href="选择地址.html">上海</a>
-                    </div>
+           <div class="yd-head" id="top">
+        <div class="yd-head-l">
+            <div>
+                <img src="../../assets/index.png" alt="">
+                <a href="../index.html">首页</a>
+            </div>
+            <div>
+                <a href="../choose_add.html"><span>切换城市</span></a>
+            </div>
+            <div class="yd-head-l-add">
+                <img src="../../assets/coordinate.png" alt="">
+                <a href="../choose_add.html">{{cityname}}</a>
+            </div>
+        </div>
+        <div class="yd-head-r">
+            <div v-if="id">
+                <div>
+                    <span> <a href="../personal/edit_profile.html">欢迎 {{user}}</a></span>
+                    <span style="margin-left: 12px"> <a href="../user/login.html" id="out_user">退出</a></span>
                 </div>
-                <div class="yd-head-r">
-                    <div>
-                        <span>欢迎您lemon</span>
-                    </div>
-                    <div>
-                        <span>退出</span>
-                    </div>
-                    <div>
-                        <span style="font-size: 12px">|</span>
-                    </div>
-                    <a href="我的订单.html">
-                        <span>我的订单</span>
-                    </a>
-                    <a href="我的e采.html">
-                        <span>我的e采</span>
-                    </a>
-                    <a href="">
-                        <span>客户服务</span>
-                    </a>
+            </div>
+            <div v-else>
+                <div>
+                    <span><a href="../user/login.html">登录</a></span>
+                </div>
+                <div>
+                    <span style="margin-left: 12px">  <a href="../user/user_log_on.html">注册</a></span>
+                </div>
+            </div>
+            <div>
+                <span style="font-size: 12px">|</span>
+            </div>
+           <a href="../personal/my_order.html" v-if="id">
+                <span>我的订单</span>
+            </a>
+            <a href="../user/login.html" v-else>
+                <span>我的订单</span>
+            </a>
+            <a href="../personal/my_ecai.html" v-if="id">
+                <span>我的e采</span>
+            </a>
+            <a href="../user/login.html" v-else>
+                <span>我的e采</span>
+            </a>
+            <a href="../zaixian_kefu.html" v-if="id">
+                <span>客户服务</span>
+            </a>
+            <a href="../user/login.html" v-else>
+                <span>客户服务</span>
+            </a>
                     <a href="##">
                         <span>手机e采</span>
                     </a>
                 </div>
             </div>
         </div>
-        <div style="    background-image: linear-gradient(-180deg, #EEEEEE 0%, #FFFFFF 100%);width: 100%;">
-        <div class="self-message">
+        <div style="background-image: linear-gradient(-180deg, #EEEEEE 0%, #FFFFFF 100%);width: 100%;">
+        <div class="self-message" id="user_muen">
             <div>
                 <div class="mes-img">
                     <div class="self-avatar">
-                        <img src="../../assets/头像%20中.png" alt="">
+                        <img :src="avatar | formatImg140x140" alt="">
                     </div>
                     <div>
-                        <a href="e采会员.html"><img src="../assets/铜.png" alt=""></a>
+                        <a href="../personal/my_ecai.html"><img src="../../assets/tonghui.png" alt=""></a>
                     </div>
                 </div>
                 <div>
-                    <div class="nickname">Lemon</div>
+                    <div class="nickname">{{user}}</div>
                     <div>
-                        <img src="../../assets/企业会员.png" alt="">
+                        <img src="../../assets/qiyehuiyuan.png" alt="">
                     </div>
                 </div>
             </div>
@@ -82,19 +99,19 @@
                 <div class="operation-group">
                     <a href="我的订单.html" class="op-item">
                         <div><img src="../../assets/待付款.png" alt=""></div>
-                        <div>待付款 <span class="op-count">0</span></div>
+                        <div>待付款<span class="op-count">0</span></div>
                     </a>
                     <div class="op-item">
                         <div><img src="../../assets/待发货.png" alt=""></div>
-                        <div>待发货 <span class="op-count">0</span></div>
+                        <div>待发货<span class="op-count">0</span></div>
                     </div>
                     <div class="op-item">
                         <div><img src="../../assets/待收货.png" alt=""></div>
-                        <div>待收货 <span class="op-count">0</span></div>
+                        <div>待收货<span class="op-count">0</span></div>
                     </div>
                     <div class="op-item">
                         <div><img src="../../assets/待评价.png" alt=""></div>
-                        <div>待评价 <span class="op-count">0</span></div>
+                        <div>待评价<span class="op-count">0</span></div>
                     </div>
                 </div>
             </div>
@@ -102,31 +119,31 @@
         </div>
 
         <div class="yd-site">
-            <a href="首页.html">E采商城</a>
+            <a href="../index.html">E采商城</a>
             <span> <img src="../../assets/ShapeCopy.png" alt=""> </span>
-            <a href="我的e采.html">我的E采</a>
+            <a href="my_ecai.html">我的E采</a>
         </div>
         <div class="yd-help-content">
             <div class="yd-help-l">
                 <div class="yd-help-group">
                     <div class="yd-g-top">交易管理</div>
-                    <a href="我的订单.html" class="yd-g-item ">我的订单</a>
-                    <a href="我的拼单.html" class="yd-g-item act">我的拼单</a>
-                    <a href="我的优惠券.html" class="yd-g-item">我的优惠券</a>
-                    <a href="我的购物车.html" class="yd-g-item">我的购物车</a>
-                    <a href="我的关注.html" class="yd-g-item">我的关注</a>
+                    <a href="../personal/my_order.html">我的订单</a>
+                    <a href="../personal/my_fight_alone.html">我的拼单</a>
+                    <a href="../personal/my_coupon.html">我的优惠券</a>
+                    <a href="../personal/my_shopping_cart.html">我的购物车</a>
+                    <a href="../personal/my_concern.html">我的关注</a>
                 </div>
                 <div class="yd-help-group">
                     <div class="yd-g-top">服务中心</div>
-                    <a href="我的返修退、换货.html" class="yd-g-item">我的返修退/换货</a>
-                    <a href="我的消息.html" class="yd-g-item">我的消息 <span style="color: #FF2961">(2)</span></a>
+                    <a href="../personal/my_fan.html">我的返修单/换货</a>
+                    <a href="../personal/my_news.html">我的消息 <span>（2）</span></a>
                 </div>
                 <div class="yd-help-group">
                     <div class="yd-g-top">个人信息管理</div>
-                    <a href="编辑个人资料.html" class="yd-g-item">编辑个人资料</a>
-                    <a href="地址管理.html" class="yd-g-item">地址管理</a>
-                    <a href="申请企业用户.html" class="yd-g-item">升级为企业用户</a>
-                    <a href="申请店铺用户.html" class="yd-g-item">申请开通店铺</a>
+                    <a href="../personal/edit_profile.html">编辑个人资料</a>
+                    <a href="../personal/add.html">地址管理</a>
+                    <a href="../personal/shen_qiye.html">升级为企业用户</a>
+                    <a href="../Apply_shop/Apply_shop.html" class="ser-act">申请开通店铺</a>
                 </div>
             </div>
             <div class="yd-help-r">
@@ -137,7 +154,7 @@
                     </div>
                     <div>
                         <div class="my-info">
-                            <div><img src="../assets/imagec.png" alt=""></div>
+                            <div><img src="../../assets/imagec.png" alt=""></div>
                             <div class="my-data">
                                 <p>[上海市]订单已从上海发出，准备发往上海中转。</p>
                                 <p>2017-04-18  10:20:30</p>
@@ -155,7 +172,7 @@
                     </div>
                     <div class="order-info">
                         <div class="my-info">
-                            <div><img src="../assets/imagec.png" alt=""></div>
+                            <div><img src="../../assets/imagec.png" alt=""></div>
                             <div class="my-data">
                                 <p>联想E570c15.6英寸笔记本</p>
                                 <p class="order-color">黑色</p>
@@ -168,7 +185,7 @@
                     </div>
                     <div class="order-info">
                         <div class="my-info">
-                            <div><img src="../assets/imagec.png" alt=""></div>
+                            <div><img src="../../assets/imagec.png" alt=""></div>
                             <div class="my-data">
                                 <p>联想E570c15.6英寸笔记本</p>
                                 <p class="order-color">黑色</p>
@@ -190,7 +207,7 @@
                     </div>
                     <div class="order-info">
                         <div class="my-info">
-                            <div><img src="../assets/e采商城图片/商品详情页/1.jpg" alt=""></div>
+                            <div><img src="../../assets/e采商城图片/商品详情页/1.jpg" alt=""></div>
                             <div class="my-data">
                                 <p>联想E570c15.6英寸笔记本</p>
                                 <p class="order-color">黑色</p>
@@ -259,4 +276,9 @@
         </div>
     </div>
 </body>
+<script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="../../js/utils.js"></script>
+<script src="../../js/config.js"></script>
+<script src="../../js/top.js"></script>
 </html>

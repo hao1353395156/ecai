@@ -5,9 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/serve.css">
-    <link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/serve.css">
+    <link rel="stylesheet" href="../../css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="../../js/jquery-1.11.3.min.js"></script>
     <title></title>
 </head>
 <style>
@@ -29,99 +30,119 @@
     }
 </style>
 <body>
-<div id="cart_list">
     <div class="yd-main">
         <div id="yd-head">
-            <div class="yd-head">
-                <div class="yd-head-l">
-                    <div>
-                        <img src="../assets/首页.png" alt="">
-                        <a href="首页.html">首页</a>
-                    </div>
-                    <div>
-                        <span>切换城市</span>
-                    </div>
-                    <div class="yd-head-l-add">
-                        <img src="../assets/坐标.png" alt="">
-                        <span><a href="选择地址.html">上海</a></span>
-                    </div>
-                </div>
-                <div class="yd-head-r">
-                    <div>
-                        <span>欢迎您lemon</span>
-                    </div>
-                    <div>
-                        <span>退出</span>
-                    </div>
-                    <div>
-                        <span style="font-size: 12px">|</span>
-                    </div>
-                    <a href="我的订单.html">
-                        <span>我的订单</span>
-                    </a>
-                    <a href="我的e采.html">
-                        <span>我的e采</span>
-                    </a>
-                    <a href="##">
-                        <span>客户服务</span>
-                    </a>
-                    <a href="##">
-                        <span>手机e采</span>
-                    </a>
-                </div>
+        <div class="yd-head" id="top">
+        <div class="yd-head-l">
+            <div>
+                <img src="../../assets/index.png" alt="">
+                <a href="../index.html">首页</a>
+            </div>
+            <div>
+                <a href="../choose_add.html"><span>切换城市</span></a>
+            </div>
+            <div class="yd-head-l-add">
+                <img src="../../assets/coordinate.png" alt="">
+                <a href="../choose_add.html">{{cityname}}</a>
             </div>
         </div>
+        <div class="yd-head-r">
+            <div v-if="id">
+                <div>
+                    <span> <a href="../personal/edit_profile.html">欢迎 {{user}}</a></span>
+                    <span style="margin-left: 12px"> <a href="../user/login.html" id="out_user">退出</a></span>
+                </div>
+            </div>
+            <div v-else>
+                <div>
+                    <span><a href="../user/login.html">登录</a></span>
+                </div>
+                <div>
+                    <span style="margin-left: 12px">  <a href="../user/user_log_on.html">注册</a></span>
+                </div>
+            </div>
+            <div>
+                <span style="font-size: 12px">|</span>
+            </div>
+           <a href="../personal/my_order.html" v-if="id">
+                <span>我的订单</span>
+            </a>
+            <a href="../user/login.html" v-else>
+                <span>我的订单</span>
+            </a>
+            <a href="../personal/my_ecai.html" v-if="id">
+                <span>我的e采</span>
+            </a>
+            <a href="../user/login.html" v-else>
+                <span>我的e采</span>
+            </a>
+            <a href="../zaixian_kefu.html" v-if="id">
+                <span>客户服务</span>
+            </a>
+            <a href="../user/login.html" v-else>
+                <span>客户服务</span>
+            </a>
+            <a href="#">
+                <span>手机e采</span>
+            </a>
+        </div>
+    </div>
+        </div>
         <div class="yd-site">
-            <a href="商城首页.html">E采商城</a>
-            <span> <img src="../assets/Shape%20Copy.png" alt=""> </span>
-            <a href="我的e采.html">我的E采</a>
+            <a href="../index.html">E采商城</a>
+            <span> <img src="../../assets/ShapeCopy.png" alt=""> </span>
+            <a href="my_ecai.html">我的E采</a>
         </div>
         <div class="yd-help-content">
             <div class="yd-help-l">
-                <div class="user-info">
-                    <div><img src="../assets/头像%20中.png" alt=""></div>
+                <div class="user-info"  id="user_muen">
+                    <div><img :src="avatar| formatImg140x140" alt=""></div>
                     <div>
-                        <div class="vip-lv"><a href="e采会员.html"><img src="../assets/铜牌会员.png" alt="">铜牌会员</a></div>
-                        <div class="nickname">Lemon</div>
+                        <div class="vip-lv"><a href="my_ecai.html"><img src="../../assets/tongpai.png" alt="">铜牌会员</a></div>
+                        <div class="nickname"> {{user}}</div>
                     </div>
                 </div>
                 <div class="serve-con">
                     <div class="serve-group">
                         <div class="serve-title">交易管理</div>
-                        <a href="我的订单.html" >我的订单</a>
-                        <a href="我的拼单.html">我的拼单</a>
-                        <a href="我的优惠券.html">我的优惠券</a>
-                        <a href=""  class="ser-act">我的购物车</a>
-                        <a href="我的关注.html">我的关注</a>
+                        <a href="my_order.html">我的订单</a>
+                        <a href="my_fight_alone.html">我的拼单</a>
+                        <a href="my_coupon.html">我的优惠券</a>
+                        <a href="my_shopping_cart.html" class="ser-act">我的购物车</a>
+                        <a href="my_concern.html">我的关注</a>
                     </div>
                     <div class="serve-group">
                         <div class="serve-title">服务中心</div>
-                        <a href="">我的返修单/换货</a>
-                        <a href="我的消息.html">我的消息 <span>（2）</span></a>
+                        <a href="my_fan.html">我的返修单/换货</a>
+                        <a href="my_news.html">我的消息 <span>（2）</span></a>
                     </div>
                     <div class="serve-group">
                         <div class="serve-title">个人信息管理</div>
-                        <a href="编辑个人资料.html">编辑个人资料</a>
-                        <a href="地址管理.html">地址管理</a>
-                        <a href="申请企业用户.html">升级为企业用户</a>
-                        <a href="申请店铺用户.html">申请开通店铺</a>
+                        <a href="edit_profile.html">编辑个人资料</a>
+                        <a href="add.html">地址管理</a>
+                        <a href="shen_qiye.html">升级为企业用户</a>
+                        <a href="../Apply_shop/Apply_shop.html">申请开通店铺</a>
                     </div>
                 </div>
             </div>
             <div class="yd-help-r">
                 <div class="r-top">
                     <span>我的购物车</span>
-                    <div class="dis-add"> 
-                        <div>配送至:    
-                            <select name="上海黄浦区" v-on:change="changeAddress"> 
-                                <option :value="addresslist.id" v-for="addresslist in address">{{addresslist.provinceName}}-{{addresslist.cityName}}-{{addresslist.areaName}}-{{addresslist.street}}</option> 
-                            </select>  
+                    <div class="dis-add">
+                        <span>配送至</span>
+                        <div class="cho-address"><span>上海</span><i class="fa fa-caret-down"></i>
+                            <div class="la-address">
+                                <div>北京</div>
+                                <div>广州</div>
+                                <div>深圳</div>
+                                <div>天津</div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="shop-car-lan">
                     <div class="sho-check">
-                        <span style=""> <input type="checkbox" style="width:20px;height:20px;" @click="ckeck_all_pro" class="check_all"> </span>
+                        <span class="yd-check"></span>
                         <span>全选</span>
                     </div>
                     <div class="shop-goods">商品</div>
@@ -132,33 +153,106 @@
                     <div class="shop-operation">操作</div>
                 </div>
                 <div class="shop-car-det">
-                   
-                      
-                       
-                    <div class="shop-car-shops check_shop_dom" v-for="(cartShop,index) in cart_info.lineItems">
+                    <div class="shop-car-shops">
                         <div class="shops-name">
                             <div class="sho-check">
-                                <span style=""> <input type="checkbox" style="width:20px;height:20px;" @click="check_shop" class="check_shop"> </span>
-                                <span>{{cartShop.key.title}}</span>
+                                <span class="yd-check"></span>
+                                <span>联想官方旗舰店</span>
                             </div>
                         </div>
-                        <div class="shops-good" v-for="(p,i) in cartShop.value">
+                        <div class="shops-good">
                             <div class="sho-check">
-                                <span style=""> <input type="checkbox" style="width:20px;height:20px;" @click="check_pro_in" class="check_pro" :value="p.id" :cash="p.price*p.quantity" :index="index" :i="i"> </span>
-                                <span><img :src="config.ALI_OSS_GATEWAY+'/'+p.mainImg+'?x-oss-process=image/resize,w_76,h_76'" alt=""></span>
+                                <span class="yd-check"></span>
+                                <span><img src="../../assets/imagec.png" alt=""></span>
                             </div>
                             <div class="shop-goods">
-                                <div>{{p.catalogName}}</div>
-                                <div></div>
+                                <div>联想E570c15.6英寸笔记本</div>
+                                <div>黑色</div>
                                 <div class="store-serve"><span>售后无忧</span>  <span>厂家直销</span> </div>
                             </div>
                             <div class="shop-data">
-                                <div>{{p.name}}</div>
-                                <div></div>
+                                <div>55寸智能4K-55V6</div>
+                                <div>优惠套餐1</div>
                             </div>
-                            <div class="shop-price">￥{{p.price}}</div>
-                            <div class="shop-count">{{p.quantity}}</div>
-                            <div class="shop-balance">￥{{p.price*p.quantity}}</div>
+                            <div class="shop-price">2999.00</div>
+                            <div class="shop-count">-1+可加减</div>
+                            <div class="shop-balance">￥2999</div>
+                            <div class="shop-operation">
+                                <div>移入我的关注</div>
+                                <div class="good-del">删除</div>
+
+                            </div>
+                        </div>
+                        <div class="shops-good">
+                            <div class="sho-check">
+                                <span class="yd-check"></span>
+                                <span><img src="../../assets/imagec.png" alt=""></span>
+                            </div>
+                            <div class="shop-goods">
+                                <div>联想E570c15.6英寸笔记本</div>
+                                <div>黑色</div>
+                                <div class="store-serve"><span>售后无忧</span>  <span>厂家直销</span> </div>
+                            </div>
+                            <div class="shop-data">
+                                <div>55寸智能4K-55V6</div>
+                                <div>优惠套餐1</div>
+                            </div>
+                            <div class="shop-price">2999.00</div>
+                            <div class="shop-count">-1+可加减</div>
+                            <div class="shop-balance">￥2999</div>
+                            <div class="shop-operation">
+                                <div>移入我的关注</div>
+                                <div class="good-del">删除</div>
+
+                            </div>
+                        </div>
+                        <div class="shops-good">
+                            <div class="sho-check">
+                                <span class="yd-check"></span>
+                                <span><img src="../../assets/imagec.png" alt=""></span>
+                            </div>
+                            <div class="shop-goods">
+                                <div>联想E570c15.6英寸笔记本</div>
+                                <div>黑色</div>
+                                <div class="store-serve"><span>售后无忧</span>  <span>厂家直销</span> </div>
+                            </div>
+                            <div class="shop-data">
+                                <div>55寸智能4K-55V6</div>
+                                <div>优惠套餐1</div>
+                            </div>
+                            <div class="shop-price">2999.00</div>
+                            <div class="shop-count">-1+可加减</div>
+                            <div class="shop-balance">￥2999</div>
+                            <div class="shop-operation">
+                                <div>移入我的关注</div>
+                                <div class="good-del">删除</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shop-car-shops">
+                        <div class="shops-name">
+                            <div class="sho-check">
+                                <span class="yd-check"></span>
+                                <span>联想官方旗舰店</span>
+                            </div>
+                        </div>
+                        <div class="shops-good">
+                            <div class="sho-check">
+                                <span class="yd-check"></span>
+                                <span><img src="../../assets/imagec.png" alt=""></span>
+                            </div>
+                            <div class="shop-goods">
+                                <div>联想E570c15.6英寸笔记本</div>
+                                <div>黑色</div>
+                                <div class="store-serve"><span>售后无忧</span>  <span>厂家直销</span> </div>
+                            </div>
+                            <div class="shop-data">
+                                <div>55寸智能4K-55V6</div>
+                                <div>优惠套餐1</div>
+                            </div>
+                            <div class="shop-price">2999.00</div>
+                            <div class="shop-count">-1+可加减</div>
+                            <div class="shop-balance">￥2999</div>
                             <div class="shop-operation">
                                 <div>移入我的关注</div>
                                 <div class="good-del">删除</div>
@@ -167,15 +261,15 @@
                     </div>
                     <div class="shop-make-out">
                         <div class="sho-check">
-                            <span style=""> <input type="checkbox" style="width:20px;height:20px;"  @click="ckeck_all_pro" class="check_all"> </span>
+                            <span class="yd-check"></span>
                             <span>全选</span>
                         </div>
-                        <!--div class="del-all">删除选中商品</div-->
-                        <!--div class="remove-all">移到我的关注</div-->
-                        <div> 已选择 <span class="all-choose"> {{checked_pro_arr.len}} </span>件商品 </div>
-                        <!--div>共为您节省：￥ <span class="all-cut">0.00</span></div-->
-                        <div>总价（含运费）： <span class="total">￥{{checked_pro_arr.cash}}</span></div>
-                        <a href="javascript:void(0)" class="payment" @click="orderIn">去结算</a>
+                        <div class="del-all">删除选中商品</div>
+                        <div class="remove-all">移到我的关注</div>
+                        <div> 已选择 <span class="all-choose">-1+可加减</span>件商品 </div>
+                        <div>共为您节省：￥ <span class="all-cut">0.00</span></div>
+                        <div>总价（含运费）： <span class="total">￥2999</span></div>
+                        <a href="我的购物车-结算.html" class="payment">去结算</a>
                     </div>
                 </div>
 
@@ -196,22 +290,27 @@
         <div class="mask"></div>
         <div class="yd-alert">
             <div>
-                <img src="../assets/恭喜您.png" alt="">
+                <img src="../../assets/恭喜您.png" alt="">
             </div>
             <div>提交申请成功，请耐心等待商家处理哦~</div>
         </div>
     </div>
-</div>
-    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
-    <script src="../js/swiper/Swiper-3.4.2/dist/js/swiper.jquery.min.js"></script>
-    <script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/vee-validate/2.0.0-rc.3/vee-validate.min.js"></script>
-    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script src="../js/utils.js"></script>
-    <script src="../js/config.js"></script>
-    <script src="../js/top.js"></script>
-    <script src="../js/cart_list.js"></script>
 </body>
-
+<script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="../../js/leftTime.js"></script>
+<script src="../../js/utils.js"></script>
+<script src="../../js/config.js"></script>
+<script src="../../js/top.js"></script>
+<script>
+    $('.cho-address').hover(function () {
+        $('.la-address').toggle()
+    })
+    $('.good-del').click(function () {
+       console.log($(this).parent().parent().hide())
+    })
+    $('.yd-check').click(function () {
+        $(this).toggleClass('yd-checked')
+    })
+</script>
 </html>

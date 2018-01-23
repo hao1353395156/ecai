@@ -92,8 +92,8 @@ body{
     height: 200px;
 }
 .only-img>div:nth-child(1){
-    width: 170px;
-    height: 160px;
+    /*width: 170px;
+    height: 160px;*/
 }
 .only-img>div>img{
     width: auto;

@@ -43,7 +43,7 @@
     <div id="pro_jingxuan_list">
     <div class="yd-main">
         <div id="yd-head">
-          <div class="yd-head" id="top">
+        <div class="yd-head" id="top">
         <div class="yd-head-l">
             <div>
                 <img src="../assets/index.png" alt="">
@@ -54,7 +54,7 @@
             </div>
             <div class="yd-head-l-add">
                 <img src="../assets/coordinate.png" alt="">
-                <a href="choose_add.html">全国 </a>
+                <a href="choose_add.html">{{cityname}} </a>
             </div>
         </div>
         <div class="yd-head-r">
@@ -75,13 +75,22 @@
             <div>
                 <span style="font-size: 12px">|</span>
             </div>
-            <a href="personal/my_orders.html">
+            <a href="personal/my_order.html" v-if="id">
                 <span>我的订单</span>
             </a>
-            <a href="personal/my_ecai.html.html">
+            <a href="user/login.html" v-else>
+                <span>我的订单</span>
+            </a>
+            <a href="personal/my_ecai.html" v-if="id">
                 <span>我的e采</span>
             </a>
-            <a href="" style="display:none">
+            <a href="user/login.html" v-else>
+                <span>我的e采</span>
+            </a>
+            <a href="zaixian_kefu.html" v-if="id">
+                <span>客户服务</span>
+            </a>
+            <a href="user/login.html" v-else>
                 <span>客户服务</span>
             </a>
             <a href="#">
@@ -96,11 +105,11 @@
                 <input type="text">
                 <a href="搜索-分类.html"><img src="../assets/搜索.png" alt="" style="margin-top: 8px;"></a>
             </div>
-            <a class="shop-car" href="personal/my_shopping_cart.html">
-                <img src="../assets/shopicon.png" alt="">
-                <div>0</div>
-                <div style="min-width: 80px">购物车</div>
-            </a>
+             <a href="personal/my_shopping_cart.html" class="shop-car" style="z-index: 1000;width: 180px;height: 46px;border: 1px solid #E0E6ED;border-radius: 47px;">
+            <img src="../assets/shopicon.png" alt="">
+            <div>0</div>
+            <div style="min-width: 40px;padding-left: 18px">购物车</div>
+        </a>
         </div>
 
         <div class="yd-store-nav">
@@ -160,8 +169,8 @@
                         <span class="store-type" v-else>{{shop_item.title}}</span>
                     </div>
 
-                    <div><img src="../assets/contactb.png" class="contact" alt="">联系卖家</div>
-                    <div><img src="../assets/payshop.png" alt=""></div>
+                    <div><a href="zaixian_kefu.html"><img src="../assets/contactb.png" class="contact" alt="">联系卖家</a></div>
+                    <div><a href="javascript:void;" @click="payshop"><img src="../assets/payshop.png" alt=""></a></div>
                 </div>
             </div>
             <div class="goods-det">
@@ -278,7 +287,7 @@
                             <div><a href="#"><img src="../assets/satr.png" alt="">关注店铺</a></div>
                         </div>
                     </div>
-                    <div class="other-goods">
+                    <!-- <div class="other-goods">
                         <div class="o-goods-img">
                             <img src="../assets/e采商城图片/商品详情页/6.jpg" alt="">
                         </div>
@@ -298,7 +307,7 @@
                         </div>
                         <div class="o-goods-data">变频滚筒洗衣机型号2882</div>
                         <div class="o-goods-price">￥2299.00</div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="other-r">
                     <div style="">
@@ -310,9 +319,9 @@
                     </div>
                     </div>
                    <!--  <div class="goods-info-con">
-                         <div>
+                         <div  v-for="skuslist in skus">
                              <div>品牌：格力（GREE）</div>
-                             <div>商品名称：格力KFR-35GW/(35592)FNhDa-A3</div>
+                             <div>商品名称：{{skuslist.name}}</div>
                              <div>  变频/定频：变频</div>
                              <div>商品匹数：1.5匹</div>
                          </div>
@@ -332,6 +341,15 @@
                             <div>空调类型：壁挂式空调</div>
                         </div>
                     </div> -->
+                    <!-- 售后服务 -->
+                     <div class="goods-info-con" v-show="qieshow==3">
+                          <div class="after-sale">
+                                    <div>售后服务</div>
+                                    <p>服务承诺：e采商城向您保证所售商品均为正品行货，与您亲临商场选购的商品享受相同的质量、服务保障，请放心购买；如您购物环节遇到任何问题，请第一时间联系客服人员，我们会尽心为您处理问题。</p>
+                                    <p>网站为您提供的送货、安装、维修等服务可能需收取一定的服务费和远程费，服务中可能涉及的材料费请以服务工程师出示的报价单为准。</p>
+                                    <p>请您收货后与快递人员一起开箱验货，确保产品完好，生产日期认可，如有问题请当场拒收。</p>
+                          </div>
+                     </div>
                     <!-- 商品详情 -->
                     <div  v-show="qieshow==0">
                         <div class="coupon">
@@ -414,7 +432,7 @@
                         </div>
                     </div>
 
-                    <div class="a-goods-page">
+                    <div class="a-goods-page" style="display:none">
                         <div class="prev page">
                             <img src="../assets/Shape%20页码左.png" alt="">
                         </div>
@@ -432,14 +450,15 @@
 
 
 
-
             <div id="scroll">
+                <a href="zaixian_kefu.html"  style="cursor:pointer">
                 <div>
-                    <img src="../assets/联系商家%20(2).png" alt="">
+                    <img src="../assets/conatshang.png" alt="">
                     <span>联系商家</span>
                 </div>
-                <div onclick="gotop()">
-                    <img src="../assets/回到顶部%20(2).png" alt="">
+                </a>
+                <div onclick="gotop()" style="cursor:pointer">
+                    <img src="../assets/backtop.png" alt="">
                     <span>回到顶部</span>
                 </div>
             </div>

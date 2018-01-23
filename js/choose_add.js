@@ -30,8 +30,12 @@
 		
 	});	
 	  $(document).on("click",".provinceid",function(){
-               var provinceid=$(this).attr("provinceid");
+               var provinceid=$(this).attr("provinceid"),
+                   cityname=$(this).attr("cityname");
+                   console.log(cityname);
+                    console.log(provinceid);
                $.cookie("provinceid",provinceid,{domain: config.COOKIE_DOMAIN, expires: 30, path: "/"});
+               $.cookie("cityname",cityname,{domain: config.COOKIE_DOMAIN, expires: 30, path: "/"});
                window.location.href="index.html";
 	  });       	
 	window.Api = Api;

@@ -1,12 +1,8 @@
 (function() {
-  if(!$.cookie("provinceid")){
-        $.cookie("provinceid",86,{domain: config.COOKIE_DOMAIN, expires: 30, path: "/"});
-      }
 	var utk=$.cookie("utk"),
 	    id=$.cookie("id"); 
-      provinceid=$.cookie("provinceid"),
+      provinceid=$.cookie("provinceid") || 86,
       swiper_loop=0; 
-
      // console.log(utk);
      var index = new Vue({
       el:"#index",

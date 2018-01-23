@@ -11,50 +11,59 @@
     <link rel="stylesheet" href="../../css/font-awesome-4.7.0/css/font-awesome.min.css">
     <script src="../../js/jquery-1.11.3.min.js"></script>
     <title></title>
-    <link rel="stylesheet" href="../css/userinfo.css">
+    <link rel="stylesheet" href="../../css/userinfo.css">
 </head>
 <body>
     <div class="yd-main">
         <div id="yd-head">
-                <div class="yd-head" id="top">
+        <div class="yd-head" id="top">
         <div class="yd-head-l">
             <div>
-                <img src="../assets/index.png" alt="">
+                <img src="../../assets/index.png" alt="">
                 <a href="../index.html">首页</a>
             </div>
             <div>
-                <a href="choose_add.html"><span>切换城市</span></a>
+                <a href="../choose_add.html"><span>切换城市</span></a>
             </div>
             <div class="yd-head-l-add">
-                <img src="../assets/coordinate.png" alt="">
-                <a href="choose_add.html">全国 </a>
+                <img src="../../assets/coordinate.png" alt="">
+                <a href="../choose_add.html">{{cityname}}</a>
             </div>
         </div>
         <div class="yd-head-r">
             <div v-if="id">
                 <div>
                     <span> <a href="../personal/edit_profile.html">欢迎 {{user}}</a></span>
-                    <span style="margin-left: 12px"> <a href="user/login.html" id="out_user">退出</a></span>
+                    <span style="margin-left: 12px"> <a href="../user/login.html" id="out_user">退出</a></span>
                 </div>
             </div>
             <div v-else>
                 <div>
-                    <span><a href="user/login.html">登录</a></span>
+                    <span><a href="../user/login.html">登录</a></span>
                 </div>
                 <div>
-                    <span style="margin-left: 12px">  <a href="user/user_log_on.html">注册</a></span>
+                    <span style="margin-left: 12px">  <a href="../user/user_log_on.html">注册</a></span>
                 </div>
             </div>
             <div>
                 <span style="font-size: 12px">|</span>
             </div>
-            <a href="../personal/my_order.html">
+           <a href="../personal/my_order.html" v-if="id">
                 <span>我的订单</span>
             </a>
-            <a href="../personal/my_ecai.html.html">
+            <a href="../user/login.html" v-else>
+                <span>我的订单</span>
+            </a>
+            <a href="../personal/my_ecai.html" v-if="id">
                 <span>我的e采</span>
             </a>
-            <a href="" style="display:none">
+            <a href="../user/login.html" v-else>
+                <span>我的e采</span>
+            </a>
+            <a href="../zaixian_kefu.html" v-if="id">
+                <span>客户服务</span>
+            </a>
+            <a href="../user/login.html" v-else>
                 <span>客户服务</span>
             </a>
             <a href="#">
@@ -64,16 +73,16 @@
     </div>
         </div>
         <div class="yd-site">
-            <a href="商城首页.html">E采商城</a>
+            <a href="../index.html">E采商城</a>
             <span> <img src="../../assets/ShapeCopy.png" alt=""> </span>
-            <a href="我的e采.html">我的E采</a>
+            <a href="my_ecai.html">我的E采</a>
         </div>
         <div class="yd-help-content">
             <div class="yd-help-l">
                 <div class="user-info"  id="user_muen">
                     <div><img :src="avatar| formatImg140x140" alt=""></div>
                     <div>
-                        <div class="vip-lv"><a href="e采会员.html"><img src="../../assets/铜牌会员.png" alt="">铜牌会员</a></div>
+                        <div class="vip-lv"><a href="my_ecai.html"><img src="../../assets/tongpai.png" alt="">铜牌会员</a></div>
                         <div class="nickname"> {{user}}</div>
                     </div>
                 </div>
@@ -96,7 +105,7 @@
                         <a href="../personal/edit_profile.html">编辑个人资料</a>
                         <a href="../personal/add.html">地址管理</a>
                         <a href="../personal/shen_qiye.html">升级为企业用户</a>
-                        <a href="../Apply_shop/Apply_shop.html"  class="ser-act">申请开通店铺</a>
+                        <a href="../Apply_shop/Apply_shop.html" class="ser-act">申请开通店铺</a>
                     </div>
                 </div>
             </div>

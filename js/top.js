@@ -1,15 +1,17 @@
 (function() {
 	var utk=$.cookie("utk"),
       username=$.cookie("nickName"),
-      avatar=$.cookie("avatar"), 
+      avatar=$.cookie("avatar"),
+      cityname=$.cookie("cityname"),  
       provinceid=$.cookie("provinceid") || 86,
       swiper_loop=0;
-     // console.log(username);
+     // console.log(cityname);
      var top = new Vue({
       el:"#top",
       data:{
           id:$.cookie("id") || 0,//用户id
           user:username,//用户信息
+          cityname:cityname,//城市名
         },
       // methods:{
       //   out_user : function(){

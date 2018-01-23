@@ -476,7 +476,7 @@ a{
     bottom: 30px;
     right: 20px;
 }
-#scroll>div{
+#scroll div{
     width: 88px;
     height: 88px;
     display: flex;
@@ -487,7 +487,7 @@ a{
     align-items: center;
     margin-bottom: 20px;
 }
-#scroll>div>img{
+#scroll div>img{
     width: 24px;
 }
 .store-type{

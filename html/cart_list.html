@@ -111,17 +111,21 @@
             <div class="yd-help-r">
                 <div class="r-top">
                     <span>我的购物车</span>
-                    <div class="dis-add"> 
-                        <div>配送至:    
-                            <select name="上海黄浦区" v-on:change="changeAddress"> 
-                                <option :value="addresslist.id" v-for="addresslist in address">{{addresslist.provinceName}}-{{addresslist.cityName}}-{{addresslist.areaName}}-{{addresslist.street}}</option> 
-                            </select>  
+                    <div class="dis-add">
+                        <span>配送至</span>
+                        <div class="cho-address"><span>上海</span><i class="fa fa-caret-down"></i>
+                            <div class="la-address">
+                                <div>北京</div>
+                                <div>广州</div>
+                                <div>深圳</div>
+                                <div>天津</div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="shop-car-lan">
                     <div class="sho-check">
-                        <span style=""> <input type="checkbox" style="width:20px;height:20px;" @click="ckeck_all_pro" class="check_all"> </span>
+                        <span style=""> <input type="checkbox" style="width:20px;height:20px;"> </span>
                         <span>全选</span>
                     </div>
                     <div class="shop-goods">商品</div>
@@ -135,16 +139,16 @@
                    
                       
                        
-                    <div class="shop-car-shops check_shop_dom" v-for="(cartShop,index) in cart_info.lineItems">
+                    <div class="shop-car-shops" v-for="(cartShop,index) in cart_info.lineItems">
                         <div class="shops-name">
                             <div class="sho-check">
-                                <span style=""> <input type="checkbox" style="width:20px;height:20px;" @click="check_shop" class="check_shop"> </span>
+                                <span style=""> <input type="checkbox" style="width:20px;height:20px;"> </span>
                                 <span>{{cartShop.key.title}}</span>
                             </div>
                         </div>
                         <div class="shops-good" v-for="(p,i) in cartShop.value">
                             <div class="sho-check">
-                                <span style=""> <input type="checkbox" style="width:20px;height:20px;" @click="check_pro_in" class="check_pro" :value="p.id" :cash="p.price*p.quantity" :index="index" :i="i"> </span>
+                                <span style=""> <input type="checkbox" style="width:20px;height:20px;"> </span>
                                 <span><img :src="config.ALI_OSS_GATEWAY+'/'+p.mainImg+'?x-oss-process=image/resize,w_76,h_76'" alt=""></span>
                             </div>
                             <div class="shop-goods">
@@ -156,9 +160,9 @@
                                 <div>{{p.name}}</div>
                                 <div></div>
                             </div>
-                            <div class="shop-price">￥{{p.price}}</div>
+                            <div class="shop-price">{{p.price}}</div>
                             <div class="shop-count">{{p.quantity}}</div>
-                            <div class="shop-balance">￥{{p.price*p.quantity}}</div>
+                            <div class="shop-balance">{{p.price*p.quantity}}</div>
                             <div class="shop-operation">
                                 <div>移入我的关注</div>
                                 <div class="good-del">删除</div>
@@ -167,15 +171,15 @@
                     </div>
                     <div class="shop-make-out">
                         <div class="sho-check">
-                            <span style=""> <input type="checkbox" style="width:20px;height:20px;"  @click="ckeck_all_pro" class="check_all"> </span>
+                            <span style=""> <input type="checkbox" style="width:20px;height:20px;"> </span>
                             <span>全选</span>
                         </div>
-                        <!--div class="del-all">删除选中商品</div-->
+                        <div class="del-all">删除选中商品</div>
                         <!--div class="remove-all">移到我的关注</div-->
-                        <div> 已选择 <span class="all-choose"> {{checked_pro_arr.len}} </span>件商品 </div>
+                        <div> 已选择 <span class="all-choose"> 0 </span>件商品 </div>
                         <!--div>共为您节省：￥ <span class="all-cut">0.00</span></div-->
-                        <div>总价（含运费）： <span class="total">￥{{checked_pro_arr.cash}}</span></div>
-                        <a href="javascript:void(0)" class="payment" @click="orderIn">去结算</a>
+                        <div>总价（含运费）： <span class="total">￥0</span></div>
+                        <a href="我的购物车-结算.html" class="payment">去结算</a>
                     </div>
                 </div>
 

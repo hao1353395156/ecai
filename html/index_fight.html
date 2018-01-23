@@ -58,17 +58,17 @@
     </div>
     <div id="yd-head">
     <div class="yd-head" id="top">
-        <div class="yd-head-l">
-            <div>
+         <div class="yd-head-l">
+         <div>
                 <img src="../assets/index.png" alt="">
-                <a href="##">首页</a>
+                <a href="index.html">首页</a>
             </div>
             <div>
                 <a href="choose_add.html"><span>切换城市</span></a>
             </div>
             <div class="yd-head-l-add">
                 <img src="../assets/coordinate.png" alt="">
-                <a href="choose_add.html">全国 </a>
+                <a href="choose_add.html">{{cityname}} </a>
             </div>
         </div>
         <div class="yd-head-r">
@@ -89,13 +89,22 @@
             <div>
                 <span style="font-size: 12px">|</span>
             </div>
-            <a href="personal/my_orders.html">
+            <a href="personal/my_order.html" v-if="id">
                 <span>我的订单</span>
             </a>
-            <a href="personal/my_ecai.html.html">
+            <a href="user/login.html" v-else>
+                <span>我的订单</span>
+            </a>
+            <a href="personal/my_ecai.html" v-if="id">
                 <span>我的e采</span>
             </a>
-            <a href="" style="display:none">
+            <a href="user/login.html" v-else>
+                <span>我的e采</span>
+            </a>
+            <a href="zaixian_kefu.html" v-if="id">
+                <span>客户服务</span>
+            </a>
+            <a href="user/login.html" v-else>
                 <span>客户服务</span>
             </a>
             <a href="#">
@@ -120,7 +129,7 @@
     </div>
     <div style="background: #FFFFFF">
     <div class="yd-store-nav">
-        <a href="首页.html" >e采商城</a>
+        <a href="index.html" >e采商城</a>
         <a :href="'pro_jingxuan.html?aid='+blocks_list.id" v-for="blocks_list in blocks">{{blocks_list.title}}</a>
         <a href="index_fight.html" class="ty-act">拼单</a>
     </div>

@@ -9,6 +9,7 @@
 	      el:"#pro_block",
 	      data:{
 	          block_pro:'',
+            brands:'',
 	          blocks:'',//板块名
               focus:'',//滚动广告图
               aid:aid,

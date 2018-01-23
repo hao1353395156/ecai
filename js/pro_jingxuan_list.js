@@ -89,6 +89,10 @@
 						  
 					console.log(data1);	  
                 },
+                //关注商品
+                payshop:function(){
+                	
+                }
                 
 	        },
 	        updata:function(){
