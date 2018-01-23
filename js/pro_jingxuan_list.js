@@ -80,7 +80,7 @@
 						var url = config.API_GATEWAY + "/td/quotes";
 	 					Api.post(url,data1,function(e) {
 	 						if(e.code==0){
-	 							window.location.href="my_shopping_cart.html";
+	 							window.location.href="personal/my_shopping_cart.html";
 	 							console.log(e);
 	 						}else{
 	 							alert(e.message);
