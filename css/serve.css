@@ -285,10 +285,10 @@
     padding-right: 40px;
 }
 .dis-add>div{
-    width: 88px;
+    /*width: 88px;*/
     line-height: 36px;
     justify-content: center;
-    border: 1px solid #dcdcdc;
+    /*border: 1px solid #dcdcdc;*/
     margin-left: 20px;
 }
 .dis-add i{
