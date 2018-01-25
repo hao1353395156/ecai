@@ -9,7 +9,6 @@
   var utk = $.cookie("utk");
   var act = $.getUrlParam("act") || "pay";
   var pInfo = $.getUrlParam("info");
-  var shopId=$.getUrlParam("shopId") || 0;
 	var pro_jingxuan_list = new Vue({
 	      el:"#my_shopping_balance",
 	      data:{
@@ -230,6 +229,17 @@
                             pro_jingxuan_list.skus = e.data.skus;
                             pro_jingxuan_list.imgs = e.data.imgs;
 
+
+                //商铺优惠卷
+                var shopId = e.data.shopId;
+                var url = config.API_GATEWAY + "/mt/v2/shops/"+shopId+"/coupons";
+                Api.get(url,function(e) {
+                  if(e.code==0){
+                            pro_jingxuan_list.coupons = e.data.fullCutDirectCoupons;
+                         }
+                }); 
+
+
                             
                             // pro_skus();                         
 	            		}else{
@@ -268,27 +278,9 @@
              }
     	});
 	}
-//商铺优惠卷
-var url = config.API_GATEWAY + "/mt/v2/shops/"+shopId+"/coupons";
-	            	Api.get(url,function(e) {
-	            		if(e.code==0){
-                            pro_jingxuan_list.coupons = e.data.fullCutDirectCoupons;
-                         }
-	            	}); 
-//评价
- var url = config.API_GATEWAY + "/mt/catalogs/"+cid+"/comments?pn=1&ps=20";
-    	Api.get(url,function(e) {
-    		if(e.code==0){
-                pro_jingxuan_list.comments = e.data.items;
-             }
-    	}); 
 
-  var url = config.API_GATEWAY + "/mt/catalogs/"+cid+"/comments/summary";
-    	Api.get(url,function(e) {
-    		if(e.code==0){
-                pro_jingxuan_list.summary1 = e.data;
-             }
-    	}); 
+
+
   //我的收获地址
 	var url = config.API_GATEWAY + "/us/users/addresses";
 	            	Api.get(url,function(e) {
