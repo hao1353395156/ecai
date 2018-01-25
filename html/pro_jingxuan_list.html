@@ -224,7 +224,7 @@
                     </div>
                     <div class="send-add">
                         <div>配送至:    
-                            <select name="上海黄浦区" v-on:change="changeAddress"> 
+                            <select name="上海黄浦区" v-on:change="changeAddress" @click="isLogin"> 
                                 <option :value="addresslist.id" v-for="addresslist in address">{{addresslist.provinceName}}-{{addresslist.cityName}}-{{addresslist.areaName}}-{{addresslist.street}}</option> 
                             </select>  
                             <!-- <img src="../assets/ShapeCopy.png" alt="" @click=""> -->  有货 </div>
@@ -256,8 +256,11 @@
                     </div>
 
 
-                    <div class="yd-book">
-                        <!--a href="" class="book"><div>立即预定</div></a-->
+                    <div class="yd-book" v-show="pay_type>0">
+                        <a href="javascript:void(0)" class="book" @click="groupon"><div>立即开团</div></a>
+                    </div>
+                    <div class="yd-book" v-show="pay_type==0">
+                        <a href="javascript:void(0)" class="book" @click="quick"><div>快速购买</div></a>
                         <a href="javascript:void(0)" class="book" @click="quotes"><div>加入购物车</div></a>
                     </div>
 

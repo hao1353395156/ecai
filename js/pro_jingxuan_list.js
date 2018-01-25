@@ -5,7 +5,9 @@
 	$("#showbox img").hide();
 	var cid=$.getUrlParam("cid") || 0;
 	var shopId=$.getUrlParam("shopId") || 0;
-	 var provinceid=$.cookie("provinceid") || 86;
+	var provinceid=$.cookie("provinceid") || 86;
+  var pay_type=$.getUrlParam("group") || 0;
+  var utk = $.cookie("utk");
 	var pro_jingxuan_list = new Vue({
 	      el:"#pro_jingxuan_list",
 	      data:{
@@ -22,6 +24,7 @@
 	          address:'',//收货地址
 	          blocks:'',
 	          addressId:0,
+            pay_type:pay_type,//支付类型
 	        },
 	        methods:{
                 basejian:function(e){
@@ -58,44 +61,65 @@
                 	}
                 		
                 },
+                //是否登录
+                isLogin:function(){
+                  if(!utk){
+                    window.location="user/login.html";
+                  }
+                },
                 //选择地址
                 changeAddress:function(e){
+                  this.isLogin();
                 	var dom=e.target;
                 	var n = dom.value;
                 	console.log("addressid:"+n);
                 	this.addressId=n;
                 },
+                //预定
+                groupon:function(e){
+                  this.isLogin();
+                },
+                quick :function(e){
+                  this.isLogin();
+                },
+                get_products_info:function(e){
+                  
+                },
                  //加入购物车
                 quotes:function (e){
-                		//得到sku 商品数量
-                		var items=[];
-                		for(var i=0;i<this.skus.length;i++){
-                			if(this.skus[i].quantity>0){
-                				items.push({"id":null,"quantity":this.skus[i].quantity,"skuId":this.skus[i].id})
-                			}
+                  this.isLogin();
+              		//得到sku 商品数量
+              		var items=[];
+              		for(var i=0;i<this.skus.length;i++){
+              			if(this.skus[i].quantity>0){
+              				items.push({"id":null,"quantity":this.skus[i].quantity,"skuId":this.skus[i].id})
+              			}
 
-                		}
-                		if(this.addressId<=0){
-                			alert("请选择地址，或新增地址！");
-                			return ;
-                		}
-                		if(items.length<=0)
-                			return;
-	                    var data1={
-						  addressId : this.addressId,
-						  items : items,
-						  }
-						var url = config.API_GATEWAY + "/td/quotes";
-	 					Api.post(url,data1,function(e) {
-	 						if(e.code==0){
-	 							window.location.href="personal/my_shopping_cart.html";
-	 							console.log(e);
-	 						}else{
-	 							alert(e.message);
-	 						}
-	 					})
+              		}
+              		if(this.addressId<=0){
+              			swal("请选择地址，或新增地址！");
+              			return ;
+              		}
+              		if(items.length<=0){
+                    swal("请选择型号！");
+                    return;
+                  }
+                			
+	                var data1={
+      						  addressId : this.addressId,
+      						  items : items,
+						      }
+      						var url = config.API_GATEWAY + "/td/quotes";
+      	 					Api.post(url,data1,function(e) {
+      	 						if(e.code==0){
+      	 							window.location.href="personal/my_shopping_cart.html";
+      	 							console.log(e);
+      	 						}else{
+      	 							alert(e.message);
+      	 						}
+      	 					})
 						  
-					console.log(data1);	  
+				        	console.log(data1);	  
                 },
                 //关注商品
                 payshop:function(){

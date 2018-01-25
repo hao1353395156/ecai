@@ -171,7 +171,6 @@
         <div class="swiper-container" id="swg_banner">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for='focus_list in focus'>
-                    <a href="javascript:;">
                         <img v-bind:src="focus_list.pcImg" class="swi-img" alt="">
                     
                 </div>
@@ -191,7 +190,7 @@
         </div>
         <div class="common-group">
             <div class="cut"><img src="../assets/cut-l%20圆正常.png" alt=""></div>
-            <a :href="'pro_jingxuan_list.html?cid='+g.catalogId+'&shopId='+g.shopId+'&group=on'" class="common-item"  v-for="(g,index) in groupGoods"> 
+            <a :href="'pro_jingxuan_list.html?cid='+g.catalogId+'&shopId='+g.shopId+'&group=2'" class="common-item"  v-for="(g,index) in groupGoods"> 
                 <div class="com-top time_unshelfTime" :bd="timeFromat(index,g.unshelfTime)" >
                     
                 </div>
@@ -397,7 +396,6 @@
 <script src="../js/top.js"></script>
 <script src="../js/index.js"></script>
 <script>
-
     $(document).on("mouseout",".sel-nav-item",function(){
         $(this).children().eq(2).removeClass('show-second-nav')
     });
