@@ -3,13 +3,14 @@
  */
 (function() {
 	$("#showbox img").hide();
-	var cid=$.getUrlParam("cid") || 0;
-	var shopId=$.getUrlParam("shopId") || 0;
+	var cid=$.getUrlParam("id") || 0;
 	var provinceid=$.cookie("provinceid") || 86;
   var pay_type=$.getUrlParam("group") || 0;
   var utk = $.cookie("utk");
+  var act = $.getUrlParam("act") || "pay";
+  var pInfo = $.getUrlParam("info");
 	var pro_jingxuan_list = new Vue({
-	      el:"#pro_jingxuan_list",
+	      el:"#my_shopping_balance",
 	      data:{
 	          pro_xq:'',//商品详情
 	          categories:'', //分类
