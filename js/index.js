@@ -19,13 +19,45 @@
           level3:'',//3级分类
           block_pro:'',//板块商品
           blocks_data:[],
+          groupGoods:[], //拼单商品
         },
       methods:{
+        timeFromat : function(i,time){
+          //建立定时器
+         setInterval(function(){
+            getTimeFromat(i,time);
+         },1000);
+         function getTimeFromat(i,time){
+            var now= Date.parse(new Date());
+            var day= Math.floor((time-now)/1000/3600/24); //天
+            var hours= Math.floor((time-now)/1000/3600)-(day*24); //时
+            var minute=Math.floor((time-now)/1000/60)-(day*24*60)-(hours*60); //分
+            var second=Math.floor((time-now)/1000)-(day*24*3600)-(hours*3600)-(minute*60); //秒      
+            $(".time_unshelfTime").eq(i).html("<span>"+day+"天</span>：<span>"+index.ten(hours)+"</span>：<span>"+index.ten(minute)+"</span>：<span>"+index.ten(second)+"</span>"); 
+         }
+         //加载时间倒计时
+         getTimeFromat(i,time);
+        },
+        ten:function(num){
+          if(num<10)
+            return "0"+num;
+          else
+            return num;
+        }
         // out_user : function(){
         // $.cookie("utk",'',{domain: config.COOKIE_DOMAIN, expires: 30, path: "/"});
         // $.cookie("id",'',{domain: config.COOKIE_DOMAIN, expires: 30, path: "/"});
         // }
       },
+    });
+     
+
+    //拼单商品接入GET 
+    var url = config.API_GATEWAY + "/mt/sites/"+provinceid+"/groupon?pn=1&ps=20";
+    Api.get(url,function(e) {
+      if(e.code==0){
+        index.groupGoods=e.data.items;
+      }
     });
 
 function loading_brands(){

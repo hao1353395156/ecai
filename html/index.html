@@ -191,54 +191,19 @@
         </div>
         <div class="common-group">
             <div class="cut"><img src="../assets/cut-l%20圆正常.png" alt=""></div>
-            <a href="拼团详情页.html" class="common-item">
-                <div class="com-top">
-                    距结束 <span>3天</span>：<span>03</span>：<span>29</span>：<span>59</span>
+            <a :href="'pro_jingxuan_list.html?cid='+g.catalogId+'&shopId='+g.shopId+'&group=on'" class="common-item"  v-for="(g,index) in groupGoods"> 
+                <div class="com-top time_unshelfTime" :bd="timeFromat(index,g.unshelfTime)" >
+                    
                 </div>
                 <div class="com-data">
-                    <div><img src="../assets/e采商城图片/首页/1.jpg" alt=""></div>
-                    <div>格兰仕（Galanz）烤箱多功能烘焙</div>
-                    <div>拼单价 ￥2699 <del>￥2799</del></div>
-                    <div class="com-price">订金￥500.00</div>
-                    <div>5人起拼   260人已拼</div>
+                    <div><img :src="config.ALI_OSS_GATEWAY+'/'+g.mainImg+'?x-oss-process=image/resize,w_165,h_167'" alt=""></div>
+                    <div>{{g.name}}</div>
+                    <div>拼单价 ￥{{(g.price/100).toFixed(2)}} <del>￥{{(g.marketPrice/100).toFixed(2)}}</del></div>
+                    <div class="com-price">订金￥{{(g.deposit/100).toFixed(2)}}</div>
+                    <div>  {{g.actualNum}}人已拼</div>
                 </div>
             </a>
-            <div class="common-item">
-                <div class="com-top">
-                    距结束 <span>3天</span>：<span>03</span>：<span>29</span>：<span>59</span>
-                </div>
-                <div class="com-data">
-                    <div><img src="../assets/e采商城图片/首页/2.jpg" alt=""></div>
-                    <div>飞利浦（PHILIPS）高速破壁料理机</div>
-                    <div>拼单价 ￥2699 <del>￥2799</del></div>
-                    <div class="com-price">订金￥500.00</div>
-                    <div>5人起拼   260人已拼</div>
-                </div>
-            </div>
-            <div class="common-item">
-                <div class="com-top">
-                    距结束 <span>3天</span>：<span>03</span>：<span>29</span>：<span>59</span>
-                </div>
-                <div class="com-data">
-                    <div><img src="../assets/e采商城图片/首页/3.jpg" alt=""></div>
-                    <div>海尔（Haier)8公斤变频滚筒洗衣机</div>
-                    <div>拼单价 ￥2699 <del>￥2799</del></div>
-                    <div class="com-price">订金￥500.00</div>
-                    <div>5人起拼   260人已拼</div>
-                </div>
-            </div>
-            <div class="common-item">
-                <div class="com-top">
-                    距结束 <span>3天</span>：<span>03</span>：<span>29</span>：<span>59</span>
-                </div>
-                <div class="com-data">
-                    <div><img src="../assets/e采商城图片/首页/4.jpg" alt=""></div>
-                    <div>e采大促美的电饭煲圆灶釜4L电饭锅</div>
-                    <div>拼单价 ￥2699 <del>￥2799</del></div>
-                    <div class="com-price">订金￥500.00</div>
-                    <div>5人起拼   260人已拼</div>
-                </div>
-            </div>
+            
             <div class="cut"><img src="../assets/cut-r%20圆正常.png" alt=""></div>
 
 
