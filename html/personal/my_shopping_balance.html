@@ -28,7 +28,7 @@
     }
 </style>
 <body>
-<div id="my_shopping_balance">
+<div id="my_shopping_balance" v-cloak>
     <div class="yd-main">
         <div id="yd-head">
              <div class="yd-head" id="top">
@@ -134,14 +134,14 @@
                             <span>收货人信息</span>
                             <a href="">新增收货地址</a>
                         </div>
-                        <div class="re-order-info">
-                            <span>Lemon</span>
-                            <span>上海 <i class="fa fa-check-square"  aria-hidden="true"></i> </span>
-                            <span>上海 黄浦区 大沽路288弄5号3楼B座</span>
-                            <span>188****3232</span>
+                        <div class="re-order-info" v-for="addresslist in address">
+                            <span>{{addresslist.contacter}}</span>
+                            <span>{{addresslist.provinceName}} <i class="fa fa-check-square"  aria-hidden="true"></i> </span>
+                            <span>{{addresslist.provinceName}}-{{addresslist.cityName}}-{{addresslist.areaName}}-{{addresslist.street}}</span>
+                            <span>{{addresslist.mobile}}</span>
                             <span class="re-order-edit"></span>
-                            <div class="re-more-add">更多地址 <i class="fa fa-angle-down" aria-hidden="true"></i></div>
                         </div>
+                        <div class="re-more-add">更多地址 <i class="fa fa-angle-down" aria-hidden="true"></i></div>
                     </div>
 
                     <div class="order-data">
@@ -160,7 +160,8 @@
                         <div class="re-order-info">
                             <div class="re-info-top">
                                 <div class="re-info-store">
-                                    <span>e采商城 <span class="store-type">自营</span></span>
+                                    <span class="store-type" v-if="pro_xq.showTag == 0">e彩自营</span>
+                                    <span class="store-type" v-else>{{shop_item.title}}</span>
                                 </div>
                                 <div class="re-info-dispatch">
                                     配送方式
@@ -171,12 +172,12 @@
                                 <div class="re-info-count">数量</div>
                                 <div class="re-info-all">小计</div>
                             </div>
-                            <div class="re-info-data">
+                            <div class="re-info-data" v-for="skuslist in skus">
                                 <div class="re-info-store">
-                                   <div class="re-goods"><img src="../../assets/imagec.png" alt=""></div>
+                                   <div class="re-goods"><img :src="pro_xq.listImg | formatImg140x140" alt=""></div>
                                     <div>
-                                        <div>联想E570c15.6英寸笔记本</div>
-                                        <div>黑色</div>
+                                        <div>{{skuslist.name}}</div>
+                                        <div>{{skuslist.stock}}</div>
                                         <div class="store-serve"><span>售后无忧</span>  <span>厂家直销</span> </div>
                                     </div>
                                 </div>
@@ -184,17 +185,17 @@
                                     e采配送
                                 </div>
                                 <div class="re-info-price">
-                                    2999.00
+                                    {{skuslist.price | formatFee}}
                                 </div>
-                                <div class="re-info-count">1</div>
+                                <div class="re-info-count"><button class="btn_jiajian" style="margin-right:15px">-</button>1<button class="btn_jiajian" style="margin-left:15px">+</button></div>
                                 <div class="re-info-all"></div>
                             </div>
-                            <div class="re-info-footer">
-                                <div>合计</div>
-                                <div>
-                                    <div>免运费</div>
-                                    <div class="re-all-price">￥2999</div>
-                                </div>
+                            <div class="re-info-footer" style="text-align: right">
+                                <div  style="padding-right: 25px;padding-bottom: 10px">运费:(免运费)</div>
+                                <span>
+                                    <span style="padding-right: 50px">合计</span>
+                                    <span class="re-all-price" style="font-size: 25px;color: red">￥2999</span>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -235,12 +236,12 @@
                             <div class="re-edit-coupon">
                                 <span class="del-coupon">-</span><span>使用优惠券</span>
                             </div>
-                            <div class="u-item">
+                            <div class="u-item" v-for="couponslist in coupons">
                                 <div>
                                     <img src="../../assets/删除.png" class="delete" alt="">
-                                    <div class="count">￥ <span class="super">5</span> </div>
-                                    <div class="call">满2188元可用</div>
-                                    <div class="date">2017.04.16 - 2017.05.20</div>
+                                    <div class="count">￥ <span class="super">{{couponslist.fee | formatee1}}</span>  </div>
+                                    <div class="call">{{couponslist.name}}</div>
+                                    <div class="date">{{couponslist.effectTime | formatDate}} - {{couponslist.dueTime | formatDate}}</div>
                                 </div>
                                 <div>
                                     <div> 仅可购买e采自营部份家电商品</div>
@@ -383,6 +384,7 @@
     <script src="../../js/swiper/Swiper-3.4.2/dist/js/swiper.jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/vee-validate/2.0.0-rc.3/vee-validate.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-dateFormat/1.0/jquery.dateFormat.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="../../js/utils.js"></script>
     <script src="../../js/config.js"></script>

@@ -111,7 +111,7 @@
                       pInfo=data.items[i].skuId+"_"+data.items[i].quantity;
                     }
                   }
-                  window.location.href="personal/my_shopping_balance.html?act=groupon&id="+id+"&info="+pInfo;
+                  window.location.href="personal/my_shopping_balance.html?act=groupon&id="+id+"&info="+pInfo+"&shopId="+shopId;
 
                 },
                 quick :function(e){

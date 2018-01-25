@@ -9,6 +9,7 @@
   var utk = $.cookie("utk");
   var act = $.getUrlParam("act") || "pay";
   var pInfo = $.getUrlParam("info");
+  var shopId=$.getUrlParam("shopId") || 0;
 	var pro_jingxuan_list = new Vue({
 	      el:"#my_shopping_balance",
 	      data:{
