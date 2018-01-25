@@ -19,7 +19,7 @@
 	
 	Vue.filter('formatFee', function (value) {
 		if (value == 0) {
-			return "免费"
+			return '￥'+'0.00'
 		} else {
 			return '￥' + (value/100).toFixed(2);
 		}

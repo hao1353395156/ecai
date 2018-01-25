@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/payoff.css">
+    <script src="../../js/jquery-1.11.3.min.js"></script>
+    <title>售后服务</title>
+</head>
+<body>
+    <div id="li_pay" v-cloak>
+    <div>
+    <div class="yd-main">
+        <div id="yd-head">
+        <div class="yd-head" id="top">
+        <div class="yd-head-l">
+            <div>
+                <img src="../../assets/index.png" alt="">
+                <a href="../index.html">首页</a>
+            </div>
+            <div>
+                <a href="../choose_add.html"><span>切换城市</span></a>
+            </div>
+            <div class="yd-head-l-add">
+                <img src="../../assets/coordinate.png" alt="">
+                <a href="../choose_add.html">{{cityname}}</a>
+            </div>
+        </div>
+        <div class="yd-head-r">
+            <div v-if="id">
+                <div>
+                    <span> <a href="../personal/edit_profile.html">欢迎 {{user}}</a></span>
+                    <span style="margin-left: 12px"> <a href="../user/login.html" id="out_user">退出</a></span>
+                </div>
+            </div>
+            <div v-else>
+                <div>
+                    <span><a href="../user/login.html">登录</a></span>
+                </div>
+                <div>
+                    <span style="margin-left: 12px">  <a href="../user/user_log_on.html">注册</a></span>
+                </div>
+            </div>
+            <div>
+                <span style="font-size: 12px">|</span>
+            </div>
+           <a href="../personal/my_order.html" v-if="id">
+                <span>我的订单</span>
+            </a>
+            <a href="../user/login.html" v-else>
+                <span>我的订单</span>
+            </a>
+            <a href="../personal/my_ecai.html" v-if="id">
+                <span>我的e采</span>
+            </a>
+            <a href="../user/login.html" v-else>
+                <span>我的e采</span>
+            </a>
+            <a href="../zaixian_kefu.html" v-if="id">
+                <span>客户服务</span>
+            </a>
+            <a href="../user/login.html" v-else>
+                <span>客户服务</span>
+            </a>
+                    <a href="##">
+                        <span>手机e采</span>
+                    </a>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="yd-payoff">
+            <div class="pay-goods">
+                 <div class="pay-g-l">
+                     <div class="pay-item" v-for="pro_list in li_paylist.lineItems">
+                         <div>{{pro_list.name}}</div>
+                         <a href="">详情</a>
+                     </div>
+                     <!-- <div class="pay-item">
+                         <div>格力（GREE）正1.5匹 变频 品圆 冷暖 壁挂式空调 KFR-35GW/(35592)…</div>
+                         <a href="">详情</a>
+                     </div> -->
+                 </div>
+                <div class="pay-g-r">
+                    <span>需支付</span><span class="pay-price">{{li_paylist.fee | formatFee}}</span>
+                </div>
+            </div>
+
+            <div class="pay-type">
+                <div class="type-top">
+                    添加新卡/网银支付
+                </div>
+                <div class="type-group">
+                    <div class="type-item">
+                        中国银行
+                    </div>
+                    <div class="type-item">
+                        中国银行
+                    </div>
+                    <div class="type-item">
+                        中国银行
+                    </div>
+                    <div class="type-item">
+                        中国银行
+                    </div>
+                    <div class="type-item">
+                        中国银行
+                    </div>
+                    <div class="type-item">
+                        中国银行
+                    </div>
+                    <div class="type-item">
+                        中国银行
+                    </div>
+                    <div class="type-item">
+                        中国银行
+                    </div>
+                    <div class="type-item">
+                        中国银行
+                    </div>
+                </div>
+            </div>
+
+            <div class="pay-cho">
+                <div class="pay-weixin cho">微信支付</div>
+                <div class="pay-over">货到付款</div>
+            </div>
+
+        </div>
+
+        <div class="mask"></div>
+        <div class="alert">
+            <div class="alert-top">
+                <div>支付2999.00元</div>
+                <div><img src="../../assets/关闭.png" alt=""></div>
+            </div>
+            <div>微信扫码支付</div>
+            <div class="code"><img src="../../assets/imagec.png" alt=""></div>
+            <div class="alert-b">请使用<span>微信</span>扫一扫二维码完成支付</div>
+        </div>
+
+
+        <div id="yd-footer">
+            Ecaishangcheng &#169; 2003-2018 ，e采商城有限公司版权所有 沪ICP备16207556号-6| 沪B6-20140131| 沪B6-20140358
+        </div>
+    </div>
+</div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<script src="../../js/swiper/Swiper-3.4.2/dist/js/swiper.jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/vee-validate/2.0.0-rc.3/vee-validate.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-dateFormat/1.0/jquery.dateFormat.min.js"></script>
+<script src="../../js/utils.js"></script>
+<script src="../../js/config.js"></script>
+<script src="../../js/top.js"></script>
+<script src="../../js/personal/lj_pay.js"></script>
+</html>
