@@ -7,12 +7,12 @@
 	            order_staus:0,//订单状态
 	            order_status_list:
 	            {
-	             	all:[],
-	             	dai:[],
-	             	fa:[],
-	             	shou:[],
-	             	ping:[],
+	             	dai:0,
+	             	fa:0,
+	             	shou:0,
+	             	ping:0,
 	            },
+
 	        },
 	        methods : {
 
@@ -23,21 +23,20 @@
 	             Api.get(url,function(e){
 		            	if(e.code==0){
 		            	    order.order_list = e.data.items;
-		            	    for (var i=0;i<e.data.items.length;){
+		            	    for (var i=0;i<e.data.items.length;i++){
 			            	   	if(e.data.items.status==0){
-			            	   		order.order_status_list.dai.push(e.data.items[i]);
-
+			            	   		order.order_status_list.dai++;
 			            	   	}
 			            	   	if(e.data.items.status==200){
-			            	   		order.order_status_list.fa.push(e.data.items[i]);
+			            	   		order.order_status_list.fa++;
 
 			            	   	}
 			            	   	if(e.data.items.status==300){
-			            	   		order.order_status_list.shou.push(e.data.items[i]);
+			            	   		order.order_status_list.shou++;
 
 			            	   	}
 			            	   	if(e.data.items.status==400){
-			            	   		order.order_status_list.ping.push(e.data.items[i]);
+			            	   		order.order_status_list.ping++;
 
 			            	   	}
 
