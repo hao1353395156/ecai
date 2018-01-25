@@ -113,10 +113,10 @@
                 <div class="r-nav">
                     <div>
                         <a href="javascript:;" @click="order_staus=1" :class="order_staus==1 ? 'r-nav-item ser-act':''">全部订单(<span style="color: #FF2961">{{order_list.length || 0}}</span>)</a>
-                        <a href="javascript:;" @click="order_staus=0" :class="order_staus==0 ? 'r-nav-item ser-act':''">待支付(<span style="color: #FF2961">{{order_status_list.dai.length || 0}}</span>)</a>
-                        <a href="javascript:;" @click="order_staus=200" :class="order_staus==200 ? 'r-nav-item ser-act':''">待发货(<span style="color: #FF2961">{{order_status_list.fa.length || 0}}</span>)</a>
-                        <a href="javascript:;" @click="order_staus=300" :class="order_staus==300 ? 'r-nav-item ser-act':''">待收货(<span style="color: #FF2961">{{order_status_list.shou.length || 0}}</span>)</a>
-                        <a href="javascript:;" @click="order_staus=400" :class="order_staus==400 ? 'r-nav-item ser-act':''">待评价(<span style="color: #FF2961">{{order_status_list.ping.length || 0}}</span>)</a>
+                        <a href="javascript:;" @click="order_staus=0" :class="order_staus==0 ? 'r-nav-item ser-act':''">待支付(<span style="color: #FF2961">{{order_status_list.dai || 0}}</span>)</a>
+                        <a href="javascript:;" @click="order_staus=200" :class="order_staus==200 ? 'r-nav-item ser-act':''">待发货(<span style="color: #FF2961">{{order_status_list.fa|| 0}}</span>)</a>
+                        <a href="javascript:;" @click="order_staus=300" :class="order_staus==300 ? 'r-nav-item ser-act':''">待收货(<span style="color: #FF2961">{{order_status_list.shou || 0}}</span>)</a>
+                        <a href="javascript:;" @click="order_staus=400" :class="order_staus==400 ? 'r-nav-item ser-act':''">待评价(<span style="color: #FF2961">{{order_status_list.ping || 0}}</span>)</a>
                     </div>
                     <div style="display:none">
                         <input type="text">
