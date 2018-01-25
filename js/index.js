@@ -22,6 +22,15 @@
           groupGoods:[], //拼单商品
         },
       methods:{
+        search : function (e){
+           var key=$("#search_key").val();
+           if(key.length<1){
+            swal("请输入关键字！");
+            return;
+           }
+           window.location="search.html?cn="+key;
+            
+        },
         timeFromat : function(i,time){
           //建立定时器
          setInterval(function(){

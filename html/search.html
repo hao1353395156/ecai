@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/store.css">
     <link rel="stylesheet" href="../css/store-home.css">
@@ -92,8 +93,8 @@
         <div class="yd-search">
             <img src="../assets/login2.png" alt="">
             <div class="yd-search-input">
-                <input type="text">
-                <span>搜全站</span>
+                <input type="text"  id="search_key" :value="search_sql.cn">
+                <a href="javascript:void(0)" @click="search"><span>搜全站</span></a>
             </div>
             <a class="shop-car" href="我的购物车.html">
                 <img src="../assets/购物车icon.png" alt="">
@@ -152,19 +153,19 @@
             </div>
 
             <div class="data-select">
-                <div class="selected">综合</div>
-                <div>销量</div>
-                <div>价格从高到低</div>
-                <div>价格从低到高</div>
-                <input type="text">
+                <div class="selected px_order" @click="add_parse('rk',1,0)">综合</div>
+                <div class="px_order" @click="add_parse('sn',1,1)">销量</div>
+                <div class="px_order" @click="add_parse('pe',1,2)">价格从高到低</div>
+                <div class="px_order" @click="add_parse('pe',0,3)">价格从低到高</div>
+                <input type="text" v-on:blur="add_parse('lp',this.value)" value="" id="lp">
                 <i>-</i>
-                <input type="text">
+                <input type="text" v-on:blur="add_parse('tp',this.value)" value="" id="tp">
             </div>
 
             <div class="self-goods">
                 <div class="goods-item" v-for="prolistlist in prolist">
                     <div class="goods-img">
-                        <img v-bind:src="prolistlist.pcMainImg | formatImg264x240" alt="">
+                        <img v-bind:src="config.ALI_OSS_GATEWAY+'/'+prolistlist.pcMainImg+'?x-oss-process=image/resize,w_200' | formatImg264x240" alt="">
                     </div>
                     <div class="goods-data">
                         {{prolistlist.name}}
@@ -197,6 +198,7 @@
     <script src="../js/swiper/Swiper-3.4.2/dist/js/swiper.jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script src="../js/utils.js"></script>
     <script src="../js/config.js"></script>
     <script src="../js/top.js"></script>

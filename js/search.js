@@ -1,5 +1,19 @@
 (function() {
 var sid=$.cookie("provinceid");
+var pn = $.getUrlParam("pn") || 1,
+    ps = 20,      //页码
+    cn = $.getUrlParam("cn"),    //名称
+    lp = $.getUrlParam("lp"),    //价格小 n-100
+    tp = $.getUrlParam("tp"),    //价格大 0-n
+    bd = $.getUrlParam("bd"), //品牌
+    st = $.getUrlParam("st"),         //0普通 200 自营
+    ca = $.getUrlParam("ca"), //分类
+    tg = $.getUrlParam("tg"),     //标签
+    sca = $.getUrlParam("sca"),   //店铺分类
+    sp = $.getUrlParam("sp"),   //店铺id
+    rk = $.getUrlParam("rk"),   //综合排序
+    sn = $.getUrlParam("sn"), //销量排序
+    pe = $.getUrlParam("pe");  //价格 0 底到高  1 高到底
  var search_fen = new Vue({
       el:"#search",
       data : {
@@ -9,14 +23,53 @@ var sid=$.cookie("provinceid");
           prolist:'',//商品列表
           search_key:[],//搜索条件
           search_sql:{
-              bd:'',//品牌搜索
-              ca:'',//分类搜索
-              rk:'1',//综合排序
-              sn:'',//销量排序
-              pe:'',//价格排序 0低到高，1高到低  
+                pn :  pn,
+                ps : 20,      //页码
+                cn : cn,    //名称
+                lp : lp,    //价格小 n-100
+                tp : tp,    //价格大 0-n
+                bd : bd,     //品牌
+                st : st,     //0普通 200 自营
+                ca : ca,     //分类
+                tg : tg,     //标签
+                sca :sca,   //店铺分类
+                sp : sp,   //店铺id
+                rk : rk,   //综合排序
+                sn : sn, //销量排序
+                pe : pe,  //价格 0 底到高  1 高到底
           },//搜索url
         },
       methods : {
+        search : function (e){
+           var key=$("#search_key").val();
+           if(key.length<1){
+            swal("请输入关键字！");
+            return;
+           }
+           window.location="search.html?cn="+key;
+            
+        },
+        add_parse : function(name,value,index=0){
+          //排序
+          if(name=="rk" || name=="sn" || name=="pe"){
+            this.search_sql.rk=0;
+            this.search_sql.sn=0;
+            this.search_sql.pe=null;
+            $(".px_order").removeClass("selected");
+            $(".px_order").eq(index).addClass("selected");
+          }
+          this.search_sql[name]=value;
+
+          //价格范围
+          if(name=="lp"){
+            this.search_sql.lp=$("#lp").val();
+          }
+          if(name=="tp"){
+            this.search_sql.tp=$("#tp").val();
+          }
+
+          this.ajax();
+        },
         addkey : function(e){
              var search = e.target;//获取元素
              var type = $(search).attr("type");
@@ -55,8 +108,20 @@ var sid=$.cookie("provinceid");
          },
         ajax : function(e){
              var data={
-                 bd : this.search_sql.bd || null,
-                 ca : this.search_sql.ca || null,
+                pn : this.search_sql.pn || 1,
+                ps : this.search_sql.ps || 20,      //页码
+                cn : this.search_sql.cn || null,    //名称
+                lp : this.search_sql.lp || null,    //价格小 n-100
+                tp : this.search_sql.tp || null,    //价格大 0-n
+                bd : this.search_sql.bd || null, //品牌
+                st : this.search_sql.st || null,         //0普通 200 自营
+                ca : this.search_sql.ca || null, //分类
+                tg : this.search_sql.tg || null,     //标签
+                sca : this.search_sql.sca || null,   //店铺分类
+                sp : this.search_sql.sp || null,   //店铺id
+                rk : this.search_sql.rk || 1,   //综合排序
+                sn : this.search_sql.sn || null, //销量排序
+                pe : this.search_sql.pe || null,  //价格 0 底到高  1 高到底
              }
                //console.log(this.search_sql);
             var purl = "";
@@ -67,16 +132,17 @@ var sid=$.cookie("provinceid");
                  };
               }
               console.log(purl);
-              var url = config.API_GATEWAY + "/mt/sites/"+sid+"/catalogs?pn=1&ps=20&"+purl;
+              var url = config.API_GATEWAY + "/mt/sites/"+sid+"/catalogs?"+purl;
                    Api.get(url,function(e) {
                          if(e.code==0){
                              search_fen.prolist = e.data.items;
                          }
-         });
+              });
         }
       },
     });
-
+search_fen.ajax();
+//GET /mt/v2/catalogs
 
  
 //品牌
