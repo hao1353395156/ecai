@@ -126,7 +126,7 @@
                                 <!--<img src="../assets/删除.png" class="delete" alt="">-->
                                 <div class="count">￥ <span class="super">{{coupon_weilist.fee | formatee2}}</span> </div>
                                 <div class="call">{{coupon_weilist.shopName}}</div>
-                                <div class="date">{{coupon_weilist.effectTime}} - {{coupon_weilist.dueTime}}</div>
+                                <div class="date">{{coupon_weilist.effectTime | formatDate}} - {{coupon_weilist.dueTime | formatDate}}</div>
                             </div>
                             <div>
                                 <div> {{coupon_weilist.name}}</div>
@@ -139,7 +139,7 @@
                                 <!--<img src="../assets/删除.png" class="delete" alt="">-->
                                 <div class="count">￥ <span class="super">{{coupon_yilist.fee | formatee2}}</span> </div>
                                 <div class="call">{{coupon_yilist.shopName}}</div>
-                                <div class="date">{{coupon_yilist.effectTime}} - {{coupon_yilist.dueTime}}</div>
+                                <div class="date">{{coupon_yilist.effectTime | formatDate}} - {{coupon_yilist.dueTime | formatDate}}</div>
                             </div>
                             <div>
                                 <div> {{coupon_yilist.name}}</div>
@@ -152,7 +152,7 @@
                                 <!--<img src="../assets/删除.png" class="delete" alt="">-->
                                 <div class="count">￥ <span class="super">{{coupon_guolist.fee | formatee2}}</span> </div>
                                 <div class="call">{{coupon_guolist.shopName}}</div>
-                                <div class="date">{{coupon_guolist.effectTime}} - {{coupon_guolist.dueTime}}</div>
+                                <div class="date">{{coupon_guolist.effectTime | formatDate}} - {{coupon_guolist.dueTime | formatDate}}</div>
                             </div>
                             <div>
                                 <div> {{coupon_guolist.name}}</div>
@@ -221,6 +221,7 @@
 </body>
 <script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-dateFormat/1.0/jquery.dateFormat.min.js"></script>
 <script src="../../js/leftTime.js"></script>
 <script src="../../js/utils.js"></script>
 <script src="../../js/config.js"></script>

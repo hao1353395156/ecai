@@ -16,6 +16,7 @@
 
 </style>
 <body>
+    <div id="my_fan" v-cloak>
     <div class="yd-main">
         <div id="yd-head">
         <div class="yd-head" id="top">
@@ -115,9 +116,9 @@
                 <div class="r-top">我的返修退/换货</div>
                 <div class="r-nav">
                     <div>
-                        <a href="" class="r-nav-item ser-act">全部</a>
-                        <a href="">处理中</a>
-                        <a href="">已完成</a>
+                        <a href="javascript:;" @click="fan_status=1" :class="fan_status==1 ? 'r-nav-item ser-act':''">全部</a>
+                        <a href="javascript:;" @click="fan_status=201" :class="fan_status==201 ? 'r-nav-item ser-act':''">处理中</a>
+                        <a href="javascript:;" @click="fan_status=500" :class="fan_status==500 ? 'r-nav-item ser-act':''">已完成</a>
                     </div>
                     <div>
                         <input type="text">
@@ -141,32 +142,35 @@
                         </div>
                         <div class="return-operation">交易操作</div>
                     </div>
-
-                    <div class="return-item">
+                     <!-- 未发货申请退款 -->
+                    <div class="return-item"  v-show="fan_status==201 || fan_status==1" v-for="(fan,index) in fan_list" v-if="fan.status==201">
                         <div>
                             <div class="order-time">
-                                <span>2017年5月15日</span>
-                                <span>12:00:00</span>
-                                <span>订单号：201436541722738</span>
+                                <span>{{fan.createTime | formatDateTime}}</span>
+                                
+                                <span>订单号：{{fan.id}}</span>
                             </div>
                             <div>
-                                <span>e采商城 <span class="store-type">自营</span></span>
-                                <span><img src="../../assets/contactb.png" alt="">联系商家</span>
+                                <span v-if="fan.shopType==0">{{fan.shopName}} <span class="store-type">普通商店</span></span>
+                                    <span v-else>{{fan.shopName}} <span class="store-type">e采自营</span></span>
+                                    <span><img src="../../assets/contactb.png" alt="">联系商家</span>
                             </div>
                         </div>
-                        <div class="return-det-info">
+                        <div class="return-det-info" v-for="v in fan.lineItems">
                             <div class="return-g-info">
                                 <div class="info-avatar">
-                                    <img src="../../assets/imagec.png" alt="">
+                                    <img  :src="v.mainImg | formatImg170x160" alt="">
                                 </div>
                                 <div>
-                                    <p>联想E570c15.6英寸笔记本</p>
-                                    <p>黑色</p>
+                                    <p style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;width:190px">{{v.name}}</p>
+                                    <p>{{v.skuName}}</p>
                                 </div>
                             </div>
-                            <div class="return-price">2999.00</div>
-                            <div class="return-time">2017年5月12 12:00:00</div>
-                            <div class="return-type">仅退款</div>
+                            <div class="return-price">{{v.fee | formatFee}}</div>
+                            <div class="return-time" v-if="fan.status==201">{{fan.refund.applyTime | formatDateTime}}</div>
+                             <div class="return-time" v-else>{{fan.repair.createTime | formatDateTime}}</div>
+                            <div class="return-type" v-if="fan.status==201">未发货申请退款</div>
+                            <div class="return-type" v-else>完成</div>
                             <div class="return-state">
                                 退款中
                             </div>
@@ -174,7 +178,44 @@
                         </div>
 
                     </div>
-                    <div class="return-item">
+                    <!-- 完成 -->
+                    <div class="return-item"  v-show="fan_status==500 || fan_status==1"v-for="(fan,index) in fan_list" v-if="fan.status==500">
+                        <div>
+                            <div class="order-time">
+                                <span>{{fan.createTime | formatDateTime}}</span>
+                                
+                                <span>订单号：{{fan.id}}</span>
+                            </div>
+                            <div>
+                                <span v-if="fan.shopType==0">{{fan.shopName}} <span class="store-type">普通商店</span></span>
+                                    <span v-else>{{fan.shopName}} <span class="store-type">e采自营</span></span>
+                                    <span><img src="../../assets/contactb.png" alt="">联系商家</span>
+                            </div>
+                        </div>
+                        <div class="return-det-info" v-for="v in fan.lineItems">
+                            <div class="return-g-info">
+                                <div class="info-avatar">
+                                    <img  :src="v.mainImg | formatImg170x160" alt="">
+                                </div>
+                                <div>
+                                    <p style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;width:190px">{{v.name}}</p>
+                                    <p>{{v.skuName}}</p>
+                                </div>
+                            </div>
+                            <div class="return-price">{{v.fee | formatFee}}</div>
+                            <div class="return-time" v-if="fan.status==201">{{fan.refund.applyTime | formatDateTime}}</div>
+                             <div class="return-time" v-else>{{fan.repair.createTime | formatDateTime}}</div>
+                            <div class="return-type" v-if="fan.status==201">未发货申请退款</div>
+                            <div class="return-type" v-else>完成</div>
+                            <div class="return-state">
+                                退款中
+                            </div>
+                            <div class="return-operation">查看详情</div>
+                        </div>
+
+                    </div>
+
+                    <!-- <div class="return-item">
                         <div>
                             <div class="order-time">
                                 <span>2017年5月15日</span>
@@ -204,7 +245,7 @@
                             </div>
                             <div class="return-operation">查看详情</div>
                         </div>
-
+ -->
                     </div>
 
 
@@ -226,11 +267,14 @@
             <div>提交申请成功，请耐心等待商家处理哦~</div>
         </div>
     </div>
+    </div>
 </body>
 <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
 <script src="https://cdn.jsdelivr.net/vee-validate/2.0.0-rc.3/vee-validate.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-dateFormat/1.0/jquery.dateFormat.min.js"></script>
 <script src="../../js/utils.js"></script>
 <script src="../../js/config.js"></script>
 <script src="../../js/top.js"></script>
+<script src="../../js/personal/my_fan.js"></script>
 </html>
