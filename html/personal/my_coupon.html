@@ -131,7 +131,7 @@
                             <div>
                                 <div> {{coupon_weilist.name}}</div>
                                 <div style="display:none">券编号：1234567862</div>
-                                <div class="use-it">立即使用</div>
+                                <div class="use-it"><a :href="'../shop_index.html?shopId='+coupon_weilist.shopId">立即使用</a></div>
                             </div>
                         </div>
                         <div class="u-item" v-for="coupon_yilist in coupon_yi"  v-show="qieshow==2">
@@ -144,7 +144,7 @@
                             <div>
                                 <div> {{coupon_yilist.name}}</div>
                                 <div style="display:none">券编号：1234567862</div>
-                                <div class="use-it">立即使用</div>
+                               
                             </div>
                         </div>
                         <div class="u-item" v-for="coupon_guolist in coupon_guo"  v-show="qieshow==3">
@@ -157,7 +157,7 @@
                             <div>
                                 <div> {{coupon_guolist.name}}</div>
                                 <div style="display:none">券编号：1234567862</div>
-                                <div class="use-it">立即使用</div>
+                                
                             </div>
                         </div>
                         <!-- <div class="u-item">
