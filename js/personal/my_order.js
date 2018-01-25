@@ -1,28 +1,21 @@
-/**
- * 配置信息 把配置信息分为基础配置、提示信息
- */
+
 (function() {
-	var shopId=$.getUrlParam("shopId") || 0;
-	// console.log(shopId);
 	var order = new Vue({
 	      el:"#my_order",
 	      data:{
-             wuliiu_news:'',//消息列表
+             order_list:'',//消息列表
+             order_staus:0,//订单状态
 	        },
 	        methods : {
 
-	         },
+	        },
 	    });
-	// 
-	var url = config.API_GATEWAY + "/us/users/messages?pn=1&ps=20";
-	            	Api.get(url,function(e){
-	            		if(e.data.records>0){
-	            	   order.wuliiu_news = e.data.items;
-	            	 }else{
-	            	 	order.wuliiu_news = 0;
-	            	 	// console.log(news.wuliiu_news);
-	            	 }
-
+	//订单列表
+	var url=config.API_GATEWAY + "/td/orders?pn=1&ps=20";
+	             Api.get(url,function(e){
+		            	if(e.code==0){
+		            	   order.order_list = e.data.items;
+		            	 }
 		            });
 	window.Api = Api;
 })();

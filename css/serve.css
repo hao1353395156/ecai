@@ -213,7 +213,7 @@
     justify-content: space-between;
 }
 .r-con-item span,.r-con-item a{
-    margin-right: 30px;
+    margin-right: 10px;
     display: inline-block;
 }
 .order-data{

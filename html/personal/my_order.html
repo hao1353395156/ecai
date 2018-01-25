@@ -112,12 +112,13 @@
                 <div class="r-top">我的订单</div>
                 <div class="r-nav">
                     <div>
-                        <a href="" class="r-nav-item ser-act">全部订单</a>
-                        <a href="">待支付(<span style="color: #FF2961">1</span>)</a>
-                        <a href="">待收货</a>
-                        <a href="">已关闭</a>
+                        <a href="javascript:;" @click="order_staus=1" :class="order_staus==1 ? 'r-nav-item ser-act':''">全部订单</a>
+                        <a href="javascript:;" @click="order_staus=0" :class="order_staus==0 ? 'r-nav-item ser-act':''">待支付(<span style="color: #FF2961">1</span>)</a>
+                        <a href="javascript:;" @click="order_staus=200" :class="order_staus==200 ? 'r-nav-item ser-act':''">待发货</a>
+                        <a href="javascript:;" @click="order_staus=300" :class="order_staus==300 ? 'r-nav-item ser-act':''">待收货</a>
+                        <a href="javascript:;" @click="order_staus=400" :class="order_staus==400 ? 'r-nav-item ser-act':''">待评价</a>
                     </div>
-                    <div>
+                    <div style="display:none">
                         <input type="text">
                         <img src="../../assets/搜索%20灰色.png" alt="">
                     </div>
@@ -132,32 +133,46 @@
                     </div>
                     <div><span>全部状态</span><i class="fa fa-caret-down" aria-hidden="true"></i></div>
                 </div>
-                <div class="r-con">
+
+                <div class="r-con" v-show="order_staus==0" v-for="order in order_list" v-if="order.status==0">
                     <div class="r-con-item">
-                    <div class="wait">
-                        <div class="order-state">等待付款</div>
-                        <a href="拼团详情页.html" style="color: #333">订单详情 <i class="fa fa-angle-right"></i></a>
+                        <div class="wait">
+                            <div class="order-state">等待付款</div>
+                            <a href="拼团详情页.html" style="color: #333">订单详情 <i class="fa fa-angle-right"></i></a>
+                        </div>
+                        <div class="wait" style="display:none">
+                            <div><i class="fa fa-clock-o" aria-hidden="true"></i>剩余4天23时59分{{order.closeTime | formatDateTime}}</div>
+                        </div>
                     </div>
-                    <div class="wait">
-                        <div><i class="fa fa-clock-o" aria-hidden="true"></i>剩余4天23时59分</div>
-                    </div>
-                </div>
                     <div>
                         <div class="r-con-item">
                             <div>
                                 <div class="order-time">
-                                    <span>2017年5月15日</span>
-                                    <span>12:00:00</span>
-                                    <span>订单号：201436541722738</span>
+                                    <span>下单时间：{{order.createTime | formatDateTime}}</span>
+                                    <span></span>
+                                    <span>订单号：{{order.id}}</span>
                                 </div>
                                 <div>
-                                    <span>e采商城 <span class="store-type">自营</span></span>
+                                    <span v-if="order.shopType==0">{{order.shopName}} <span class="store-type">普通商店</span></span>
+                                    <span v-else>{{order.shopName}} <span class="store-type">e采自营</span></span>
                                     <span><img src="../../assets/contactb.png" alt="">联系商家</span>
                                 </div>
                             </div>
                         </div>
                         <div class="r-con-item">
-                            <div class="order-info">
+                            <div class="order-info" v-for="pro_list in order.lineItems">
+                                <div class="order-det">
+                                    <div class="order-img"><img :src="pro_list.mainImg | formatImg170x160" alt=""></div>
+                                    <div style="padding-left: 10px">
+                                        <div>{{pro_list.name}}</div>
+                                        <div class="order-data"><span>{{pro_list.skuName}}</span></div>
+                                    </div>
+                                </div>
+                                <div class="order-mon">
+                                    <span>{{pro_list.quantity}}</span><span>{{pro_list.price | formatFee}}</span>
+                                </div>
+                            </div>
+                            <!-- <div class="order-info">
                                 <div class="order-det">
                                     <div class="order-img"><img src="../../assets/imagec.png" alt=""></div>
                                     <div>
@@ -168,33 +183,21 @@
                                 <div class="order-mon">
                                     <span>1</span><span>2999.00</span>
                                 </div>
-                            </div>
-                            <div class="order-info">
-                                <div class="order-det">
-                                    <div class="order-img"><img src="../../assets/imagec.png" alt=""></div>
-                                    <div>
-                                        <div>联想E570c15.6英寸笔记本</div>
-                                        <div class="order-data"><span>黑色</span></div>
-                                    </div>
-                                </div>
-                                <div class="order-mon">
-                                    <span>1</span><span>2999.00</span>
-                                </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="r-con-item">
                             <div>
-                                <div><span class="yd-price">总额￥2499</span> <span>（含快递：0.00元）</span> <a href="立即支付.html" class="offer-btn">立即付款</a></div>
+                                 <div><span class="yd-price">总额{{order.fee | formatFee}}</span> <span>（含快递：{{order.postage | formatFee}}）</span> <a href="立即支付.html" class="offer-btn">立即付款</a></div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-
-
-
+                      
+                    <div v-show="order_staus==200" v-for="order in order_list" v-if="order.status==200">
                     <div class="r-con-item">
                         <div>
-                            <div class="order-state">已发货</div>
+                            <div class="order-state">待发货</div>
                             <a href="">订单详情 <i class="fa fa-chevron-right"></i></a>
                         </div>
                         <div class="sur-time">
@@ -205,41 +208,42 @@
                         <div class="r-con-item">
                             <div>
                                 <div class="order-time">
-                                    <span>2017年5月15日</span>
-                                    <span>12:00:00</span>
-                                    <span>订单号：201436541722738</span>
+                                    <span>下单时间：{{order.createTime | formatDateTime}}</span>
+                                    <span></span>
+                                    <span>订单号：{{order.id}}</span>
                                 </div>
                                 <div>
-                                    <span>e采商城 <span class="store-type">自营</span></span>
+                                     <span v-if="order.shopType==0">{{order.shopName}} <span class="store-type">普通商店</span></span>
+                                    <span v-else>{{order.shopName}} <span class="store-type">e采自营</span></span>
                                     <span><img src="../../assets/contactb.png" alt="">联系商家</span>
                                 </div>
                             </div>
                         </div>
                         <div class="r-con-item">
-                            <div class="order-info">
+                             <div class="order-info" v-for="pro_list in order.lineItems">
                                 <div class="order-det">
-                                    <div class="order-img"><img src="../../assets/imagec.png" alt=""></div>
-                                    <div>
-                                        <div>联想E570c15.6英寸笔记本</div>
-                                        <div class="order-data"><span>黑色</span></div>
+                                    <div class="order-img"><img :src="pro_list.mainImg | formatImg170x160" alt=""></div>
+                                    <div style="padding-left: 10px">
+                                        <div>{{pro_list.name}}</div>
+                                        <div class="order-data"><span>{{pro_list.skuName}}</span></div>
                                     </div>
                                 </div>
                                 <div class="order-mon">
-                                    <span>1</span><span>2999.00</span>
+                                    <span>{{pro_list.quantity}}</span><span>{{pro_list.price | formatFee}}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="r-con-item">
                             <div>
-                                <div><span class="yd-price">总额￥2499</span> <span>（含快递：0.00元）</span> <a href="立即支付.html" class="offer-btn">立即付款</a></div>
+                                <div><span class="yd-price">总额{{order.fee | formatFee}}</span> <span>（含快递：{{order.postage | formatFee}}）</span> <a href="立即支付.html" class="offer-btn">提醒发货</a></div>
                             </div>
                             <div class="foot-op"><a href="">返修退换货</a></div>
                         </div>
                     </div>
+                    </div>
 
 
-
-
+                    <div v-show="order_staus==300" v-for="order in order_list" v-if="order.status==300">
                     <div class="r-con-item">
                         <div>
                             <div class="order-state">已付款</div>
@@ -281,11 +285,11 @@
                             <div class="foot-op"><a href="">退款</a></div>
                         </div>
                     </div>
+                    </div>
 
 
 
-
-
+                    <div v-show="order_staus==400">
                     <div class="r-con-item">
                         <div>
                             <div class="order-state">交易完成</div>
@@ -327,7 +331,7 @@
                             <div class="foot-op"><a href="">评论</a></div>
                         </div>
                     </div>
-
+                    </div>
                 </div>
 
                <!--  <div class="a-goods-page" style="display:none">
@@ -359,6 +363,7 @@
     <script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/vee-validate/2.0.0-rc.3/vee-validate.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-dateFormat/1.0/jquery.dateFormat.min.js"></script>
     <script src="../../js/utils.js"></script>
     <script src="../../js/config.js"></script>
     <script src="../../js/top.js"></script>
