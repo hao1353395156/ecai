@@ -236,7 +236,7 @@
                             <div class="re-edit-coupon">
                                 <span class="del-coupon">-</span><span>使用优惠券</span>
                             </div>
-                            <div class="u-item" v-for="couponslist in coupons">
+                           <!--  <div class="u-item" v-for="couponslist in coupons">
                                 <div>
                                     <img src="../../assets/删除.png" class="delete" alt="">
                                     <div class="count">￥ <span class="super">{{couponslist.fee | formatee1}}</span>  </div>
@@ -247,7 +247,10 @@
                                     <div> 仅可购买e采自营部份家电商品</div>
                                     <div>券编号：1234567862</div>
                                 </div>
-                            </div>
+                            </div> -->
+                            <select name="上海黄浦区" v-on:change="changeAddress" @click="isLogin"> 
+                                <option :value="addresslist.id" v-for="addresslist in address">{{addresslist.provinceName}}-{{addresslist.cityName}}-{{addresslist.areaName}}-{{addresslist.street}}</option> 
+                            </select>  
 
                             <div class="re-balance-price">
                                 <div class="balance-item">
