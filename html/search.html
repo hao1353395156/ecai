@@ -29,43 +29,60 @@
 <body>
     <div id="search" v-cloak>
     <div class="yd-main">
-        <div class="yd-store-img">
+        <div class="yd-store-img" style="display:none">
 
         </div>
         <div id="yd-head">
-        <div class="yd-head">
-            <div class="yd-head-l">
+        <div class="yd-head" id="top">
+        <div class="yd-head-l">
+            <div>
+                <img src="../assets/index.png" alt="">
+                <a href="##">首页</a>
+            </div>
+            <div>
+                <a href="choose_add.html"><span>切换城市</span></a>
+            </div>
+            <div class="yd-head-l-add">
+                <img src="../assets/coordinate.png" alt="">
+                <a href="choose_add.html">{{cityname}} </a>
+            </div>
+        </div>
+        <div class="yd-head-r">
+            <div v-if="id">
                 <div>
-                   <img src="../assets/首页.png" alt="">
-                    <a href="首页.html">首页</a>
-                </div>
-                <div>
-                    <span>切换城市</span>
-                </div>
-                <div class="yd-head-l-add">
-                    <img src="../assets/坐标.png" alt="">
-                    <a href="选择地址.html" >上海</a>
+                    <span> <a href="personal/edit_profile.html">欢迎 {{user}}</a></span>
+                    <span style="margin-left: 12px"> <a href="user/login.html" id="out_user">退出</a></span>
                 </div>
             </div>
-            <div class="yd-head-r">
+            <div v-else>
                 <div>
-                    <span>欢迎您lemon</span>
+                    <span><a href="user/login.html">登录</a></span>
                 </div>
                 <div>
-                    <span>退出</span>
+                    <span style="margin-left: 12px">  <a href="user/user_log_on.html">注册</a></span>
                 </div>
-                <div>
-                    <span style="font-size: 12px">|</span>
-                </div>
-                <a href="我的订单.html">
-                    <span>我的订单</span>
-                </a>
-                <a href="我的e采.html">
-                    <span>我的e采</span>
-                </a>
-                <a href="##">
-                    <span>客户服务</span>
-                </a>
+            </div>
+            <div>
+                <span style="font-size: 12px">|</span>
+            </div>
+            <a href="personal/my_order.html" v-if="id">
+                <span>我的订单</span>
+            </a>
+            <a href="user/login.html" v-else>
+                <span>我的订单</span>
+            </a>
+            <a href="personal/my_ecai.html" v-if="id">
+                <span>我的e采</span>
+            </a>
+            <a href="user/login.html" v-else>
+                <span>我的e采</span>
+            </a>
+            <a href="zaixian_kefu.html" v-if="id">
+                <span>客户服务</span>
+            </a>
+            <a href="user/login.html" v-else>
+                <span>客户服务</span>
+            </a>
                 <a href="##">
                     <span>手机e采</span>
                 </a>
@@ -182,6 +199,7 @@
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="../js/utils.js"></script>
     <script src="../js/config.js"></script>
+    <script src="../js/top.js"></script>
     <script src="../js/search.js"></script>
     
 </body>
