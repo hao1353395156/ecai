@@ -5,11 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/serve.css">
-    <link rel="stylesheet" href="../css/cancel.css">
-    <link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.min.css">
-    <script src="../js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/serve.css">
+    <link rel="stylesheet" href="../../css/cancel.css">
+    <link rel="stylesheet" href="../../css/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="../../js/jquery-1.11.3.min.js"></script>
     <title></title>
 </head>
 <style>
@@ -30,39 +30,56 @@
 <body>
     <div class="yd-main">
         <div id="yd-head">
-            <div class="yd-head">
-                <div class="yd-head-l">
-                    <div>
-                        <img src="../assets/首页.png" alt="">
-                        <a href="首页.html">首页</a>
-                    </div>
-                    <div>
-                        <span>切换城市</span>
-                    </div>
-                    <div class="yd-head-l-add">
-                        <img src="../assets/坐标.png" alt="">
-                        <span><a href="选择地址.html">上海</a></span>
-                    </div>
+             <div class="yd-head" id="top">
+        <div class="yd-head-l">
+            <div>
+                <img src="../../assets/index.png" alt="">
+                <a href="../index.html">首页</a>
+            </div>
+            <div>
+                <a href="../choose_add.html"><span>切换城市</span></a>
+            </div>
+            <div class="yd-head-l-add">
+                <img src="../../assets/coordinate.png" alt="">
+                <a href="../choose_add.html">{{cityname}}</a>
+            </div>
+        </div>
+        <div class="yd-head-r">
+            <div v-if="id">
+                <div>
+                    <span> <a href="../personal/edit_profile.html">欢迎 {{user}}</a></span>
+                    <span style="margin-left: 12px"> <a href="../user/login.html" id="out_user">退出</a></span>
                 </div>
-                <div class="yd-head-r">
-                    <div>
-                        <span>欢迎您lemon</span>
-                    </div>
-                    <div>
-                        <span>退出</span>
-                    </div>
-                    <div>
-                        <span style="font-size: 12px">|</span>
-                    </div>
-                    <a href="我的订单.html">
-                        <span>我的订单</span>
-                    </a>
-                    <a href="我的e采.html">
-                        <span>我的e采</span>
-                    </a>
-                    <a href="##">
-                        <span>客户服务</span>
-                    </a>
+            </div>
+            <div v-else>
+                <div>
+                    <span><a href="../user/login.html">登录</a></span>
+                </div>
+                <div>
+                    <span style="margin-left: 12px">  <a href="../user/user_log_on.html">注册</a></span>
+                </div>
+            </div>
+            <div>
+                <span style="font-size: 12px">|</span>
+            </div>
+           <a href="../personal/my_order.html" v-if="id">
+                <span>我的订单</span>
+            </a>
+            <a href="../user/login.html" v-else>
+                <span>我的订单</span>
+            </a>
+            <a href="../personal/my_ecai.html" v-if="id">
+                <span>我的e采</span>
+            </a>
+            <a href="../user/login.html" v-else>
+                <span>我的e采</span>
+            </a>
+            <a href="../zaixian_kefu.html" v-if="id">
+                <span>客户服务</span>
+            </a>
+            <a href="../user/login.html" v-else>
+                <span>客户服务</span>
+            </a>
                     <a href="##">
                         <span>手机e采</span>
                     </a>
@@ -71,43 +88,39 @@
         </div>
 
         <div class="yd-site">
-            <a href="商城首页.html">E采商城</a>
-            <span> <img src="../assets/Shape%20Copy.png" alt=""> </span>
-            <a href="我的e采.html">我的E采</a>
-            <span> <img src="../assets/Shape%20Copy.png" alt=""> </span>
-            <a href="我的订单.html">订单中心</a>
-            <span> <img src="../assets/Shape%20Copy.png" alt=""> </span>
-            <a href="订单详情.html">订单7837483264273</a>
+            <a href="../index.html">E采商城</a>
+            <span> <img src="../../assets/ShapeCopy.png" alt=""> </span>
+            <a href="my_ecai.html">我的E采</a>
         </div>
         <div class="yd-help-content">
             <div class="yd-help-l">
-                <div class="user-info">
-                    <div><img src="../assets/头像%20中.png" alt=""></div>
+                <div class="user-info"  id="user_muen">
+                    <div><img :src="avatar| formatImg140x140" alt=""></div>
                     <div>
-                        <div class="vip-lv"><a href="选择地址.html"><img src="../assets/铜牌会员.png" alt="">铜牌会员</a></div>
-                        <div class="nickname">Lemon</div>
+                        <div class="vip-lv"><a href="my_ecai.html"><img src="../../assets/tongpai.png" alt="">铜牌会员</a></div>
+                        <div class="nickname"> {{user}}</div>
                     </div>
                 </div>
                 <div class="serve-con">
                     <div class="serve-group">
                         <div class="serve-title">交易管理</div>
-                        <a href="我的订单.html" >我的订单</a>
-                        <a href="我的拼单.html">我的拼单</a>
-                        <a href="我的优惠券.html" >我的优惠券</a>
-                        <a href="我的购物车.html">我的购物车</a>
-                        <a href="我的关注.html">我的关注</a>
+                        <a href="my_order.html">我的订单</a>
+                        <a href="my_fight_alone.html">我的拼单</a>
+                        <a href="my_coupon.html">我的优惠券</a>
+                        <a href="my_shopping_cart.html" class="ser-act">我的购物车</a>
+                        <a href="my_concern.html">我的关注</a>
                     </div>
                     <div class="serve-group">
                         <div class="serve-title">服务中心</div>
-                        <a href="" class="ser-act">我的返修单/换货</a>
-                        <a href="我的消息.html" >我的消息 <span>（2）</span></a>
+                        <a href="my_fan.html">我的返修单/换货</a>
+                        <a href="my_news.html">我的消息 <span>（2）</span></a>
                     </div>
                     <div class="serve-group">
                         <div class="serve-title">个人信息管理</div>
-                        <a href="编辑个人资料.html">编辑个人资料</a>
-                        <a href="地址管理.html">地址管理</a>
-                        <a href="申请企业用户.html">升级为企业用户</a>
-                        <a href="申请店铺用户.html">申请开通店铺</a>
+                        <a href="edit_profile.html">编辑个人资料</a>
+                        <a href="add.html">地址管理</a>
+                        <a href="shen_qiye.html">升级为企业用户</a>
+                        <a href="../Apply_shop/Apply_shop.html">申请开通店铺</a>
                     </div>
                 </div>
             </div>
@@ -159,7 +172,7 @@
                             </div>
                             <div class="re-info-data">
                                 <div class="re-info-store">
-                                   <div class="re-goods"><img src="../assets/imagec.png" alt=""></div>
+                                   <div class="re-goods"><img src="../../assets/imagec.png" alt=""></div>
                                     <div>
                                         <div>联想E570c15.6英寸笔记本</div>
                                         <div>黑色</div>
@@ -223,7 +236,7 @@
                             </div>
                             <div class="u-item">
                                 <div>
-                                    <img src="../assets/删除.png" class="delete" alt="">
+                                    <img src="../../assets/删除.png" class="delete" alt="">
                                     <div class="count">￥ <span class="super">5</span> </div>
                                     <div class="call">满2188元可用</div>
                                     <div class="date">2017.04.16 - 2017.05.20</div>
@@ -261,7 +274,7 @@
                                 <div>收货地址：Lemon 188****3232 上海市 黄浦区 大沽路288弄5号3楼B座</div>
                                 <div>支付方式：微信支付</div>
                                 <div>
-                                    <a href="立即支付.html" class="ba-sub">
+                                    <a href="my_order.html" class="ba-sub">
                                         提交订单
                                     </a>
                                 </div>
@@ -281,7 +294,7 @@
         <div class="alert">
             <div class="alert-top">
                 <div>新增收货地址</div>
-                <div><img src="../assets/关闭.png" alt=""></div>
+                <div><img src="../../assets/关闭.png" alt=""></div>
             </div>
             <div class="alert-con">
                 <div class="alert-item">
@@ -357,11 +370,19 @@
         <div class="mask"></div>
         <div class="yd-alert">
             <div>
-                <img src="../assets/恭喜您.png" alt="">
+                <img src="../../assets/恭喜您.png" alt="">
             </div>
             <div>提交申请成功，请耐心等待商家处理哦~</div>
         </div>
     </div>
 </body>
-
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script src="../../js/swiper/Swiper-3.4.2/dist/js/swiper.jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/vue/2.3.3/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/vee-validate/2.0.0-rc.3/vee-validate.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="../../js/utils.js"></script>
+    <script src="../../js/config.js"></script>
+    <script src="../../js/top.js"></script>
 </html>

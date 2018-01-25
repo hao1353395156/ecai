@@ -84,7 +84,7 @@
             		var url = config.API_GATEWAY + "/td/orders/h5";
     				Api.post(url,obj,function(e) {
     					if(e.code==0){
-    						window.location="my_order.html";
+    						window.location="my_shopping_balance.html";
 
     					}else{
     						alert(e.message);
