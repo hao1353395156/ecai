@@ -35,6 +35,7 @@
                  	var n = $(".sku_jia").index(dom);
                  	this.skus[n].quantity++;
                  	console.log(this.skus[n]);
+
                 },
                 //选择sku商品
                 changeNum: function(e){
@@ -46,7 +47,14 @@
                 		this.skus[n].quantity=num;
                 	else{
                 		this.skus[n].quantity=0;
-                		alert("数量不能为负数");
+                		swal({
+                			title:"出错了",
+                			text:"<span style='color:red;font-size:24px;'>数量不能为负数</span>",
+                			//type:"warning",
+                			confirmButtonText:"aaa",
+                			html:true
+                		});
+						// swal("ssss");
                 	}
                 		
                 },
