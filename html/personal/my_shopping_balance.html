@@ -134,13 +134,16 @@
                             <span>收货人信息</span>
                             <a href="">新增收货地址</a>
                         </div>
-                        <div class="re-order-info" v-for="addresslist in address">
+                         <select name="上海黄浦区" v-on:change="changeAddress" @click="isLogin"> 
+                                <option :value="addresslist.id" v-for="addresslist in address">{{addresslist.contacter}}-{{addresslist.provinceName}}-{{addresslist.cityName}}-{{addresslist.areaName}}-{{addresslist.street}}-{{addresslist.mobile}}</option> 
+                         </select>  
+                        <!-- <div class="re-order-info" v-for="addresslist in address">
                             <span>{{addresslist.contacter}}</span>
                             <span>{{addresslist.provinceName}} <i class="fa fa-check-square"  aria-hidden="true"></i> </span>
                             <span>{{addresslist.provinceName}}-{{addresslist.cityName}}-{{addresslist.areaName}}-{{addresslist.street}}</span>
                             <span>{{addresslist.mobile}}</span>
                             <span class="re-order-edit"></span>
-                        </div>
+                        </div> -->
                         <div class="re-more-add">更多地址 <i class="fa fa-angle-down" aria-hidden="true"></i></div>
                     </div>
 
@@ -236,7 +239,7 @@
                             <div class="re-edit-coupon">
                                 <span class="del-coupon">-</span><span>使用优惠券</span>
                             </div>
-                           <!--  <div class="u-item" v-for="couponslist in coupons">
+                            <div class="u-item" v-for="couponslist in coupons">
                                 <div>
                                     <img src="../../assets/删除.png" class="delete" alt="">
                                     <div class="count">￥ <span class="super">{{couponslist.fee | formatee1}}</span>  </div>
@@ -247,10 +250,7 @@
                                     <div> 仅可购买e采自营部份家电商品</div>
                                     <div>券编号：1234567862</div>
                                 </div>
-                            </div> -->
-                            <select name="上海黄浦区" v-on:change="changeAddress" @click="isLogin"> 
-                                <option :value="addresslist.id" v-for="addresslist in address">{{addresslist.provinceName}}-{{addresslist.cityName}}-{{addresslist.areaName}}-{{addresslist.street}}</option> 
-                            </select>  
+                            </div>
 
                             <div class="re-balance-price">
                                 <div class="balance-item">

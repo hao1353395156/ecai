@@ -228,20 +228,7 @@
                             pro_jingxuan_list.pro_xq = e.data;
                             pro_jingxuan_list.skus = e.data.skus;
                             pro_jingxuan_list.imgs = e.data.imgs;
-
-
-                //商铺优惠卷
-                var shopId = e.data.shopId;
-                var url = config.API_GATEWAY + "/mt/v2/shops/"+shopId+"/coupons";
-                Api.get(url,function(e) {
-                  if(e.code==0){
-                            pro_jingxuan_list.coupons = e.data.fullCutDirectCoupons;
-                         }
-                }); 
-
-
-                            
-                            // pro_skus();                         
+                                                        // pro_skus();                         
 	            		}else{
 	            			alert("请求失败！");
 	            		}
@@ -279,6 +266,13 @@
     	});
 	}
 
+//商铺优惠卷
+                var url = config.API_GATEWAY + "/us/coupons?st=0&pn=1&ps=20";
+                Api.get(url,function(e) {
+                  if(e.code==0){
+                            pro_jingxuan_list.coupons =  e.data.items;
+                         }
+                }); 
 
 
   //我的收获地址
