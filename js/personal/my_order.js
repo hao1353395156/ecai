@@ -4,8 +4,8 @@
 (function() {
 	var shopId=$.getUrlParam("shopId") || 0;
 	// console.log(shopId);
-	var news = new Vue({
-	      el:"#my_news",
+	var order = new Vue({
+	      el:"#my_order",
 	      data:{
              wuliiu_news:'',//消息列表
 	        },
@@ -17,9 +17,9 @@
 	var url = config.API_GATEWAY + "/us/users/messages?pn=1&ps=20";
 	            	Api.get(url,function(e){
 	            		if(e.data.records>0){
-	            	   news.wuliiu_news = e.data.items;
+	            	   order.wuliiu_news = e.data.items;
 	            	 }else{
-	            	 	news.wuliiu_news = 0;
+	            	 	order.wuliiu_news = 0;
 	            	 	// console.log(news.wuliiu_news);
 	            	 }
 

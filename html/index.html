@@ -63,7 +63,7 @@
     }
 </style>
 <body>
-<div id="index">  
+<div id="index" v-cloak>  
 <div class="yd-main">
     <div class="yd-ad" v-for="list_adverts in adverts">
         <a v-bind:href="'https://'+list_adverts.link"  target="_blank"><img v-bind:src="list_adverts.pcImg | formatImg96x30"></a>   

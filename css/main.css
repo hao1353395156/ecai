@@ -505,3 +505,6 @@ a{
     text-align: center;
     border-radius: 4px;
 }
+[v-cloak] {  
+        display: none;  
+    }   
