@@ -12,6 +12,7 @@
     <title></title>
 </head>
 <body>
+<div id="my_fight_alone" v-cloak>    
     <div class="yd-main">
         <div id="yd-head">
        <div class="yd-head" id="top">
@@ -111,13 +112,13 @@
                 <div class="r-top">我的拼单</div>
                 <div class="r-nav">
                     <div>
-                        <a href="" class="r-nav-item ser-act">所有拼单</a>
-                        <a href="我的拼单-没有.html">待付尾款(<span style="color: #FF2961">1</span>)</a>
-                        <a href="我的拼单-没有.html">待发货</a>
-                        <a href="我的拼单-没有.html">待收货</a>
-                        <a href="我的拼单-没有.html">待评价</a>
+                        <a href="javascript:;" @click="order_staus=100" :class="order_staus==100 ? 'r-nav-item ser-act':''">所有拼单(<span style="color: #FF2961">{{order_list.length || 0}}</span>)</a>
+                        <a href="javascript:;" @click="order_staus=0" :class="order_staus==0 ? 'r-nav-item ser-act':''">待付尾款(<span style="color: #FF2961">{{order_status_list.dai.length || 0}}</span>)</a>
+                        <a href="javascript:;" @click="order_staus=200" :class="order_staus==200 ? 'r-nav-item ser-act':''">待发货(<span style="color: #FF2961">{{order_status_list.fa.length|| 0}}</span>)</a>
+                        <a href="javascript:;" @click="order_staus=300" :class="order_staus==300 ? 'r-nav-item ser-act':''">待收货(<span style="color: #FF2961">{{order_status_list.shou.length || 0}}</span>)</a>
+                        <a href="javascript:;" @click="order_staus=400" :class="order_staus==400 ? 'r-nav-item ser-act':''">待评价(<span style="color: #FF2961">{{order_status_list.ping.length || 0}}</span>)</a>
                     </div>
-                    <div>
+                    <div style="display:none">
                         <input type="text">
                         <img src="../../assets/搜索%20灰色.png" alt="">
                     </div>
@@ -188,6 +189,7 @@
             <div>提交申请成功，请耐心等待商家处理哦~</div>
         </div>
     </div>
+</div>    
 </body>
 <script src="../../js/swiper/Swiper-3.4.2/dist/js/swiper.jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -197,4 +199,5 @@
 <script src="../../js/utils.js"></script>
 <script src="../../js/config.js"></script>
 <script src="../../js/top.js"></script>
+<script src="../../js/personal/my_fight_alone.js"></script>
 </html>
