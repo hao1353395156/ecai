@@ -14,18 +14,18 @@
 <div id="shopindex" v-cloak>
     <div class="yd-main">
         <div id="yd-head">
-       <div class="yd-head" id="top">
+      <div class="yd-head" id="top">
         <div class="yd-head-l">
             <div>
                 <img src="../assets/index.png" alt="">
-                <a href="shop_index.html">首页</a>
+                <a href="##">首页</a>
             </div>
             <div>
                 <a href="choose_add.html"><span>切换城市</span></a>
             </div>
             <div class="yd-head-l-add">
                 <img src="../assets/coordinate.png" alt="">
-                <a href="choose_add.html">全国 </a>
+                <a href="choose_add.html">{{cityname}} </a>
             </div>
         </div>
         <div class="yd-head-r">
@@ -46,13 +46,22 @@
             <div>
                 <span style="font-size: 12px">|</span>
             </div>
-            <a href="personal/my_order.html">
+            <a href="personal/my_order.html" v-if="id">
                 <span>我的订单</span>
             </a>
-            <a href="personal/my_ecai.html">
+            <a href="user/login.html" v-else>
+                <span>我的订单</span>
+            </a>
+            <a href="personal/my_ecai.html" v-if="id">
                 <span>我的e采</span>
             </a>
-            <a href="" style="display:none">
+            <a href="user/login.html" v-else>
+                <span>我的e采</span>
+            </a>
+            <a href="zaixian_kefu.html" v-if="id">
+                <span>客户服务</span>
+            </a>
+            <a href="user/login.html" v-else>
                 <span>客户服务</span>
             </a>
             <a href="#">
@@ -108,7 +117,7 @@
             <a href="" class="st-act">全部商品分类
                 <img src="../assets/select-blue.png" alt="">
             </a>
-            <a href="shop_index.html">首页</a>
+            <a :href="'shop_index.html?shopId='+shopId" class="ty-act">首页</a>
             <a :href="'shop_index_list.html?shopId='+shopId+'&sp='+blocklist.id" v-for="blocklist in block">{{blocklist.name}}</a>
         </div>
 

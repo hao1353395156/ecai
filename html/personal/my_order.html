@@ -289,7 +289,7 @@
 
 
 
-                    <div v-show="order_staus==400">
+                    <div v-show="order_staus==400" v-for="order in order_list" v-if="order.status==400">
                     <div class="r-con-item">
                         <div>
                             <div class="order-state">交易完成</div>
