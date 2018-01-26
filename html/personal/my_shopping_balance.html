@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css">
     <link rel="stylesheet" href="../../css/main.css">
     <link rel="stylesheet" href="../../css/serve.css">
     <link rel="stylesheet" href="../../css/cancel.css">
@@ -190,14 +191,15 @@
                                 <div class="re-info-price">
                                     {{skuslist.price | formatFee}}
                                 </div>
-                                <div class="re-info-count"><button class="btn_jiajian" style="margin-right:15px">-</button>1<button class="btn_jiajian" style="margin-left:15px">+</button></div>
-                                <div class="re-info-all"></div>
+                                <div class="re-info-count"><img src="../../assets/base%20减.png" alt="" v-on:click="basejian" class="sku_jian">
+                                <input type="text" class="goods-num sku_input" placeholder="0" v-model="skuslist.quantity" v-on:blur="changeNum"></input>
+                                <img src="../../assets/base.png" alt="" v-on:click="basejia" class="sku_jia"></div>
                             </div>
                             <div class="re-info-footer" style="text-align: right">
                                 <div  style="padding-right: 25px;padding-bottom: 10px">运费:(免运费)</div>
                                 <span>
                                     <span style="padding-right: 50px">合计</span>
-                                    <span class="re-all-price" style="font-size: 25px;color: red">￥2999</span>
+                                    <span class="re-all-price" style="font-size: 25px;color: red">￥{{count_cash.toFixed(2)}}</span>
                                 </span>
                             </div>
                         </div>
@@ -255,7 +257,7 @@
                             <div class="re-balance-price">
                                 <div class="balance-item">
                                     <div>1件商品 总计金额：</div>
-                                    <div class="ba-price">￥3299</div>
+                                    <div class="ba-price">￥{{count_cash.toFixed(2)}}</div>
                                 </div>
                                 <div class="balance-item">
                                     <div>运费：</div>
@@ -267,19 +269,22 @@
                                 </div>
                                 <div class="balance-item">
                                     <div>优惠券：</div>
-                                    <div class="ba-price">-￥50.00</div>
+                                    <div class="ba-price">-￥{{count_coupon.toFixed(2)}}</div>
                                 </div>
                             </div>
 
                             <div class="re-foot-info">
                                 <div class="balance-item">
                                     <div>应付金额：</div>
-                                    <div class="ba-price ba-result">￥2999</div>
+                                    <div class="ba-price ba-result">￥{{(count_cash-count_coupon).toFixed(2)}}</div>
                                 </div>
-                                <div>收货地址：Lemon 188****3232 上海市 黄浦区 大沽路288弄5号3楼B座</div>
-                                <div>支付方式：微信支付</div>
+                                <!--div>收货地址：Lemon 188****3232 上海市 黄浦区 大沽路288弄5号3楼B座</div-->
+                                <!--div>支付方式：微信支付</div-->
                                 <div>
-                                    <a href="my_order.html" class="ba-sub">
+                                    <a href="javascript:void(0)" class="ba-sub" @click="quick" v-if="act=='quick'">
+                                        提交订单
+                                    </a>
+                                     <a href="javascript:void(0)" class="ba-sub" @click="groupon" v-if="act=='groupon'">
                                         提交订单
                                     </a>
                                 </div>
@@ -389,6 +394,7 @@
     <script src="https://cdn.jsdelivr.net/vee-validate/2.0.0-rc.3/vee-validate.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery-dateFormat/1.0/jquery.dateFormat.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script src="../../js/utils.js"></script>
     <script src="../../js/config.js"></script>
     <script src="../../js/top.js"></script>

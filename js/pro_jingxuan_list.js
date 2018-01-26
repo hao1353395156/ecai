@@ -157,6 +157,8 @@
                   for(var i=0;i<this.skus.length;i++){
                     if(this.skus[i].quantity>0){
                       items.push({"quantity":this.skus[i].quantity,"skuId":this.skus[i].id})
+                    }else{
+                      items.push({"quantity":0,"skuId":this.skus[i].id})
                     }
                   }
                   if(this.addressId<=0){
