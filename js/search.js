@@ -2,7 +2,7 @@
 var sid=$.cookie("provinceid");
 var pn = $.getUrlParam("pn") || 1,
     ps = 20,      //页码
-    cn = $.getUrlParam("cn"),    //名称
+    cn = unescape($.getUrlParam("cn")),    //名称
     lp = $.getUrlParam("lp"),    //价格小 n-100
     tp = $.getUrlParam("tp"),    //价格大 0-n
     bd = $.getUrlParam("bd"), //品牌
@@ -41,7 +41,7 @@ var pn = $.getUrlParam("pn") || 1,
         },
       methods : {
         search : function (e){
-           var key=$("#search_key").val();
+           var key=escape($("#search_key").val());
            if(key.length<1){
             swal("请输入关键字！");
             return;

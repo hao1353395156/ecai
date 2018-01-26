@@ -28,7 +28,9 @@
             swal("请输入关键字！");
             return;
            }
-           window.location="search.html?cn="+key;
+           var url="search.html?cn="+escape(key);
+
+           window.location.href=url;
             
         },
         timeFromat : function(i,time){
