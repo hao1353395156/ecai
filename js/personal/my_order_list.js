@@ -13,6 +13,18 @@
               },//订单详情
 	        },
 	        methods : {
+	        	pay:function(){
+	        		var url = config.API_GATEWAY + "/td/orders/"+this.order_xxlist.id+"/pay/h5";
+	        		 Api.get(url,function(e) {
+	        		 	console.log(e);
+	                    if(e.code==0){
+	                      if(e.data.yijiPayUrl)
+	                        window.location.href=e.data.yijiPayUrl;
+	                    }else{
+	                      alert(e.message);
+	                    }
+	        		 })
+	        	},
               // coupon_wei : function(){
               // 	var url = config.API_GATEWAY + "/us/coupons?st=0&pn=1&ps=20";
               // 	        Api.get(url,function(e) {

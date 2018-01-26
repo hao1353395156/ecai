@@ -9,6 +9,7 @@
   var utk = $.cookie("utk");
   var act = $.getUrlParam("act") || "pay";
   var pInfo = $.getUrlParam("info");
+  var userId = $.cookie("id");
 
   var proArr=pInfo.split("|");
   
@@ -66,7 +67,7 @@
                 			confirmButtonText:"aaa",
                 			html:true
                 		});
-						// swal("ssss");
+
                 	}
                 		
                 },
@@ -90,15 +91,6 @@
                     } 
                   }
                             
-                  // setTimeout(function(){
-                  //   var cash=0;
-                  //   console.log ("????>>>>>>skus");
-                  //   console.log (this.skus);
-                  //   for(var i=0;i<this.skus.length;i++){
-                  //     cash+= this.skus[i].quantity * this.skus[i].price;
-                  //   }
-                  //   console.log(cash);
-                  // },500)
                 },
                 //是否登录
                 isLogin:function(){
@@ -135,12 +127,13 @@
                   }
                     
                   data.couponId = couponid;
+                  data.userId = userId;
                   data.invoiceId = this.pro_xq.invoice;
                   data.payMethod="";
                   data.remark="";
                   data.returnUrl="http://www.360ecmall.com/";
-                  data.shopId = this.pro_xq.shopId;
-                  var id=this.pro_xq.id;//商品id
+                  //data.shopId = this.pro_xq.shopId;
+                  //var id=this.pro_xq.id;//商品id
 
                   var url = config.API_GATEWAY + "/td/orders/h5";
                   Api.post(url,data,function(e) {
@@ -167,7 +160,6 @@
                   }
                   data.catalogId = this.pro_xq.categoryId;
                   data.shopId = this.pro_xq.shopId;
-                  var couponid=0;
                   var couponid=0;
                   if(this.coupons.length>=1){
                     for(var i=0;i<this.coupons.length;i++){
@@ -196,40 +188,32 @@
                   })
                 },
                 get_products_info_groupon: function(){
-
-                  // {
-                  //   "addressId": 10001,
-                  //   "id": 0,
-                  //   "invoiceId": 0,
-                  //   "items": [
-                  //     {
-                  //       "key": {
-                  //         "couponId": 0,
-                  //         "id": 0,
-                  //         "remark": "string"
-                  //       },
-                  //       "value": [
-                  //         {
-                  //           "id": 10000,
-                  //           "quantity": 0,
-                  //           "skuId": 10000
-                  //         }
-                  //       ]
-                  //     }
-                  //   ],
-                  //   "payMethod": "string",
-                  //   "returnUrl": "http://www.360ecmall.com/",
-                  //   "userId": 0
-                  // }
-
-
                   this.isLogin();
-                  var items=[];
+                  var value=[];
                   for(var i=0;i<this.skus.length;i++){
                     if(this.skus[i].quantity>0){
-                      items.push({"quantity":this.skus[i].quantity,"skuId":this.skus[i].id})
+                      value.push({"id":this.skus[i].id,"quantity":this.skus[i].quantity,"skuId":this.skus[i].id})
                     }
                   }
+
+                  var couponid=0;
+                  if(this.coupons.length>=1){
+                    for(var i=0;i<this.coupons.length;i++){
+                      if(this.count_cash>this.coupons[i].limitFee/100){
+                        couponid= this.coupons[i].id;
+                        this.count_coupon = this.coupons[i].fee/100;
+                      }
+                    } 
+                  }
+
+                  var items=[{
+                    key:{
+                      couponId:couponid,
+                      id:this.pro_xq.shopId,
+                      remark:'',
+                    },
+                    value:value,
+                  }]
                   if(this.addressId<=0){
                     swal("请选择地址，或新增地址！");
                     return {code:-1001,data:"请选择地址，或新增地址！"};
