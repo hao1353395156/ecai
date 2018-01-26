@@ -15,7 +15,49 @@
 
 	        },
 	        methods : {
-
+               //取消订单
+               del_order : function(e){
+                    var dom=e.target;
+                    var id = $(dom).attr("orderid");
+                     var url = config.API_GATEWAY + "/td/orders/"+id+"/cancel";
+                     Api.put(url,{},function(e) {  
+                        if(e.code==0){
+                            swal({
+                              title:"",
+                              text:"<span style='color:red;font-size:24px;'>已成功取消订单！</span>",
+                              //type:"warning",
+                              confirmButtonText:"确认",
+                              html:true
+                            });
+                          }
+                     window.location.reload();
+                     });
+               },
+               //提醒发货
+               tixing_order : function(e){
+                    var dom=e.target;
+                    var id = $(dom).attr("orderid");
+                     var url = config.API_GATEWAY + "/td/orders/"+id+"/remind";
+                     Api.put(url,{},function(e) {  
+                        if(e.code==0){
+                            swal({
+                              title:"",
+                              text:"<span style='color:red;font-size:24px;'>您已成功提醒，请耐心等待！</span>",
+                              //type:"warning",
+                              confirmButtonText:"确认",
+                              html:true
+                            });
+                          }else{
+                          	swal({
+                              title:"",
+                              text:"<span style='color:red;font-size:24px;'>亲，您近一天内已经提醒卖家发货了，请耐心等候！</span>",
+                              //type:"warning",
+                              confirmButtonText:"确认",
+                              html:true
+                            });
+                          }
+                     });
+               },
 	        },
 	    });
 	//订单列表

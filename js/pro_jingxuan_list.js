@@ -240,6 +240,31 @@
              
 	        },
 	    });
+  //领取优惠卷
+    $(document).on("click",".lingqu_youhui",function(){
+       var couponsid = $(this).attr("couponsid");
+            console.log(couponsid);
+                  var url = config.API_GATEWAY + "/mt/coupons/"+couponsid+"/apply";
+                     Api.get(url,function(e) {
+                      if(e.code==0){
+                            swal({
+                              title:"",
+                              text:"<span style='color:red;font-size:24px;'>领取成功！</span>",
+                              //type:"warning",
+                              confirmButtonText:"确认",
+                              html:true
+                            });
+                          }else{
+                             swal({
+                              title:"",
+                              text:"<span style='color:red;font-size:24px;'>您已领取优惠券!</span>",
+                              //type:"warning",
+                              confirmButtonText:"确认",
+                              html:true
+                            });
+                          }
+                       });
+          });
 	//板块
 	var url = config.API_GATEWAY + "/cms/sites/"+provinceid+"/home";
 	 Api.get(url,function(e) {

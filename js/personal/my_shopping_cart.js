@@ -100,6 +100,52 @@
                 	console.log("addressid:"+n);
                 	this.addressId=n;
                 },
+                //删除
+                shan : function (e){
+                    var dom=e.target;
+                    var id = $(dom).attr("shangpingid");
+                    var cashid = $(dom).attr("cash");
+
+                    console.log(cashid);
+                     var url = config.API_GATEWAY + "/td/quotes/"+cashid+"/items/"+id;
+                     Api.del(url,{},function(e) {  
+                        if(e.code==0){
+                            swal({
+                              title:"",
+                              text:"<span style='color:red;font-size:24px;'>删除成功！</span>",
+                              //type:"warning",
+                              confirmButtonText:"确认",
+                              html:true
+                            });
+                          }
+                     window.location.reload();
+                     });
+                },
+                //移入关注
+                pay_shop : function(e){
+                    var dom=e.target;
+                    var id = $(dom).attr("shangpingid");
+                    var url = config.API_GATEWAY + "/us/catalogs/"+id+"/favoriate";
+                     Api.put(url,{},function(e) {
+                      if(e.code==0){
+                            swal({
+                              title:"",
+                              text:"<span style='color:red;font-size:24px;'>移入关注成功！</span>",
+                              //type:"warning",
+                              confirmButtonText:"确认",
+                              html:true
+                            });
+                          }else{
+                             swal({
+                              title:"",
+                              text:"<span style='color:red;font-size:24px;'>关注商品已不存在!</span>",
+                              //type:"warning",
+                              confirmButtonText:"确认",
+                              html:true
+                            });
+                          }
+                       });
+                }
             }
 	    });
 
