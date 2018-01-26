@@ -348,25 +348,27 @@
             </div>
         </div> -->
 
-        <div class="store-goods"  v-for="blocklist in block">
-            <div class="store-goods-type">{{blocklist.name}}</div>
-            <div class="store-goods-container">
-                <div class="store-g-two">
-                    
+        <div class="store-goods" v-for="(b,index) in blockspro">
+            <div class="store-goods-type">{{b.blocksTitle}}</div>
+
+            <div class="store-goods-container"  v-for="item in b.blocksData">
+                <a :href="'pro_jingxuan_list.html?cid='+item.id+'&shopId='+item.shopId">
+                <div class="store-g-two">                
                     <div class="goods-t-item" >
                         <div class="g-t-img">
-                            <img src="../assets/e采商城图片/旗舰店首页/24.jpg" alt="">
+                            <img :src="item.pcMainImg | formatImg165x167" alt="">
                         </div>
                         <div>
-                           
+                           {{item.name}}
                         </div>
                         <div>
-                            ￥500.00
+                            {{item.price | formatFee}}
                         </div>
                     </div>
-
                 </div>
+                </a>
             </div>
+
         </div>
 
 

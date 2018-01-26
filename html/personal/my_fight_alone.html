@@ -174,7 +174,7 @@
                         </div>
                         <div class="r-con-item">
                             <div>
-                                <div><span class="yd-price">总额{{order.fee | formatFee}}</span> <span>（含快递：{{order.postage | formatFee}}）</span> <a href="立即支付.html" class="offer-btn">支付尾款</a></div>
+                                <div><span class="yd-price">总额{{order.fee | formatFee}}</span> <span>（含快递：{{order.postage | formatFee}}）</span> <a :href="'my_order_list.html?id='+order.id" class="offer-btn">支付尾款</a></div>
                             </div>
                         </div>
                     </div>

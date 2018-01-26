@@ -204,7 +204,18 @@
                 },
                 //关注商品
                 payshop:function(){
-                	
+                	var url = config.API_GATEWAY + "/us/catalogs/"+cid+"/favoriate";
+                     Api.get(url,function(e) {
+                      if(e.code==0){
+                            swal({
+                              title:"关注成功！",
+                              text:"<span style='color:red;font-size:24px;'>数量不能为负数</span>",
+                              //type:"warning",
+                              confirmButtonText:"aaa",
+                              html:true
+                            });
+                          }
+                       });
                 }
                 
 	        },
