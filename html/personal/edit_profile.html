@@ -118,8 +118,11 @@
                         </div>
                         <div class="change-avatar"><a onclick="avatar()" @click="touxiang" style="cursor:pointer">修改头像</a>
 
-                            <input type="file" accept="" id="avatar" style="display: none" >
+                            <input type="file" name="file" accept="" id="avatar" style="display: none" >
                         </div>
+
+                        
+
                     </div>
                     <div class="r-con-r">
                         <div class="r-r-title">基本资料</div>
@@ -268,6 +271,7 @@
                     // console.log($('.bg-avatar'))
                     $('.bg-avatar').css('background','url('+src+')')
                     $('.bg-avatar').css('background-size','100%')
+                    //$("#avatar").src=file;
 
                 }
             }
