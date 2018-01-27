@@ -14,6 +14,8 @@ var pn = $.getUrlParam("pn") || 1,
     rk = $.getUrlParam("rk"),   //综合排序
     sn = $.getUrlParam("sn"), //销量排序
     pe = $.getUrlParam("pe");  //价格 0 底到高  1 高到底
+    if(cn=="null")
+      cn="";
  var search_fen = new Vue({
       el:"#search",
       data : {
@@ -42,7 +44,7 @@ var pn = $.getUrlParam("pn") || 1,
       methods : {
         search : function (e){
            var key=escape($("#search_key").val());
-           if(key.length<1){
+           if(key.length<1 ){
             swal("请输入关键字！");
             return;
            }
@@ -127,7 +129,7 @@ var pn = $.getUrlParam("pn") || 1,
             var purl = "";
             var d=this.search_sql;
               for(var n in d){
-                if (d[n]) {
+                if (d[n] && d[n]!="null") {
                  purl+="&"+n+"="+d[n];
                  };
               }
