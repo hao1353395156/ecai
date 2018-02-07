@@ -125,9 +125,7 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for="pcCarousellist in pcCarousel">
-                    <a href="">
                     <img :src="pcCarousellist.img | formatImg1200x460" class="swi-img" alt="">
-                    </a>
                 </div>
             </div>
             <!-- Add Pagination -->
@@ -351,9 +349,9 @@
         <div class="store-goods" v-for="(b,index) in blockspro">
             <div class="store-goods-type">{{b.blocksTitle}}</div>
 
-            <div class="store-goods-container"  v-for="item in b.blocksData">
-                <a :href="'pro_jingxuan_list.html?cid='+item.id+'&shopId='+item.shopId">
-                <div class="store-g-two">                
+            <div class="store-goods-container">
+                <div class="store-g-two">
+                <a :href="'pro_jingxuan_list.html?cid='+item.id+'&shopId='+item.shopId"  v-for="item in b.blocksData">                
                     <div class="goods-t-item" >
                         <div class="g-t-img">
                             <img :src="item.pcMainImg | formatImg165x167" alt="">
@@ -365,12 +363,12 @@
                             {{item.price | formatFee}}
                         </div>
                     </div>
+                       </a>
                 </div>
-                </a>
+
             </div>
 
         </div>
-
 
 
         <!-- <div class="store-goods">

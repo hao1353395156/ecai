@@ -117,44 +117,10 @@
             <a href="" class="st-act" >全部商品分类
                 <img src="../assets/select-blue.png" alt="">
                 <div class="sel-nav" style="display: none;position:absolute;z-index:99999">
-                    <div class="sel-nav-item">
-                        <span>电视机</span>
+                    <div class="sel-nav-item" v-for="categorieslist in categories">
+                        <span>{{categorieslist.name}}</span>
                         <i class="fa fa-angle-right"></i>
                     </div>
-                    <div class="sel-nav-item">
-                        <span>平板电脑</span>
-                        <i class="fa fa-angle-right"></i>
-                    </div>
-                    <div class="sel-nav-item">
-                        <span>冰箱</span>
-                        <i class="fa fa-angle-right"></i>
-                    </div>
-                    <div class="sel-nav-item">
-                        <span>空调</span>
-                        <i class="fa fa-angle-right"></i>
-                    </div>
-                    <div class="sel-nav-item">
-                        <span>摄影摄像</span>
-                        <i class="fa fa-angle-right"></i>
-                    </div>
-                    <div class="sel-nav-item">
-                        <span>智能电器</span>
-                        <i class="fa fa-angle-right"></i>
-                    </div>
-                    <div class="sel-nav-item">
-                        <span>生活小家电</span>
-                        <i class="fa fa-angle-right"></i>
-                    </div>
-                    <div class="sel-nav-item">
-                        <span>数码影音</span>
-                        <i class="fa fa-angle-right"></i>
-                    </div>
-                    <div class="sel-nav-item">
-                        <span>电脑设备</span>
-                        <i class="fa fa-angle-right"></i>
-                    </div>
-
-
                 </div>
 
             </a>
@@ -166,8 +132,8 @@
                 <div>{{pro_xq.name}}</div>
                 <div>
                     <div>e采商城 
-                        <span class="store-type" v-if="pro_xq.showTag == 0">e彩自营</span>
-                        <span class="store-type" v-else>{{shop_item.title}}</span>
+                        <span class="store-type" v-if="shop_item.title">{{shop_item.title}}</span>
+                        <span class="store-type" v-else>e彩自营</span>
                     </div>
 
                     <div><a href="zaixian_kefu.html"><img src="../assets/contactb.png" class="contact" alt="">联系卖家</a></div>
